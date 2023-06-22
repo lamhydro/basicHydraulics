@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}Fluido ideal y fluido real}{1}{}%
+\contentsline {subsection}{\numberline {1.1}Flujo ideal}{1}{}%
+\contentsline {subsection}{\numberline {1.2}Flujo real}{2}{}%
+\contentsline {section}{\numberline {2}Capa limite en flujo a presi\'on}{2}{}%
+\contentsline {section}{\numberline {3}Esfuerzo de corte}{2}{}%
+\contentsline {section}{\numberline {4}Experimentos de Reynolds}{2}{}%
