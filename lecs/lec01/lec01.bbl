@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{cengel2013ebook}
+Yunus Cengel and John Cimbala.
+\newblock {\em Ebook: Fluid mechanics fundamentals and applications (si
+  units)}.
+\newblock McGraw Hill, 2013.
+
 \bibitem{agudelo2011mecanica}
 CA~Duarte~Agudelo.
 \newblock {\em Mec{\'a}nica de fluidos e hidr{\'a}ulica}.
@@ -13,5 +19,15 @@ I~Shames.
 RL~Street, GZ~Watters, and JK~Vennard.
 \newblock Elementary fluid mechanics, (1995).
 \newblock {\em John Wiley and Sons, New York, ISBN 0}, 471(01310):3.
+
+\bibitem{streeter}
+Victor~L. Streeter and E.~Benjamin. Wylie.
+\newblock {\em Fluid mechanics /}.
+\newblock Tata McGraw-Hill,, New Delhi,, c1983.
+
+\bibitem{white1990fluid}
+Frank~M White.
+\newblock {\em Fluid mechanics}.
+\newblock New York, 1990.
 
 \end{thebibliography}

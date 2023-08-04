@@ -1,0 +1,242 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, graphicx, geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{framed}
+\colorlet{shadecolor}{blue!15}
+\graphicspath{ {./} }
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}  
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{exa}{Example}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, 
+minimum width=3cm, 
+minimum height=1cm,
+text centered, 
+draw=black, 
+fill=red!30]
+
+\tikzstyle{io} = [trapezium, 
+trapezium stretches=true, % A later addition
+trapezium left angle=70, 
+trapezium right angle=110, 
+minimum width=3cm, 
+minimum height=1cm, text centered, 
+draw=black, fill=blue!30]
+
+\tikzstyle{process} = [rectangle, 
+minimum width=3cm, 
+minimum height=1cm, 
+text centered, 
+text width=3cm, 
+draw=black, 
+fill=orange!30]
+
+\tikzstyle{decision} = [diamond, 
+minimum width=3cm, 
+minimum height=1cm, 
+text centered, 
+draw=black, 
+fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+
+\title{Hidr\'aulica B\'asica [2015961] \\ \textbf{Tema \# 2: An\'alisis de sistemas de tuber\'ias}}
+\author{\textbf{Luis Alejandro Morales (Ph.D)}\\ \vspace{0.4cm} Profesor Asistente \\ Universidad Nacional de Colombia-Bogot\'a\\Facultad de Ingenier\'ia \\ Departamento de Ingenieria Civil y Agr\'icola}
+%\date{Periodo 2023-II}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%\vspace{.25in}
+
+%%%%%%%%
+\section{Sistemas de tuber\'ias simples} 
+Una tuber\'ia simple es aquella que tiene un di\'ametro y esta hecha de un solo material a lo largo de su longitud. La energ\'ia que mueve el flujo dentro de la tuber\'ia es gracias a la acci\'on de la gravedad (tanque a la entrada) o a un m\'aquina (sistema de bombeo a la entrada). Dichas tuber\'ias pueden tener cualquier tipo de accesorio a lo largo de su longitud lo que implica unas p\'erdidas menores. Las ecuaciones de Prandl, Von-Karman y Darcy-Weisbach vistas en la Unidad 1, son utilizadas para el dise\~no de tuber\'ias simples. Note que existe cierta dificultad para el disen\~no teniendo en cuenta que la ecuaci\'on de Colebrook-White para calcular el coeficiente de rugosidad $f$ es implicita y requiere un proceso iterativo para su soluci\'on. Los algoritmos que aqu\'i se discutir\'an, constituyen las bases para el an\'alisis y dise\~no de tuber\'ias m\'as complejos. 
+
+\subsection{Tipos de problema en sistemas de tuber\'ias}
+Los problemas en sistemas de tuber\'ias se clasifican de acuerdo con las variables desconocidas. Las variables involucradas en estos problemas se pueden clasificar como:
+\begin{itemize}
+\item \emph{Caracter\'isticas la tuber\'ia}: Di\'ametro ($D$), longitud ($L$), rugosidad absoluta ($\varepsilon$).
+\item \emph{Propiedades del fluido}: Densidad ($\rho$) y viscosidad din\'amica ($\mu$). 
+\item \emph{Variables relacionadas con el esquema del sistema}: Coeficientes de p\'erdidas menores ($K$) de todos los accesorios en el sistema. 
+\item \emph{Variables relacionas con la energ\'ia impulsora del sistema}: Cabeza de energ\'ia ($H$) entre el embalse de entrada y la salida del sistema, o potencia de la bomba ($P$). 
+\item \emph{Propiedades del flujo}: Caudal ($Q$) y velocidad ($V$) del flujo.
+\item \emph{Otras variables}: Aceleraci\'on de la gravedad ($g$).
+\end{itemize}
+ 
+De acuerdo con las variables involucradas en sistemas de tuber\'ias, existen tres tipos de problemas:
+\begin{enumerate}
+\item \textbf{Comprobaci\'on de dise\~no}: En este tipo de problemas la tuber\'ia existe y se conoce su longitud, su di\'ametro, su rugosidad absoluta (material), al igual que todos los accesorios y sus coeficiente de p\'erdidas menores. Tambi\'en se conoce la energ\'ia impulsora, ya sea una cabeza de energ\'ia (gravitacional por diferencia de niveles) o una energ\'ia mec\'anica (suministrada por una bomba). Las propiedades del fluido como la densidad y la viscosidad absoluta son tambi\'en conocidas. La incognita es entonce el caudal o la velocidad del flujo en el sistema.
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c}
+ \hline
+ Variables conocidas & Inc\'ognita \\ [0.5ex]
+% \hline\hline
+D, $\varepsilon$, H (o P), $\sum K$, $\rho$, $\mu$, g, L & Q (o V) \\
+\hline
+\end{tabular}
+%\caption{Coeficientes de rugosidad de Hazen-Williams, $C_H$ (tomado de \cite{agudelo2011mecanica}).}
+%\label{hwi}
+\end{table}
+ 
+\item \textbf{C\'alculo de la potencia requerida}: En este tipo de problemas, el sistema existe por lo que se conocen su longitud, su di\'ametro, su rugosidad absoluta (material), al igual que todos los accesorios y sus coeficiente de p\'erdidas menores. Las propiedades del fluido como la densidad y la viscosidad din\'amica as\'i como el caudal (o velocidad) que fluye por el sistema son tambi\'en conocidas. La finalidad es determinar la potencia, ya sea mec\'anica o gravitacional, requerida para mover cierto caudal a trav\'es de la tuber\'ia dada. 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c}
+ \hline
+ Variables conocidas & Inc\'ognita \\ [0.5ex]
+% \hline\hline
+D, $\varepsilon$, Q (o V), $\sum K$, $\rho$, $\mu$, g, L & P (o H) \\
+\hline
+\end{tabular}
+%\caption{Coeficientes de rugosidad de Hazen-Williams, $C_H$ (tomado de \cite{agudelo2011mecanica}).}
+%\label{hwi}
+\end{table}
+ 
+\item \textbf{Comprobaci\'on de dise\~no}: En este tipo de problemas se conoce el caudal o la velocidad de flujo y la potencia disponible (mec\'anica o gravitacional), algunas caracter\'isticas de la tuber\'ia como la longitud, los accesorios y sus coeficientes de p\'erdida y las propiedades del fluido como la densidad y la viscosidad din\'amica. Se desconoce el di\'ametro necesario para permitir el paso de el caudal demandado. En cuanto a la rugosidad absoluta, se debe cambiar el tipo de tuber\'ia (rugosidad absoluta) con el fin de obtener la mejor opci\'on. 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c}
+ \hline
+ Variables conocidas & Inc\'ognita \\ [0.5ex]
+% \hline\hline
+$\varepsilon$, Q (o V), P (o H), $\sum K$, $\rho$, $\mu$, g, L &  D \\
+\hline
+\end{tabular}
+%\caption{Coeficientes de rugosidad de Hazen-Williams, $C_H$ (tomado de \cite{agudelo2011mecanica}).}
+%\label{hwi}
+\end{table}
+ \end{enumerate}
+
+\subsubsection*{Ecuaciones para la soluci\'on de problemas}
+Si se tiene el sistema de la figura~\ref{comp1}, la ecuaci\'on de Bernoulli entre los puntos 1 y 2 es:
+
+% Fig 2.4 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{comp1.jpeg}
+\caption{Tuber\'ia simple alimentada por un tanque de nivel constante y con descarga a la atmosfera (tomado de \cite{saldarriaga}).} 
+\label{ttub}
+\end{figure}
+
+\begin{equation}
+H= \frac{{V_2}^2}{2g}+ z_2 + \frac{p_2}{\gamma} + h_f + \sum h_e 
+\label{com1}
+\end{equation}
+
+donde $H$ es la altura de la superficie de agua del tanque o la energ\'ia total en el punto 1. Teniendo en cuenta que la tuber\'ia del sistema en la figura~\ref{comp1} descarga a la atmosfera, la velocidad as\'i como la presi\'on se vuelven cero ($\frac{{V_2}^2}{2g}= 0$, $\frac{p_2}{\gamma}=0$). Note que la velocidad no necesariamente es cero cuando descarga a la atm\'osfera; se supone entonces que esta \'es cero all\'i.  Como consecuencia de esto, se asume que existen p\'erdidas menores en la salida de la tuber\'ia. La ecuaci\'on~\ref{com1} queda entonces como:
+
+\begin{equation}
+H = z_2 + h_f + \sum h_e 
+\label{com2}
+\end{equation}
+
+Despejando de la ecuaci\'on~\ref{com2}, las p\'erdidas por fricci\'on se pueden calcular como: 
+
+\begin{equation}
+\color{red}\boxed{\color{black} h_f = H - z_2 - \sum K \frac{{V_2}^2}{2g} }
+\label{com3}
+\end{equation}
+
+Mediante la ecuaci\'on de Darcy-Weisbach, despejando el factor de fricci\'on se tiene que:
+
+\begin{equation}
+f = \frac{h_f D 2g}{L V^2}
+\label{com4}
+\end{equation}
+
+Sacando ra\'iz cuadrada e invirtiendo los t\'erminos a ambos lados se tiene:
+
+\begin{equation}
+\frac{1}{\sqrt{f}} = \frac{V\sqrt{L}}{\sqrt{h_f D 2g}}
+\label{com5}
+\end{equation}
+
+Igualando a la ecuaci\'on de Colebrook y  White:
+
+\begin{equation}
+ \frac{1}{\sqrt{f}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) 
+\label{comp6}
+\end{equation}
+
+se tiene:
+
+\begin{equation}
+\frac{V\sqrt{L}}{\sqrt{h_f D 2g}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) 
+\label{comp7}
+\end{equation}
+
+Reemplazando $Re = \frac{VD}{\nu}$ en la ecuaci\'on~\ref{comp7} y despejando la velocidad, se tiene:
+
+\begin{equation}
+\color{red}\boxed{\color{black} V= \frac{-2\sqrt{2gD h_f}}{\sqrt{L}} \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52 \nu \sqrt{L}}{D \sqrt{2gD h_f}} \right) }
+\label{comp8}
+\end{equation}
+
+La ecuaci\'on~\ref{comp8} es explicita para la velocidad y es utilizado para la soluci\'on de los tres tipos de problemas mencionados hasta el momento. 
+
+\subsubsection*{Comprobaci\'on de dise\~no}
+En este tipo de problemas, la supocisi\'on m\'as importante es que $h_f = H$, es decir que la energ\'ia disponible en el sistema se pierde debido a la fricci\'on.
+% DF 1 from Salda 
+\begin{figure}[h]
+\centering
+\input{dflow1.tex}
+\caption{Diagrama de flujo para comprobaci\'on de dise\~no (adaptado de \cite{saldarriaga})}
+\label{dflow1}
+\end{figure}
+
+En la figura~\ref{dflow1} $E$ representa un error que debe ser determinado por el modelador (e.g. 1x10$^{-5}$). Este procedimiento es aplicable a cualquier problema de comprobaci\'on de dise\~no para cualquier sistema de tuber\'ia simple.
+
+
+\subsubsection*{C\'alculo de la potencia requerida}
+\subsubsection*{Disen\~o de la tuber\'ia}
+ 
+%%%%%%%%
+\section{Sistemas de tuber\'ias en serie} 
+
+%%%%%%%%
+\section{Sistemas de tuber\'ias en paralelo} 
+
+%%%%%%%%
+\section{Sistemas de tuber\'ias ramificadas} 
+
+%%%%%%%%
+\section{Redes de distribuci\'on: M\'etodo de an\'alisis de Cross}
+
+%%%%%%%%
+\section{Redes de distribuci\'on: M\'etodo de an\'alisis lineal}
+
+
+
+
+% REFERENCES
+\bibliographystyle{plain} % We choose the "plain" reference style
+\bibliography{refs} % Entries are in the refs.bib file
+
+
+
+\end{document}
