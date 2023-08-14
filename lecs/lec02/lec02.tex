@@ -116,7 +116,7 @@ D, $\varepsilon$, Q (o V), $\sum K$, $\rho$, $\mu$, g, L & P (o H) \\
 %\label{hwi}
 \end{table}
  
-\item \textbf{Comprobaci\'on de dise\~no}: En este tipo de problemas se conoce el caudal o la velocidad de flujo y la potencia disponible (mec\'anica o gravitacional), algunas caracter\'isticas de la tuber\'ia como la longitud, los accesorios y sus coeficientes de p\'erdida y las propiedades del fluido como la densidad y la viscosidad din\'amica. Se desconoce el di\'ametro necesario para permitir el paso de el caudal demandado. En cuanto a la rugosidad absoluta, se debe cambiar el tipo de tuber\'ia (rugosidad absoluta) con el fin de obtener la mejor opci\'on. 
+\item \textbf{Dise\~no de la tuber\'ia}: En este tipo de problemas se conoce el caudal o la velocidad de flujo y la potencia disponible (mec\'anica o gravitacional), algunas caracter\'isticas de la tuber\'ia como la longitud, los accesorios y sus coeficientes de p\'erdida y las propiedades del fluido como la densidad y la viscosidad din\'amica. Se desconoce el di\'ametro necesario para permitir el paso de el caudal demandado. En cuanto a la rugosidad absoluta, se debe cambiar el tipo de tuber\'ia (rugosidad absoluta) con el fin de obtener la mejor opci\'on. 
 
 \begin{table}[h!]
 \centering
@@ -132,74 +132,162 @@ $\varepsilon$, Q (o V), P (o H), $\sum K$, $\rho$, $\mu$, g, L &  D \\
 \end{table}
  \end{enumerate}
 
-\subsubsection*{Ecuaciones para la soluci\'on de problemas}
-Si se tiene el sistema de la figura~\ref{comp1}, la ecuaci\'on de Bernoulli entre los puntos 1 y 2 es:
+\subsection*{Ecuaciones para la soluci\'on de problemas}
+%Si se tiene el sistema de la figura~\ref{comp1}, la ecuaci\'on de Bernoulli entre los puntos 1(entrada) y 2(salida) es:
+A continuacion se presentan las ecuaciones necesarias para resolver los tres problemas ya mencionadas. Estas ecuaciones fueron discutidas en el capitulo anterio. 
+
+Si se tiene una tuber\'ia simpre cuya entrada es en la secci\'on 1 y cuya salida es en la secci\'on, aplicando la ecuacion de Bernoulli entre 1 y 2, de manera general,  se tiene:
 
 % Fig 2.4 from Salda 
-\begin{figure}[h]
-\centering
-\includegraphics[width=8cm]{comp1.jpeg}
-\caption{Tuber\'ia simple alimentada por un tanque de nivel constante y con descarga a la atmosfera (tomado de \cite{saldarriaga}).} 
-\label{ttub}
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=8cm]{comp1.jpeg}
+%\caption{Tuber\'ia simple alimentada por un tanque de nivel constante y con descarga a la atmosfera (tomado de \cite{saldarriaga}).} 
+%\label{ttub}
+%\end{figure}
 
 \begin{equation}
-H= \frac{{V_2}^2}{2g}+ z_2 + \frac{p_2}{\gamma} + h_f + \sum h_e 
+\frac{{V_1}^2}{2g}+ z_1 + \frac{p_1}{\gamma} =  \frac{{V_2}^2}{2g}+ z_2 + \frac{p_2}{\gamma} + h_f + \sum h_e - h_b + h_t
 \label{com1}
 \end{equation}
 
-donde $H$ es la altura de la superficie de agua del tanque o la energ\'ia total en el punto 1. Teniendo en cuenta que la tuber\'ia del sistema en la figura~\ref{comp1} descarga a la atmosfera, la velocidad as\'i como la presi\'on se vuelven cero ($\frac{{V_2}^2}{2g}= 0$, $\frac{p_2}{\gamma}=0$). Note que la velocidad no necesariamente es cero cuando descarga a la atm\'osfera; se supone entonces que esta \'es cero all\'i.  Como consecuencia de esto, se asume que existen p\'erdidas menores en la salida de la tuber\'ia. La ecuaci\'on~\ref{com1} queda entonces como:
+donde $h_b$ es la cabeza de energ\'ia suministrada por la bomba y $h_t$ es la cabeza de energ\'ia sustraida por la turbina. La energia total en una seccion (e.g. 1 o 2) de flujo se puede expresar como $E = \frac{{V}^2}{2g}+ z + \frac{p}{\gamma}$, por lo tanto la ecuaci\'on~\ref{com1} se puede expresar como:
 
 \begin{equation}
-H = z_2 + h_f + \sum h_e 
+E_1 - E_2 = h_f + h_e - h_b + h_t
+\label{com1a}
+\end{equation}
+
+en donde $h_f$ son las p\'erdidas por fricci\'on   estimadas con la ecuaci\'on de Darcy-Weisbach como:
+
+\begin{equation}
+\color{red}\boxed{\color{black} h_f = f \frac{L}{D}\frac{V^2}{2g} }
 \label{com2}
 \end{equation}
 
-Despejando de la ecuaci\'on~\ref{com2}, las p\'erdidas por fricci\'on se pueden calcular como: 
+y $h_e$ son las perdidas por accesorios, las cuales se pueden calcular como:
 
 \begin{equation}
-\color{red}\boxed{\color{black} h_f = H - z_2 - \sum K \frac{{V_2}^2}{2g} }
+\color{red}\boxed{\color{black} h_e = \sum K \frac{V^2}{2g} }
 \label{com3}
 \end{equation}
 
-Mediante la ecuaci\'on de Darcy-Weisbach, despejando el factor de fricci\'on se tiene que:
-
+El factor de fricci\'on $f$ en la ecuacio\'on~\ref{com2}, se calcula usando el diagrama de Moody o numericamente usando la ecuaci\'on Colebrook-White como:
+ 
 \begin{equation}
-f = \frac{h_f D 2g}{L V^2}
+\color{red}\boxed{\color{black}  \frac{1}{\sqrt{f}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) }
 \label{com4}
 \end{equation}
 
-Sacando ra\'iz cuadrada e invirtiendo los t\'erminos a ambos lados se tiene:
+donde el n\'umero de Reynolds ($Re$) se calcula como
 
 \begin{equation}
-\frac{1}{\sqrt{f}} = \frac{V\sqrt{L}}{\sqrt{h_f D 2g}}
+\color{red}\boxed{\color{black} Re = \frac{VD}{\nu} } 
 \label{com5}
 \end{equation}
 
-Igualando a la ecuaci\'on de Colebrook y  White:
+Si se reemplaza las ecuaciones~\ref{com2} y ~\ref{com3} en la ecuaci\'on~\ref{com1a}, se tiene:
 
 \begin{equation}
- \frac{1}{\sqrt{f}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) 
-\label{comp6}
+E_1 - E_2 =  f \frac{L}{D}\frac{V^2}{2g} + \sum K \frac{V^2}{2g} - h_b + h_t
+\label{com6}
 \end{equation}
 
-se tiene:
+despejando $V$ en la ecuaci\'on~\ref{com6}, se tiene:
+ 
+\begin{equation}
+\color{red}\boxed{\color{black} V = \sqrt{2g\frac{E_1 - E_2 + h_b - h_t}{f\frac{L}{D} + \sum K } } }
+\label{com7}
+\end{equation}
+
+En los tres tipos de problemas, el objetivo es usar las ecuaciones~\ref{com2}, ~\ref{com3}, ~\ref{com4}, ~\ref{com5} y ~\ref{com7} para su soluci\'on. Note que la ecuaci\'on~\ref{com4} es una ecuaci\'on implicita que requiere del uso de algun m\'etodo iterativo o numerico para su soluci\'on. Note que la ecuaci\'on~\ref{com7} se usa en particular para la soluci\'on de problemas de \emph{comprobaci\'on de dise\~no} y de \emph{dise\~no de tuber\'ias}.
+
+
+
+
+
+
+
+%donde $H$ es la altura de la superficie de agua del tanque o la energ\'ia total en el punto 1. Teniendo en cuenta que la tuber\'ia del sistema en la figura~\ref{comp1} descarga a la atmosfera, la velocidad as\'i como la presi\'on se vuelven cero ($\frac{{V_2}^2}{2g}= 0$, $\frac{p_2}{\gamma}=0$). Note que la velocidad no necesariamente es cero cuando descarga a la atm\'osfera; se supone entonces que esta \'es cero all\'i.  Como consecuencia de esto, se asume que existen p\'erdidas menores en la salida de la tuber\'ia. La ecuaci\'on~\ref{com1} queda entonces como:
+%
+%\begin{equation}
+%H = z_2 + h_f + \sum h_e 
+%\label{com2}
+%\end{equation}
+%
+%Despejando de la ecuaci\'on~\ref{com2}, las p\'erdidas por fricci\'on se pueden calcular como: 
+%
+%\begin{equation}
+%\color{red}\boxed{\color{black} h_f = H - z_2 - \sum K \frac{{V_2}^2}{2g} }
+%\label{com3}
+%\end{equation}
+%
+%Mediante la ecuaci\'on de Darcy-Weisbach, despejando el factor de fricci\'on se tiene que:
+%
+%\begin{equation}
+%f = \frac{h_f D 2g}{L V^2}
+%\label{com4}
+%\end{equation}
+%
+%Sacando ra\'iz cuadrada e invirtiendo los t\'erminos a ambos lados se tiene:
+%
+%\begin{equation}
+%\frac{1}{\sqrt{f}} = \frac{V\sqrt{L}}{\sqrt{h_f D 2g}}
+%\label{com5}
+%\end{equation}
+%
+%Igualando a la ecuaci\'on de Colebrook y  White:
+%
+%\begin{equation}
+% \frac{1}{\sqrt{f}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) 
+%\label{comp6}
+%\end{equation}
+%
+%se tiene:
+%
+%\begin{equation}
+%\frac{V\sqrt{L}}{\sqrt{h_f D 2g}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) 
+%\label{comp7}
+%\end{equation}
+%
+%Reemplazando $Re = \frac{VD}{\nu}$ en la ecuaci\'on~\ref{comp7} y despejando la velocidad, se tiene:
+%
+%\begin{equation}
+%\color{red}\boxed{\color{black} V= \frac{-2\sqrt{2gD h_f}}{\sqrt{L}} \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52 \nu \sqrt{L}}{D \sqrt{2gD h_f}} \right) }
+%\label{comp8}
+%\end{equation}
+%
+%La ecuaci\'on~\ref{comp8} es explicita para la velocidad y es utilizado para la soluci\'on de los tres tipos de problemas mencionados hasta el momento. 
+
+\subsection{Solucio\'on de la ecuaci\'on de Colebrook-White}
+\subsubsection*{Metodo de punto fijo}
+Consiste en el siguiente procedimiento:
+\begin{enumerate} 
+\item Leer la informacion de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $V$, $D$ 
+\item Asumir un valor inicial de $f_i$ (e.g. $f=0.01$).
+\item Usando la siguiente forma de la ecuaci\'on~\ref{com4}, calcular otro valor $f_{i+1}$:
 
 \begin{equation}
-\frac{V\sqrt{L}}{\sqrt{h_f D 2g}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) 
-\label{comp7}
+\color{red}\boxed{\color{black}  f_{i+1} = \left[-2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f_i}} \right) \right]^{-2}}
+\label{com8}
 \end{equation}
 
-Reemplazando $Re = \frac{VD}{\nu}$ en la ecuaci\'on~\ref{comp7} y despejando la velocidad, se tiene:
+\item Si $f_{i}- f_{i+1} \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), la iteraci\'on para y va a 6..Si $f_{i}- f_{i+1} \gt \eta$ se calcula un nuevo valor $f_{i+1}$.
+\item Imprimir $f$
 
-\begin{equation}
-\color{red}\boxed{\color{black} V= \frac{-2\sqrt{2gD h_f}}{\sqrt{L}} \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52 \nu \sqrt{L}}{D \sqrt{2gD h_f}} \right) }
-\label{comp8}
-\end{equation}
+\end{enumerate} 
 
-La ecuaci\'on~\ref{comp8} es explicita para la velocidad y es utilizado para la soluci\'on de los tres tipos de problemas mencionados hasta el momento. 
 
-\subsubsection*{Comprobaci\'on de dise\~no}
+\subsection{Comprobaci\'on de dise\~no}
+Teniendo en cuenta las ecuaciones de la secci\'on anterion, el procedimiento para determinar el valor de $V$ o $Q$ es:
+\begin{enumerate} 
+\item Leer la informacion de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $E1$, $E2$, $h_b$ y $h_t$.
+\item Asumir un valor inicial de $f$ (e.g. $f=0.01$).
+\item Calcular $V$ usando la ecuaci\'on~\ref{com7}.
+\item Calcular $Re$ usando la ecuacion~\ref{com5}.
+\item 
+\end{enumerate} 
+
 En este tipo de problemas, la supocisi\'on m\'as importante es que $h_f = H$, es decir que la energ\'ia disponible en el sistema se pierde debido a la fricci\'on.
 % DF 1 from Salda 
 \begin{figure}[h]
