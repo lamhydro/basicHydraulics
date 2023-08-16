@@ -263,29 +263,63 @@ En los tres tipos de problemas, el objetivo es usar las ecuaciones~\ref{com2}, ~
 \subsubsection*{Metodo de punto fijo}
 Consiste en el siguiente procedimiento:
 \begin{enumerate} 
-\item Leer la informacion de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $V$, $D$ 
+\item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $V$ o $Q$, $D$ 
+\item Calcular el $Re$ usando la ecuaci\'on~\ref{com5}
+\item Si $Re<2000$ (Flujo laminar), calcular $f$ como:
+
+\begin{equation}
+\color{red}\boxed{\color{black} f=Re/64 } 
+\label{com8}
+\end{equation}
+y luego ir a ~\ref{prf}. Si $Re > 2000$ continuar.
+
 \item Asumir un valor inicial de $f_i$ (e.g. $f=0.01$).
-\item Usando la siguiente forma de la ecuaci\'on~\ref{com4}, calcular otro valor $f_{i+1}$:
+\item \label{fi1} Usando la siguiente forma de la ecuaci\'on~\ref{com4}, calcular un valor $f_{i+1}$:
 
 \begin{equation}
 \color{red}\boxed{\color{black}  f_{i+1} = \left[-2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f_i}} \right) \right]^{-2}}
 \label{com8}
 \end{equation}
 
-\item Si $f_{i}- f_{i+1} \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), la iteraci\'on para y va a 6..Si $f_{i}- f_{i+1} \gt \eta$ se calcula un nuevo valor $f_{i+1}$.
-\item Imprimir $f$
+\item Si $f_{i}- f_{i+1} \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir a ~\ref{prf}. Si $f_{i}- f_{i+1} > \eta$, hacer $f_i = f_{i+1}$ e ir a ~\ref{fi1},  para  calcular un nuevo valor $f_{i+1}$.
+\item \label{prf} Imprimir $f$
+\end{enumerate} 
 
+\subsubsection*{Metodo de Newton-Raphson}
+Consiste en el siguiente procedimiento:
+\begin{enumerate} 
+\item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $V$ o $Q$, $D$ 
+\item Calcular el $Re$ usando la ecuaci\'on~\ref{com5}
+\item Si $Re<2000$ (Flujo laminar), calcular $f$ como:
+
+\begin{equation}
+\color{red}\boxed{\color{black} f=Re/64 } 
+\label{com7a}
+\end{equation}
+y luego ir a ~\ref{prf}. Si $Re > 2000$ continuar.
+
+\item Asumir un valor inicial de $f_i$ (e.g. $f=0.01$).
+\item Calcular $x = \frac{1}{\sqrt{f}}$.
+\item ........
+\item .......
+
+\item Si $f_{i}- f_{i+1} \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir a ~\ref{prf}. Si $f_{i}- f_{i+1} > \eta$, hacer $f_i = f_{i+1}$ e ir a ~\ref{fi1},  para  calcular un nuevo valor $f_{i+1}$.
+\item \label{prf} Imprimir $f$
 \end{enumerate} 
 
 
+
 \subsection{Comprobaci\'on de dise\~no}
-Teniendo en cuenta las ecuaciones de la secci\'on anterion, el procedimiento para determinar el valor de $V$ o $Q$ es:
+Para la soluci\'on de este tipo de problema, el cual consiste en determinar el valor de $V$ o $Q$, existen dos m\'etodos: el m\'etodo de punto fijo y el m\'etodo de Newton-Raphson. Estos dos m\'etodos se describen a continuaci\'on.
+\subsubsection*{M\'etodo de punto fijo}
 \begin{enumerate} 
-\item Leer la informacion de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $E1$, $E2$, $h_b$ y $h_t$.
-\item Asumir un valor inicial de $f$ (e.g. $f=0.01$).
-\item Calcular $V$ usando la ecuaci\'on~\ref{com7}.
+\item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $E1$, $E2$, $h_b$ y $h_t$.
+\item Asumir un valor inicial de $f_i$ (e.g. $f=0.01$).
+\item \label{vel} Calcular $V$ usando la ecuaci\'on~\ref{com7}.
 \item Calcular $Re$ usando la ecuacion~\ref{com5}.
-\item 
+\item Si $Re<2000$ (Flujo laminar), calcular un nuevo valor de $f$ con la ecuaci\'on~\ref{com7a}. Si $f_{i}- f_{i+1} \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir ~\ref{res}. Si $f_{i}- f_{i+1} > \eta$, hacer $f_i = f_{i+1}$ e ir a ~\ref{vel},  para  calcular un nuevo valor de $V$.
+\item Si $Re>2000$, calcular un nuevo valor de $f$ usando la ecuaci\'on~\ref{com8}. Si $f_{i}- f_{i+1} \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir ~\ref{res}. Si $f_{i}- f_{i+1} > \eta$, hacer $f_i = f_{i+1}$ e ir a ~\ref{vel},  para  calcular un nuevo valor de $V$.
+\item \label{res} Imprimir: $V$ y $f$.
 \end{enumerate} 
 
 En este tipo de problemas, la supocisi\'on m\'as importante es que $h_f = H$, es decir que la energ\'ia disponible en el sistema se pierde debido a la fricci\'on.
@@ -299,9 +333,10 @@ En este tipo de problemas, la supocisi\'on m\'as importante es que $h_f = H$, es
 
 En la figura~\ref{dflow1} $E$ representa un error que debe ser determinado por el modelador (e.g. 1x10$^{-5}$). Este procedimiento es aplicable a cualquier problema de comprobaci\'on de dise\~no para cualquier sistema de tuber\'ia simple.
 
+\subsubsection*{M\'etodo de Newton-Raphson}
 
-\subsubsection*{C\'alculo de la potencia requerida}
-\subsubsection*{Disen\~o de la tuber\'ia}
+\subsection{C\'alculo de la potencia requerida}
+\subsection{Disen\~o de la  tuber\'ia}
  
 %%%%%%%%
 \section{Sistemas de tuber\'ias en serie} 
