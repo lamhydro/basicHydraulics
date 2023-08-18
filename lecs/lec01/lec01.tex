@@ -287,7 +287,7 @@ donde $h$ es una distancia vertical positiva. Teniendo en cuenta que $u$ y por l
 \label{lam3}
 \end{equation}
 
-De la \emph{ley de viscosidad de Newton}, derivando $\tau$ con respecto a $y$, tenemos $\frac{d \tau}{dy} = \mu \frac{d^2 u}{dy^2}$, e igulando con la ecuacion~\ref{lam3}, se tiene:
+De la \emph{ley de viscosidad de Newton}, derivando $\tau$ con respecto a $y$, tenemos $\frac{d \tau}{dy} = \mu \frac{d^2 u}{dy^2}$, e igualando con la ecuacion~\ref{lam3}, se tiene:
 
 \begin{equation}
 \frac{d \tau}{dy} = \mu \frac{d^2 u}{dy^2} = \frac{d}{dl} (p + \gamma h)
@@ -324,11 +324,11 @@ Reemplazando las constantes en la ecuaci\'on~\ref{lam6}:
 
 Para el caso de placas horizontales, el gradiente debido a la presi\'on o altura es constante $p+ \gamma h = C$, por lo que, de la ecuaci\'on~\ref{lam8}, la distribucion de velocidades es $u = \frac{Uy}{a}$ (lineal). Para el caso en el que la placa superior es fija ($U=0$), $u = -\frac{1}{2\mu}\frac{d}{dl}(p + \gamma h)( ay - y^2 )$. Notese que la velocidad maxima es cuando $y = \frac{a}{2} - \frac{\mu U}{a \frac{d}{dl}(p + \gamma h)}$. 
 
-El caudal ($Q$) que pasa a trav\'es de una secci\'on transversal, se obtiene como:
+El caudal ($Q$) que pasa a trav\'es de una secci\'on transversal (por unidad de ancho), se obtiene como:
 
 \begin{equation}
 Q = \int_0^a u dy = \left( U\frac{y^2}{2a} - \frac{1}{4\mu}\frac{d}{dl}(p+ \gamma h) y^2 a + \frac{1}{6\mu}\frac{d}{dl}(p+ \gamma h) y^3 \right) \bigg|_0^a = \frac{Ua}{2} - \frac{1}{12\mu}\frac{d}{dl}(p + \gamma h)a^3
-\label{lam8}
+\label{lam9}
 \end{equation}
 
 %\subsection{Perdidas en flujo laminar}
@@ -376,7 +376,7 @@ Integrando la ecuaci\'on~\ref{lam12}, tenemos:
 \label{lam13}
 \end{equation}
 
-donde $A$ es una constante de integraci\'on. De la ley de viscosidad de Newton, $\tau = - \mu \frac{du}{dr}$, reemplazando en la ecuaci\'on~\ref{lam13} tenemos:
+donde $A$ es una constante de integraci\'on. Reemplazando por $\tau = - \mu \frac{du}{dr}$ (note que el signo menos indica que $du/dy$ es negativo ya que la velocidad decrece cuando $r$ aumenta), reemplazando en la ecuaci\'on~\ref{lam13} tenemos:
 
 \begin{equation}
 \frac{r^2}{2}\frac{d}{dl}(p + \gamma h) -\mu \frac{du}{dr} r = A
@@ -430,12 +430,12 @@ El caudal $Q$ se calcula como:
 \begin{split}
 Q & = \int_b^a 2\pi r u dr = \int_b^a -\frac{\pi r}{2\mu}\frac{d}{dl}(p + \gamma h) \left[  a^2 - r^2 + \frac{a^2 - b^2}{\ln(b/a)} \ln \frac{a}{r} \right ] dr \\
 & = -\frac{\pi}{2\mu}\frac{d}{dl}(p + \gamma h)\int_b^a \left[ r a^2 - r^3 + \frac{(a^2 - b^2 )r}{\ln(b/a)}\ln \frac{a}{r} \right]dr \\
-& = -\frac{\pi}{2\mu}\frac{d}{dl}(p + \gamma h)\int_b^a \left[ r a^2 - r^3 + \frac{(a^2 - b^2 )}{\ln(b/a)}(r\ln a - r ln r) \right]dr 
+& = -\frac{\pi}{2\mu}\frac{d}{dl}(p + \gamma h)\int_b^a \left[ r a^2 - r^3 + \frac{(a^2 - b^2 )}{\ln(b/a)}(r\ln a - r \ln r) \right]dr 
 \end{split}
 \label{lam20}
 \end{equation}
 
-Integrando la ecuaci\'on~\ref{lam20} y simplificando, se tiene:
+Note que el termino $r \ln r$ en la integral de la ecuaci\'on~\ref{lam20} se debe integrar por partes como $uv - \int vdu$ ($u=\ln r$ y $dv=r$). Integrando la ecuaci\'on~\ref{lam20} y simplificando, se tiene:
 
 \begin{equation}
 \color{red}\boxed{\color{black} Q = -\frac{\pi}{8\mu}\frac{d}{dl}(p + \gamma h) \left[ a^4 - b^4 - \frac{(a^2 - b^2)^2 }{\ln (a/b)} \right]  }
@@ -443,7 +443,7 @@ Integrando la ecuaci\'on~\ref{lam20} y simplificando, se tiene:
 \end{equation}
 
 \subsection{Flujo laminar en tuber\'ias circulares: ecuaci\'on de Hagen-Poiseuille} % From Streeter
-En un tubo circular, en la ecuacion\'on~\ref{lam14},  $A=0$ cuando $r=0$. Por lo tanto, la ecuaci\'on~\ref{lam16} queda:
+En un tubo circular, en la ecuaci\'on~\ref{lam16},  $A=0$ cuando $r=0$. Por lo tanto, la ecuaci\'on~\ref{lam16} queda:
 
 \begin{equation}
 u = \frac{r^2}{4\mu}\frac{d}{dl}(p + \gamma h) + B 
@@ -488,7 +488,7 @@ Integrando la ecuaci\'on~\ref{lam25}
 \label{lam26}
 \end{equation}
 
-La \emph{velocidad media} se define como $V = \frac{Q}{V} = \frac{Q}{\pi a^2}$, que ademas es la mitad del paraboloide de revoluci\'on de velocidades (mitad de la velocidad m\'axima), de acuerdo con esto:
+La \emph{velocidad media} se define como $V = \frac{Q}{A} = \frac{Q}{\pi a^2}$, que ademas es la mitad del paraboloide de revoluci\'on de velocidades (mitad de la velocidad m\'axima), de acuerdo con esto:
  
 \begin{equation}
 \color{red}\boxed{\color{black} V = -\frac{a^2}{8\mu}\frac{d}{dl}(p + \gamma h) }
@@ -519,7 +519,7 @@ La ecuaci\'on anterior es conocida como la \emph{ecuaci\'on de Hagen-Poiseuille}
 % Ej 5.3 Streeter 
 \begin{shaded}
 \begin{exa}
-Determinese la direcci\'on de flujo del tubo mostrado en la figura en donde $\gamma = 8000$ N/ m$^2$ y $\mu = 0.04$ kg/m.s. Adem\'as, encontrar el caudal en litros por segundo y el n\'umero de Froude.
+Determinese la direcci\'on de flujo del tubo mostrado en la figura en donde $\gamma = 8000$ N/ m$^3$ y $\mu = 0.04$ kg/m.s. Adem\'as, encontrar el caudal en litros por segundo y el n\'umero de Reynolds.
 \includegraphics[width=8cm]{exa1.jpeg}
 \end{exa}
 \end{shaded}
@@ -545,7 +545,7 @@ Reemplazando las ecuaciones~\ref{lam23} y ~\ref{lam27} en la ecuaci\'on~\ref{lam
 \label{lam32}
 \end{equation}
 
-Notese que la energ\'ia cin\'etica es el doble de la energ\'ia si se considera una distribuci\'on uniforme de velocidades. El \emph{factor de correcc\'ion de la cantidad de movimiento} $\beta$, se expresa como:
+Notese que la energ\'ia cin\'etica es el doble de la energ\'ia si se considera una distribuci\'on real ($u=f(r)$) de velocidades. El \emph{factor de correcc\'ion de la cantidad de movimiento} $\beta$, se expresa como:
 
 \begin{equation}
 \beta = \frac{1}{A} \int \left ( \frac{u}{V} \right )^2 dA
@@ -617,7 +617,7 @@ Para flujo en la direcci\'on $x$, el esfuerzo turbulento mas importante es $-\rh
 \label{tur6}
 \end{equation}
 
-donde $\tau = \tau_l + \tau_t = \mu \frac{\partial \overline{u}}{\partial y} - \rho \overline{u' v'}$ es el esfuerzo de corte total, $\tau_l$ es el eufuerzo laminar y $\tau_t$ es el esfuerzo turbulento. 
+donde $\tau = \tau_l + \tau_t = \mu \frac{\partial \overline{u}}{\partial y} - \rho \overline{u' v'}$ es el esfuerzo de corte total, $\tau_l$ es el eufuerzo laminar y $\tau_t$ es el esfuerzo cortante turbulento. 
 
 \subsection{Longitud de mezcla de Prandtl} % From Streeter
 El esfuerzo cortante aparente para flujo turbulento, incluyendo los efectos viscosos, se expresa como:
@@ -645,14 +645,14 @@ u' \sim l \frac{du}{dy}
 \label{tur8}
 \end{equation}
 
-Esto significa que los cambios de la magnitud de la velocidad dependen de los cambios en la velocidad media temporal en dos punto separados por $l$, donde $l$  es el taman\~no promedio de los remolinos responsables de la mezcla. Teniendo en cuenta que $u'$ y $v'$ est\'an correlacionados:
+Esto significa que los cambios de la velocidad dependen de los cambios en la velocidad media temporal en dos punto separados por $l$, donde $l$  es el tama\~no promedio de los remolinos responsables de la mezcla. $l$ es tambien la distancia recorrida por una part\'icula antes de que su cantidad de movimiento sea modificada. Teniendo en cuenta que $u'$ y $v'$ est\'an correlacionados:
 
 \begin{equation}
 v' \sim u' \sim l \frac{du}{dy}
 \label{tur9}
 \end{equation}
 
-Reemplazando las expresiones de la ecuaci\'on~ref{tur9} en $\tau_t = -\rho \overline{u' v'}$ (esfuerzo turbulento), se obtiene una ecuaci\'on que define la longitud de mezcla $l$:
+Reemplazando las expresiones de la ecuaci\'on~\ref{tur9} en $\tau_t = -\rho \overline{u' v'}$ (esfuerzo turbulento), se obtiene una ecuaci\'on que define la longitud de mezcla $l$:
 
 \begin{equation}
 \tau_t = \rho l^2 \left( \frac{du}{dl} \right)^2
@@ -713,7 +713,7 @@ Definiendo la \emph{velocidad de esfuerzo de corte} ($u^*$) como $u^*=\sqrt{\tau
 \label{dist2}
 \end{equation}
 
-multiplicando por $u$ e invirtiendo los t\'erminos en la ecuaci\'on~\ref{dist2}, se tiene
+dividiento por $u$ e invirtiendo los t\'erminos en la ecuaci\'on~\ref{dist2}, se tiene
 
 \begin{equation}
 \color{red}\boxed{\color{black} \frac{u}{u^*} = \frac{u^* y}{\nu} } \hspace{2cm} \color{black} y \leq \delta' 
@@ -737,7 +737,7 @@ En la capa de traslape (ver figura~\ref{distr}),  los esfuerzos turbulentos son 
 \label{dist5}
 \end{equation}
 
-Von Karman encontr\'o que la longitud de mezcla $l$ en cercan\'ia a la pared es proporcional a la distancia desde la pared $y$ e igual $l \approx \kappa y$. Reemplazando $l$  y $u^*$ en la ecuaci\'on~\ref{dist4}, se tiene que:
+Von Karman encontr\'o que la longitud de mezcla $l$ en cercan\'ia a la pared es proporcional a la distancia desde la pared $y$ e igual $l \approx \kappa y$. Reemplazando $l$  y $u^* = \sqrt{\tau_0 / \rho}$ en la ecuaci\'on~\ref{dist5}, se tiene que:
 
 \begin{equation}
 \frac{du}{u^*} = \frac{1}{\kappa} \frac{dy}{y}
@@ -767,7 +767,7 @@ A = \frac{u_w }{u^* } - \frac{1}{\kappa} \ln \delta ' = N - \frac{1}{\kappa} \ln
 \label{dist9}
 \end{equation}
 
-Reemplazando la ecuaci\'on~\ref{dist9} en la ecuaci\'on~\ref{dist8}, se tiene:
+Reemplazando la ecuaci\'on~\ref{dist9} en la ecuaci\'on~\ref{dist7}, se tiene:
 
 \begin{equation}
 \color{red}\boxed{\color{black} \frac{u}{u^*} = \frac{1}{\kappa} \ln \left(\frac{y u^*}{\nu}\right) + N - \frac{1}{\kappa} \ln N }
@@ -793,10 +793,10 @@ Reemplazando en la ecuaci\'on~\ref{dist7}:
 
 La ecuaci\'on~\ref{dist12} es conocida como la \emph{ley del deficit de velocidad} y se aplica a conductos lisos y rugosos.
 
-Para tubos rugosos, $y_w = m \epsilon '$, donde $\epsilon '$ es una altura t\'ipica de la rugosidad y $m$ es un coeficiente de forma que depende de la naturaleza de la rugosidad, y la velocidad es $u_w$, determinando el valor de la constante en la ecuaci\'on~\ref{dist7}, se tiene:
+Para tubos rugosos, $y_w = m \epsilon '$, donde $\epsilon '$ es una altura t\'ipica de la rugosidad y $m$ es un coeficiente de forma que depende de la naturaleza de la rugosidad, y la velocidad es $u_w$ (velocidad donde el flujo cambia de laminar a turbulento), determinando el valor de la constante en la ecuaci\'on~\ref{dist7}, se tiene:
  
 \begin{equation}
-A = \frac{u_m}{u^*} - \frac{1}{\kappa} (\ln m - \ln \epsilon ')
+A = \frac{u_w}{u^*} - \frac{1}{\kappa} (\ln m + \ln \epsilon ')
 \label{dist13}
 \end{equation}
 
@@ -827,7 +827,7 @@ Encuentrese una expresi\'on  aproximada para la distribuci\'on de longitud de me
 \end{exa}
 \end{shaded}
 
-% Ej 5.5 Streeter
+% Ej 6.5 White
 \begin{shaded}
 \begin{exa}
 En un tubo circular de 14 $cm$ di\'ametro fluye aire a una temperatura de $T = 20$ $^o$C. Si el flujo esta completamente desarrollado, y la velocidad en el centro de la tuber\'ia es 5 $m/s$, determinar a) la velocidad de fricci\'on $u^*$ y b) el esfuerzo de corte en la pared. Asumir flujo turbulento y la ocurrencia de la ley logar\'itmica.
