@@ -14,5 +14,5 @@
 \contentsline {subsection}{\numberline {6.4}P\'erdidas de energ\'ia}{18}{}%
 \contentsline {subsection}{\numberline {6.5}C\'alculo del factor de fricci\'on}{19}{}%
 \contentsline {subsection}{\numberline {6.6}Otras ecuaciones para calcular las p\'erdidas de energ\'ia}{23}{}%
-\contentsline {section}{\numberline {7}P\'erdidas menores}{24}{}%
-\contentsline {subsection}{\numberline {7.1}Longitud equivalente}{27}{}%
+\contentsline {section}{\numberline {7}P\'erdidas menores}{25}{}%
+\contentsline {subsection}{\numberline {7.1}Longitud equivalente}{29}{}%

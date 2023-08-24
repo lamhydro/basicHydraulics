@@ -554,11 +554,41 @@ Luego ir a ~\ref{fff}.
 
 \end{enumerate}
 
-Es importante revisar que $h_{m_v}$ sea positivo, de lo contrario esto supondr\'ia presiones negativas que podrian generar cavitaci\'on en el sistema. El procedimiento anterior puede ser repetido para diferentes materiales de tuber\'ia (diferentes valores de $\varepsilon$) con el fin de escoger el dise\~no m\'as econ\'omico.
+Es importante revisar que $h_{m_v}$ sea positivo, de lo contrario esto supondr\'ia presiones negativas que podr\'ian generar cavitaci\'on en el sistema. El procedimiento anterior puede ser repetido para diferentes materiales de tuber\'ia (diferentes valores de $\varepsilon$) con el fin de escoger el dise\~no m\'as econ\'omico.
 
 
 %%%%%%%
 \section{Sistemas de tuber\'ias en paralelo} 
+Las tuber\'ias en paralelo son un conjunto de dos tuber\'ias o mas las cuales se derivan de un nodo com\'un (nodo de entrada) y convergen hacia otro nodo (nodo de salida). Esto implica que, de acuerdo a la \emph{ley de conservaci\'on de la masa}, la suma de los caudales que viajan por cada una de las tuber\'ias debe ser igual aguas arriba del nodo de entrada y aguas abajo del nodo de salida; esto implica que el caudal de entrada y de salida de las tuber\'ias es le mismo. En casos pr\'acticos y cotidianos, los sistemas de tuber\'ias en paralelo est\'an limitados a m\'aximo 3 o 4 tuber\'ias, y son mas comunes los sistemas de dos tuber\'ias. En estos sistemas, cada tuberia puede tener longitudes, di\'ametros, accesorios y materiales diferentes.  
+
+\subsection{Ecuaciones para la soluci\'on de problemas}
+Teniendo en cuenta las tuberias en serie de la figura~\ref{comp3}, se plantean las siguientes ecuaciones:
+% Fig 5.6 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{comp3.jpeg}
+\caption{Esquema tridimensional de dos tuber\'ias en paralelo y sus lineas de energ\'ia, con un nodo de entrada 1 y un nodo de salida 2. (tomado de \cite{saldarriaga}).} 
+\label{comp3}
+\end{figure}
+
+\begin{itemize}
+\item Conservaci\'on de la energ\'ia
+
+\begin{equation}
+\Delta E = E1-E2 = H_T = h_{f_1}^1 + h_{m_1}^1 + h_{f_2}^1 + h_{m_2}^1 + h_{f_3}^1 + h_{m_3}^1 + h_{f_4}^1 + h_{m_4}^1 + h_{f_5}^1
+\label{para1}
+\end{equation}
+donde $H_T$ es la diferencia de energ\'ia entre el node de entrada (E1) y el nodo de salida (E2); la energ\'ia total disponible en el sistema, $h_{f_i}i^j$ son las p\'erdidas por fricci\'on en el tramo $i=1...5$ de la tuber\'ia $j=1$ y $h_{m_i}^j$ son las p\'erdidas menores (por v\'alvulas, uniones, etc) en el tramo $i=1...4$ de la tuber\'ia $j=1$.
+
+La ecuaci\'on~\ref{para1} puede expresarse de forma m\'as compacta como:
+\begin{equation}
+H_T = \sum_{i=1}^{n_j} h_{f_i}^j + \sum_{i=1}^{m_j} h_{m_i}^j
+\label{para2}
+\end{equation}
+donde $n_j$ es el n\'umero de tramos de la tuber\'ia $j=1$ y $m_j$ es el n\'umero de accesorios en la tuber\'ia $j=1$. Note que la ecuaci\'on~\ref{para2} aplica tambi\'en para la tuber\'ia $j=2$.
+
+\end{itemize}
+
 
 %%%%%%%%
 \section{Sistemas de tuber\'ias ramificadas} 

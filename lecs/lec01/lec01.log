@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  18 AUG 2023 09:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  24 AUG 2023 10:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -633,6 +633,9 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 
 LaTeX Warning: Label `lam9' multiply defined.
 
+
+LaTeX Warning: Label `mood' multiply defined.
+
 )
 \openout1 = `lec01.aux'.
 
@@ -857,7 +860,11 @@ Package pdftex.def Info: ./figs/perd.jpeg  used on input line 852.
 File: ./figs/nikur.jpeg Graphic file (type jpg)
 <use ./figs/nikur.jpeg>
 Package pdftex.def Info: ./figs/nikur.jpeg  used on input line 967.
-(pdftex.def)             Requested size: 227.62204pt x 164.48772pt.
+(pdftex.def)             Requested size: 505.89pt x 365.58366pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 Overfull \hbox (2.42624pt too wide) in paragraph at lines 973--974
 []\OT1/cmr/m/n/10.95 Para flujo lam-inare ($\OML/cmm/m/it/10.95 Re < \OT1/cmr/m
@@ -865,86 +872,89 @@ Overfull \hbox (2.42624pt too wide) in paragraph at lines 973--974
 -face la ecuaci^^Son 95[],
  []
 
-[20 <./figs/nikur.jpeg>] [21]
+[20] [21 <./figs/nikur.jpeg>]
 <./figs/mood.png, id=141, 677.53125pt x 488.82625pt>
 File: ./figs/mood.png Graphic file (type png)
 <use ./figs/mood.png>
 Package pdftex.def Info: ./figs/mood.png  used on input line 1026.
-(pdftex.def)             Requested size: 227.62204pt x 164.2221pt.
- [22 <./figs/mood.png>] [23]
-<./figs/acce.jpeg, id=150, 1027.84pt x 621.32124pt>
+(pdftex.def)             Requested size: 505.89pt x 365.0002pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./figs/rugo.jpeg, id=143, 1027.84pt x 677.53125pt>
+File: ./figs/rugo.jpeg Graphic file (type jpg)
+<use ./figs/rugo.jpeg>
+Package pdftex.def Info: ./figs/rugo.jpeg  used on input line 1034.
+(pdftex.def)             Requested size: 505.89pt x 333.47159pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[22]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[23 <./figs/mood.png>] [24 <./figs/rugo.jpeg>]
+<./figs/acce.jpeg, id=154, 1027.84pt x 621.32124pt>
 File: ./figs/acce.jpeg Graphic file (type jpg)
 <use ./figs/acce.jpeg>
-Package pdftex.def Info: ./figs/acce.jpeg  used on input line 1158.
+Package pdftex.def Info: ./figs/acce.jpeg  used on input line 1168.
 (pdftex.def)             Requested size: 227.62204pt x 137.59175pt.
-<./figs/acce1.jpeg, id=151, 1027.84pt x 536.0025pt>
+ [25 <./figs/acce.jpeg>]
+<./figs/acce1.jpeg, id=159, 1027.84pt x 536.0025pt>
 File: ./figs/acce1.jpeg Graphic file (type jpg)
 <use ./figs/acce1.jpeg>
-Package pdftex.def Info: ./figs/acce1.jpeg  used on input line 1177.
+Package pdftex.def Info: ./figs/acce1.jpeg  used on input line 1187.
 (pdftex.def)             Requested size: 227.62204pt x 118.69789pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[24 <./figs/acce.jpeg>]
-<./figs/acce2.jpeg, id=155, 1027.84pt x 360.34625pt>
+ [26 <./figs/acce1.jpeg>]
+<./figs/acce2.jpeg, id=163, 1027.84pt x 360.34625pt>
 File: ./figs/acce2.jpeg Graphic file (type jpg)
 <use ./figs/acce2.jpeg>
-Package pdftex.def Info: ./figs/acce2.jpeg  used on input line 1209.
+Package pdftex.def Info: ./figs/acce2.jpeg  used on input line 1219.
 (pdftex.def)             Requested size: 227.62204pt x 79.79877pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[25 <./figs/acce1.jpeg>]
-<./figs/contr.jpeg, id=160, 1007.765pt x 706.64pt>
+<./figs/contr.jpeg, id=164, 1007.765pt x 706.64pt>
 File: ./figs/contr.jpeg Graphic file (type jpg)
 <use ./figs/contr.jpeg>
-Package pdftex.def Info: ./figs/contr.jpeg  used on input line 1265.
+Package pdftex.def Info: ./figs/contr.jpeg  used on input line 1275.
 (pdftex.def)             Requested size: 227.62204pt x 159.60173pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./figs/acce3.png, id=161, 459.7175pt x 583.17876pt>
+[27 <./figs/acce2.jpeg>]
+<./figs/acce3.png, id=168, 459.7175pt x 583.17876pt>
 File: ./figs/acce3.png Graphic file (type png)
 <use ./figs/acce3.png>
-Package pdftex.def Info: ./figs/acce3.png  used on input line 1287.
+Package pdftex.def Info: ./figs/acce3.png  used on input line 1297.
 (pdftex.def)             Requested size: 227.62204pt x 288.75891pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<./figs/acce4.png, id=162, 459.7175pt x 305.14pt>
+<./figs/acce4.png, id=169, 459.7175pt x 305.14pt>
 File: ./figs/acce4.png Graphic file (type png)
 <use ./figs/acce4.png>
-Package pdftex.def Info: ./figs/acce4.png  used on input line 1295.
+Package pdftex.def Info: ./figs/acce4.png  used on input line 1305.
 (pdftex.def)             Requested size: 227.62204pt x 151.08899pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[26 <./figs/acce2.jpeg>]
-<./figs/exa20.jpeg, id=166, 1027.84pt x 362.35374pt>
+ [28 <./figs/contr.jpeg> <./figs/acce3.png>]
+<./figs/exa20.jpeg, id=174, 1027.84pt x 362.35374pt>
 File: ./figs/exa20.jpeg Graphic file (type jpg)
 <use ./figs/exa20.jpeg>
-Package pdftex.def Info: ./figs/exa20.jpeg  used on input line 1321.
+Package pdftex.def Info: ./figs/exa20.jpeg  used on input line 1331.
 (pdftex.def)             Requested size: 227.62204pt x 80.24333pt.
-<./figs/exa30.jpeg, id=167, 1027.84pt x 664.4825pt>
+<./figs/exa30.jpeg, id=175, 1027.84pt x 664.4825pt>
 File: ./figs/exa30.jpeg Graphic file (type jpg)
 <use ./figs/exa30.jpeg>
-Package pdftex.def Info: ./figs/exa30.jpeg  used on input line 1330.
+Package pdftex.def Info: ./figs/exa30.jpeg  used on input line 1340.
 (pdftex.def)             Requested size: 227.62204pt x 147.14981pt.
- [27 <./figs/contr.jpeg> <./figs/exa20.jpeg>]
-(./lec01.bbl [28 <./figs/acce3.png> <./figs/exa30.jpeg>]) [29 <./figs/acce4.png
->] (./lec01.aux)
+ [29 <./figs/acce4.png> <./figs/exa20.jpeg>] (./lec01.bbl) [30 <./figs/exa30.jp
+eg>]
+(./lec01.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 21429 strings out of 480247
- 454333 string characters out of 5896151
+ 21437 strings out of 480247
+ 454489 string characters out of 5896151
  753205 words of memory out of 5000000
- 38955 multiletter control sequences out of 15000+600000
+ 38962 multiletter control sequences out of 15000+600000
  479502 words of font info for 68 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  90i,17n,99p,1361b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -963,10 +973,10 @@ m/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on lec01.pdf (29 pages, 2132473 bytes).
+Output written on lec01.pdf (30 pages, 2260228 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
+ 251 PDF objects out of 1000 (max. 8388607)
+ 132 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 287 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 292 words of extra memory for PDF output out of 10000 (max. 10000000)
 
