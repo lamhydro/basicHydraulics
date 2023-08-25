@@ -1341,6 +1341,113 @@ Por un sistema de conducci\'on de un modelo de laboratorio, fluye agua con un ca
 \end{exa}
 \end{shaded}
 
+% From White Ch.10
+\section{Flujo normal a superficie libre}
+El flujo uniforme ocurre en largos y rectos canales con una pendiente y un ancho constante (ver figure~\ref{fnor}). Si consideramos una secci\'on 1 aguas arriba y otra secci\'on 2 aguas abajo en un tramo de canal, la profundidad es constante ($y_1 = y_2$) y se conoce como la \emph{rofundidad normal} ($y_1 = y_2 = y_n$). Esto implica que la velocidad $V_1 = V_2 = V_o$ es tambi\'en constante. La pendiente del canal se puede calcular como $S_o = \tan \theta$, donde $\theta$ es el angulo de inclinaci\'on del canal, considerado positivo para un flujo descendente. De acuerdo con esto, de la ecuaci\'on de Bernoulli, tenemos:
+
+% Fig 10.3 White 
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{fnor1.png}
+\caption{Tipos de flujo en un flujo a superficie libre en un canal (tomado de \cite{white}).}
+\label{fnor1}
+\end{figure}
+
+\begin{equation}
+h_f = z_1 - z_2 = S_o L
+\label{fno1}
+\end{equation}
+
+donde $L$ es la longitud entre 1 y 2. La ecuaci\'on~\ref{fno1} indica que la pendiente de la linea de energ\'ia $S_f = h_f /L$ es la misma pendiente del canal $S_o$. Esto quiere decir ademas que la perdida de energ\'ia es \'unicamente potencial. 
+
+Teniendo en cuenta que el flujo esta totalmente desarrollado, la ecuaci\'on de Darcy-Weisbach para el calculo de p\'erdidas por fricci\'on en tuber\'ias:
+
+\begin{equation}
+h_f = f \frac{L}{D}\frac{V^2}{2g}
+\label{fno2}
+\end{equation}
+
+para el caso de canales. Sin embargo, teniendo en cuenta que para tuber\'ias $R_h =D/4$, $D = 4R_h = 4A/P$, donde $R_h$ es el radio hidr\'aulico, $A$ es el area de la secci\'on transversal del canal y $P$ es el perimetro mojado del canal (ver figura~\ref{fnor2}).
+
+% Fig 10.2 White 
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{fnor2.png}
+\caption{Geometr\'ia y notaci\'on en un canal inclinado, a) vista lateral y b) secci\'on transversal (tomado de \cite{white}).}
+\label{fnor2}
+\end{figure}
+
+Combinando las ecuacione~\ref{fno1} y ~\ref{fno2}, se puede obtener una expresi\'on para la velocidad en un canal con flujo uniforme:
+
+\begin{equation}
+\color{red}\boxed{\color{black} V_o = \left( \frac{8g}{f} \right)^{1/2} R_h^{1/2} S_o^{1/2} }
+\label{fno3}
+\end{equation}
+
+De la ecuaci\'on anterior, el termino $\left( \frac{8g}{f} \right)^{1/2}$ es constante en canales y depende de la rugosidad de este y es conocido como el coeficiente ($C$) de Chezy que tiene dimensiones $L^{1/2} T^{-1}$. La ecuaci\'on~\ref{fno3} se convierte en la \emph{ecuaci\'on de Chezy}:
+
+\begin{equation}
+V_o = C R_h^{1/2} S_o^{1/2} \hspace{3cm} Q = CAR_h^{1/2} S_o^{1/2}
+\label{fno4}
+\end{equation}
+
+Diversos valore del $C$ de Chezy se han obtenido a trav\'es de la experimentacion, esto valores van desde 60 $pie^{1/2} s^{-1}$ para canales peque\~nos y rugosos hasta 160 $pie^{1/2} s^{-1}$ para canales grandes y superficie suave.
+
+De acuerdo con la ecuaci\'on~\ref{perd5}, el esfuerzo cortante de pared promedio $\tau_0$ para un canal con flujo uniforme, se expresa como:
+
+\begin{equation}
+\tau_0 = \rho g R_h S_o
+\label{fno5}
+\end{equation}
+
+La ecuaci\'on~\ref{fno3} y quizas, desde el punto de vista te\'orico, la ecuacion mas apropiada para el analisis de flujo uniforme, en donde el $f$ se estima usando la ecuaci\'on de Colebrook-White. Sin embargo Robert Manning en 1891 haciendo experimento en canales reales, encontr\'o:
+
+
+\begin{equation}
+C = \left( \frac{8g}{f} \right)^{1/2}  \approx \alpha \frac{R_h^{1/6}}{n}
+\label{fno6}
+\end{equation}
+
+donde $n$ es un par\'ametro de rugosidad y $\alpha$ es un factor de conversi\'on: para Sistema Internacional $\alpha = 1$ y para Sistema Ingles $\alpha=1.486$. Reemplazando la ecuaci\'on~\ref{fno6} en la ecuaci\'on~\ref{fno4}, se tiene la \emph{ecuaci\'on de Manning} para flujo uniforme en canales:
+
+\begin{equation}
+\color{red}\boxed{\color{black}
+\begin{split}
+& V_o = \frac{1.0}{n} R_h^{2/3} S_o^{1/2} \hspace{2cm} \text{$V_o$ en $m/s$, Sistema Internacional}\\
+& V_o = \frac{1.486}{n} R_h^{2/3} S_o^{1/2} \hspace{2cm} \text{$V_o$ en $pie/s$, Sistema Ingl\'es}
+\end{split}
+}
+\label{fno7}
+\end{equation}
+
+Valores experimentales de $n$ se encuentran en la figure~\ref{fnor3} para varias superficies de canales. $n$ puede variar desde 0.01 para canales en vidrio con superficies lisas hasta valores de $n=0.15$ para llanuras de inundaci\'on en donde existen m\'ultiples tipos de vegetaci\'on incluyendo arboles. Teniendo en cuenta que la relaci\'on entre $C$ y el $n$ en la ecuaci\'on~\ref{fno6} no es del todo exacta, se ha encontrado que $n$ cambia en funci\'on del radio hidr\'aulico; esto no solo incluye los efectos de cambios en la profundidad si no tambi\'en de cambios en la secci\'on debido a la erosi\'on y depositaci\'on de sedimentos.   
+
+% Tabla 10.1 White 
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{fnor3.png}
+\caption{Valores de $n$ de Manning para diferentes tipos de materiales en canales (tomado de \cite{white}).}
+\label{fnor3}
+\end{figure}
+
+% Ej 10.2 White 
+\begin{shaded}
+\begin{exa}
+Unos ingenieros encontraron que el canal rectangular mas eficiente, el que transporta la mayor cantidad de flujo uniforme para un area dada, es aquel que fluye con una profundidad igual a la mitad del ancho del canal. Si consideramos un canal hecho en ladrillo ($n=0.015$) sobre una pendiente $S_o = 0.006$, determine el ancho \'optimo si el canal transporta un caudal de 100 $pie^3 /s$.
+\end{exa}
+\end{shaded}
+
+
+
+
+
+
+ 
+
+
+
+
+
 % REFERENCES
 \bibliographystyle{plain} % We choose the "plain" reference style
 \bibliography{refs} % Entries are in the refs.bib file

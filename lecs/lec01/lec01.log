@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  24 AUG 2023 10:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  25 AUG 2023 10:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -744,26 +744,42 @@ File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<./figs/ttub.jpeg, id=58, 1027.84pt x 303.1325pt>
+<./figs/ttub.jpeg, id=59, 1027.84pt x 303.1325pt>
 File: ./figs/ttub.jpeg Graphic file (type jpg)
 <use ./figs/ttub.jpeg>
 Package pdftex.def Info: ./figs/ttub.jpeg  used on input line 110.
 (pdftex.def)             Requested size: 227.62204pt x 67.12877pt.
-<./figs/cali.jpeg, id=59, 1027.84pt x 277.035pt>
+
+
+LaTeX Warning: Citation `agudelo2011mecanica' on page 3 undefined on input line
+ 111.
+
+<./figs/cali.jpeg, id=60, 1027.84pt x 277.035pt>
 File: ./figs/cali.jpeg Graphic file (type jpg)
 <use ./figs/cali.jpeg>
 Package pdftex.def Info: ./figs/cali.jpeg  used on input line 119.
 (pdftex.def)             Requested size: 227.62204pt x 61.34947pt.
 
+LaTeX Warning: Citation `street471elementary' on page 3 undefined on input line
+ 120.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3 <./figs/ttub.jpeg>]
-<./figs/fifr.jpeg, id=64, 1027.84pt x 378.41376pt>
+<./figs/fifr.jpeg, id=61, 1027.84pt x 378.41376pt>
 File: ./figs/fifr.jpeg Graphic file (type jpg)
 <use ./figs/fifr.jpeg>
 Package pdftex.def Info: ./figs/fifr.jpeg  used on input line 130.
 (pdftex.def)             Requested size: 227.62204pt x 83.79982pt.
+
+LaTeX Warning: Citation `agudelo2011mecanica' on page 3 undefined on input line
+ 131.
+
+
+LaTeX Warning: Citation `agudelo2011mecanica' on page 3 undefined on input line
+ 131.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3 <./figs/ttub.jpeg> <./figs/cali.jpeg>]
 <./figs/tau.jpeg, id=65, 1027.84pt x 685.56125pt>
 File: ./figs/tau.jpeg Graphic file (type jpg)
 <use ./figs/tau.jpeg>
@@ -771,14 +787,24 @@ Package pdftex.def Info: ./figs/tau.jpeg  used on input line 141.
 (pdftex.def)             Requested size: 227.62204pt x 151.81772pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `street471elementary' on page 4 undefined on input line
+ 142.
 
-[4 <./figs/cali.jpeg> <./figs/fifr.jpeg>] [5 <./figs/tau.jpeg>]
-<./figs/taun.jpeg, id=74, 1027.84pt x 539.01375pt>
+[4 <./figs/fifr.jpeg> <./figs/tau.jpeg>]
+<./figs/taun.jpeg, id=70, 1027.84pt x 539.01375pt>
 File: ./figs/taun.jpeg Graphic file (type jpg)
 <use ./figs/taun.jpeg>
 Package pdftex.def Info: ./figs/taun.jpeg  used on input line 206.
 (pdftex.def)             Requested size: 227.62204pt x 119.36473pt.
+
+
+LaTeX Warning: Citation `agudelo2011mecanica' on page 5 undefined on input line
+ 207.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5]
 <./figs/reyn.jpeg, id=75, 1027.84pt x 427.5975pt>
 File: ./figs/reyn.jpeg Graphic file (type jpg)
 <use ./figs/reyn.jpeg>
@@ -786,7 +812,8 @@ Package pdftex.def Info: ./figs/reyn.jpeg  used on input line 226.
 (pdftex.def)             Requested size: 227.62204pt x 94.69157pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `irving2010fluid' on page 6 undefined on input line 227
+.
 
 <./figs/reyn1.jpeg, id=76, 1027.84pt x 202.7575pt>
 File: ./figs/reyn1.jpeg Graphic file (type jpg)
@@ -794,9 +821,10 @@ File: ./figs/reyn1.jpeg Graphic file (type jpg)
 Package pdftex.def Info: ./figs/reyn1.jpeg  used on input line 234.
 (pdftex.def)             Requested size: 227.62204pt x 44.9007pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `irving2010fluid' on page 6 undefined on input line 235
+.
 
-[6 <./figs/taun.jpeg>]
+[6 <./figs/taun.jpeg> <./figs/reyn.jpeg> <./figs/reyn1.jpeg>]
 <./figs/lami.jpeg, id=80, 1027.84pt x 640.3925pt>
 File: ./figs/lami.jpeg Graphic file (type jpg)
 <use ./figs/lami.jpeg>
@@ -804,58 +832,100 @@ Package pdftex.def Info: ./figs/lami.jpeg  used on input line 266.
 (pdftex.def)             Requested size: 227.62204pt x 141.81508pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `streeter' on page 7 undefined on input line 267.
 
-[7 <./figs/reyn.jpeg> <./figs/reyn1.jpeg>]
+[7 <./figs/lami.jpeg>]
 <./figs/lamt.jpeg, id=85, 1027.84pt x 798.985pt>
 File: ./figs/lamt.jpeg Graphic file (type jpg)
 <use ./figs/lamt.jpeg>
 Package pdftex.def Info: ./figs/lamt.jpeg  used on input line 341.
 (pdftex.def)             Requested size: 227.62204pt x 176.93542pt.
- [8 <./figs/lami.jpeg>] [9 <./figs/lamt.jpeg>]
-<./figs/lamc.jpeg, id=93, 1027.84pt x 858.20625pt>
+
+
+LaTeX Warning: Citation `streeter' on page 8 undefined on input line 342.
+
+
+LaTeX Warning: Citation `streeter' on page 8 undefined on input line 342.
+
+[8 <./figs/lamt.jpeg>]
+<./figs/lamc.jpeg, id=90, 1027.84pt x 858.20625pt>
 File: ./figs/lamc.jpeg Graphic file (type jpg)
 <use ./figs/lamc.jpeg>
 Package pdftex.def Info: ./figs/lamc.jpeg  used on input line 405.
 (pdftex.def)             Requested size: 227.62204pt x 190.05pt.
- [10 <./figs/lamc.jpeg>]
-<./figs/lamc1.jpeg, id=97, 1027.84pt x 412.54124pt>
+
+
+LaTeX Warning: Citation `streeter' on page 9 undefined on input line 406.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9]
+<./figs/lamc1.jpeg, id=94, 1027.84pt x 412.54124pt>
 File: ./figs/lamc1.jpeg Graphic file (type jpg)
 <use ./figs/lamc1.jpeg>
 Package pdftex.def Info: ./figs/lamc1.jpeg  used on input line 465.
 (pdftex.def)             Requested size: 227.62204pt x 91.35736pt.
- [11 <./figs/lamc1.jpeg>]
-<./figs/exa1.jpeg, id=101, 1027.84pt x 532.99126pt>
+
+
+LaTeX Warning: Citation `streeter' on page 10 undefined on input line 466.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10 <./figs/lamc.jpeg>]
+<./figs/exa1.jpeg, id=98, 1027.84pt x 532.99126pt>
 File: ./figs/exa1.jpeg Graphic file (type jpg)
 <use ./figs/exa1.jpeg>
 Package pdftex.def Info: ./figs/exa1.jpeg  used on input line 523.
 (pdftex.def)             Requested size: 227.62204pt x 118.03105pt.
- [12 <./figs/exa1.jpeg>]
-<./figs/turb.jpeg, id=105, 1027.84pt x 695.59875pt>
+ [11 <./figs/lamc1.jpeg>]
+<./figs/turb.jpeg, id=102, 1027.84pt x 695.59875pt>
 File: ./figs/turb.jpeg Graphic file (type jpg)
 <use ./figs/turb.jpeg>
 Package pdftex.def Info: ./figs/turb.jpeg  used on input line 564.
 (pdftex.def)             Requested size: 227.62204pt x 154.04053pt.
- [13 <./figs/turb.jpeg>]
+
+
+LaTeX Warning: Citation `streeter' on page 12 undefined on input line 565.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12 <./figs/exa1.jpeg>] [13 <./figs/turb.jpeg>]
 <./figs/mez.jpeg, id=111, 1027.84pt x 541.02126pt>
 File: ./figs/mez.jpeg Graphic file (type jpg)
 <use ./figs/mez.jpeg>
 Package pdftex.def Info: ./figs/mez.jpeg  used on input line 636.
 (pdftex.def)             Requested size: 227.62204pt x 119.8093pt.
- [14 <./figs/mez.jpeg>]
+
+
+LaTeX Warning: Citation `streeter' on page 14 undefined on input line 637.
+
+[14 <./figs/mez.jpeg>]
 <./figs/distr.jpeg, id=115, 1027.84pt x 664.4825pt>
 File: ./figs/distr.jpeg Graphic file (type jpg)
 <use ./figs/distr.jpeg>
 Package pdftex.def Info: ./figs/distr.jpeg  used on input line 693.
 (pdftex.def)             Requested size: 227.62204pt x 147.14981pt.
- [15 <./figs/distr.jpeg>]
-[16] [17]
-<./figs/perd.jpeg, id=125, 1027.84pt x 436.63126pt>
+
+
+LaTeX Warning: Citation `streeter' on page 15 undefined on input line 694.
+
+
+LaTeX Warning: Citation `streeter' on page 15 undefined on input line 694.
+
+[15 <./figs/distr.jpeg>] [16]
+<./figs/perd.jpeg, id=122, 1027.84pt x 436.63126pt>
 File: ./figs/perd.jpeg Graphic file (type jpg)
 <use ./figs/perd.jpeg>
 Package pdftex.def Info: ./figs/perd.jpeg  used on input line 852.
 (pdftex.def)             Requested size: 227.62204pt x 96.6921pt.
- [18 <./figs/perd.jpeg>] [19]
+
+
+LaTeX Warning: Citation `streeter' on page 17 undefined on input line 853.
+
+[17] [18 <./figs/perd.jpeg>] [19]
 <./figs/nikur.jpeg, id=133, 1027.84pt x 742.775pt>
 File: ./figs/nikur.jpeg Graphic file (type jpg)
 <use ./figs/nikur.jpeg>
@@ -863,7 +933,10 @@ Package pdftex.def Info: ./figs/nikur.jpeg  used on input line 967.
 (pdftex.def)             Requested size: 505.89pt x 365.58366pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `streeter' on page 20 undefined on input line 968.
+
+
+LaTeX Warning: Citation `streeter' on page 20 undefined on input line 968.
 
 
 Overfull \hbox (2.42624pt too wide) in paragraph at lines 973--974
@@ -872,7 +945,7 @@ Overfull \hbox (2.42624pt too wide) in paragraph at lines 973--974
 -face la ecuaci^^Son 95[],
  []
 
-[20] [21 <./figs/nikur.jpeg>]
+[20 <./figs/nikur.jpeg>] [21]
 <./figs/mood.png, id=141, 677.53125pt x 488.82625pt>
 File: ./figs/mood.png Graphic file (type png)
 <use ./figs/mood.png>
@@ -880,7 +953,12 @@ Package pdftex.def Info: ./figs/mood.png  used on input line 1026.
 (pdftex.def)             Requested size: 505.89pt x 365.0002pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `white1990fluid' on page 22 undefined on input line 102
+7.
+
+
+LaTeX Warning: Citation `white1990fluid' on page 22 undefined on input line 102
+7.
 
 <./figs/rugo.jpeg, id=143, 1027.84pt x 677.53125pt>
 File: ./figs/rugo.jpeg Graphic file (type jpg)
@@ -888,30 +966,58 @@ File: ./figs/rugo.jpeg Graphic file (type jpg)
 Package pdftex.def Info: ./figs/rugo.jpeg  used on input line 1034.
 (pdftex.def)             Requested size: 505.89pt x 333.47159pt.
 
+LaTeX Warning: Citation `white1990fluid' on page 22 undefined on input line 103
+5.
+
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[22]
+[22 <./figs/mood.png>] [23 <./figs/rugo.jpeg>]
+
+LaTeX Warning: Citation `agudelo2011mecanica' on page 24 undefined on input lin
+e 1108.
+
+
+LaTeX Warning: Citation `agudelo2011mecanica' on page 24 undefined on input lin
+e 1156.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[23 <./figs/mood.png>] [24 <./figs/rugo.jpeg>]
+[24]
 <./figs/acce.jpeg, id=154, 1027.84pt x 621.32124pt>
 File: ./figs/acce.jpeg Graphic file (type jpg)
 <use ./figs/acce.jpeg>
 Package pdftex.def Info: ./figs/acce.jpeg  used on input line 1168.
 (pdftex.def)             Requested size: 227.62204pt x 137.59175pt.
- [25 <./figs/acce.jpeg>]
-<./figs/acce1.jpeg, id=159, 1027.84pt x 536.0025pt>
+
+
+LaTeX Warning: Citation `agudelo2011mecanica' on page 25 undefined on input lin
+e 1169.
+
+<./figs/acce1.jpeg, id=155, 1027.84pt x 536.0025pt>
 File: ./figs/acce1.jpeg Graphic file (type jpg)
 <use ./figs/acce1.jpeg>
 Package pdftex.def Info: ./figs/acce1.jpeg  used on input line 1187.
 (pdftex.def)             Requested size: 227.62204pt x 118.69789pt.
- [26 <./figs/acce1.jpeg>]
-<./figs/acce2.jpeg, id=163, 1027.84pt x 360.34625pt>
+
+LaTeX Warning: Citation `agudelo2011mecanica' on page 25 undefined on input lin
+e 1188.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[25 <./figs/acce.jpeg>]
+<./figs/acce2.jpeg, id=160, 1027.84pt x 360.34625pt>
 File: ./figs/acce2.jpeg Graphic file (type jpg)
 <use ./figs/acce2.jpeg>
 Package pdftex.def Info: ./figs/acce2.jpeg  used on input line 1219.
 (pdftex.def)             Requested size: 227.62204pt x 79.79877pt.
+
+
+LaTeX Warning: Citation `streeter' on page 26 undefined on input line 1220.
+
+[26 <./figs/acce1.jpeg> <./figs/acce2.jpeg>]
 <./figs/contr.jpeg, id=164, 1007.765pt x 706.64pt>
 File: ./figs/contr.jpeg Graphic file (type jpg)
 <use ./figs/contr.jpeg>
@@ -919,45 +1025,106 @@ Package pdftex.def Info: ./figs/contr.jpeg  used on input line 1275.
 (pdftex.def)             Requested size: 227.62204pt x 159.60173pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `streeter' on page 27 undefined on input line 1276.
 
-[27 <./figs/acce2.jpeg>]
+[27 <./figs/contr.jpeg>]
 <./figs/acce3.png, id=168, 459.7175pt x 583.17876pt>
 File: ./figs/acce3.png Graphic file (type png)
 <use ./figs/acce3.png>
 Package pdftex.def Info: ./figs/acce3.png  used on input line 1297.
 (pdftex.def)             Requested size: 227.62204pt x 288.75891pt.
+
+
+LaTeX Warning: Citation `cengel2013ebook' on page 28 undefined on input line 12
+98.
+
 <./figs/acce4.png, id=169, 459.7175pt x 305.14pt>
 File: ./figs/acce4.png Graphic file (type png)
 <use ./figs/acce4.png>
 Package pdftex.def Info: ./figs/acce4.png  used on input line 1305.
 (pdftex.def)             Requested size: 227.62204pt x 151.08899pt.
- [28 <./figs/contr.jpeg> <./figs/acce3.png>]
-<./figs/exa20.jpeg, id=174, 1027.84pt x 362.35374pt>
+
+LaTeX Warning: Citation `cengel2013ebook' on page 28 undefined on input line 13
+06.
+
+[28 <./figs/acce3.png> <./figs/acce4.png>]
+<./figs/exa20.jpeg, id=175, 1027.84pt x 362.35374pt>
 File: ./figs/exa20.jpeg Graphic file (type jpg)
 <use ./figs/exa20.jpeg>
 Package pdftex.def Info: ./figs/exa20.jpeg  used on input line 1331.
 (pdftex.def)             Requested size: 227.62204pt x 80.24333pt.
-<./figs/exa30.jpeg, id=175, 1027.84pt x 664.4825pt>
+<./figs/exa30.jpeg, id=176, 1027.84pt x 664.4825pt>
 File: ./figs/exa30.jpeg Graphic file (type jpg)
 <use ./figs/exa30.jpeg>
 Package pdftex.def Info: ./figs/exa30.jpeg  used on input line 1340.
 (pdftex.def)             Requested size: 227.62204pt x 147.14981pt.
- [29 <./figs/acce4.png> <./figs/exa20.jpeg>] (./lec01.bbl) [30 <./figs/exa30.jp
-eg>]
-(./lec01.aux)
+
+
+LaTeX Warning: Reference `fnor' on page 29 undefined on input line 1346.
+
+[29 <./figs/exa20.jpeg> <./figs/exa30.jpeg>]
+
+LaTeX Warning: File `fnor1.png' not found on input line 1351.
+
+
+! Package pdftex.def Error: File `fnor1.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1351 \includegraphics[width=8cm]{fnor1.png}
+                                             
+? 
+
+LaTeX Warning: Citation `white' on page 30 undefined on input line 1352.
+
+
+LaTeX Warning: File `fnor2.png' not found on input line 1375.
+
+
+! Package pdftex.def Error: File `fnor2.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1375 \includegraphics[width=8cm]{fnor2.png}
+                                             
+? 
+
+LaTeX Warning: Citation `white' on page 30 undefined on input line 1376.
+
+
+LaTeX Warning: Citation `white' on page 30 undefined on input line 1376.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[30]
+
+LaTeX Warning: Reference `fno6' on page 31 undefined on input line 1411.
+
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 1419.
+
+(./lec01.bbl [31]) [32] (./lec01.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 21437 strings out of 480247
- 454489 string characters out of 5896151
- 753205 words of memory out of 5000000
- 38962 multiletter control sequences out of 15000+600000
- 479502 words of font info for 68 fonts, out of 8000000 for 9000
+ 21536 strings out of 480247
+ 455917 string characters out of 5896151
+ 755270 words of memory out of 5000000
+ 39039 multiletter control sequences out of 15000+600000
+ 480698 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,17n,99p,1361b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 90i,17n,99p,1361b,279s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/alejandro/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095
 .600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
@@ -972,11 +1139,12 @@ sfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on lec01.pdf (30 pages, 2260228 bytes).
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on lec01.pdf (32 pages, 2275087 bytes).
 PDF statistics:
- 251 PDF objects out of 1000 (max. 8388607)
- 132 compressed objects within 2 object streams
+ 263 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  292 words of extra memory for PDF output out of 10000 (max. 10000000)
 
