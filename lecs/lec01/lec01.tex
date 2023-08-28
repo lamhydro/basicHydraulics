@@ -1024,7 +1024,7 @@ L.F. Moody present\'o un diagrama (ver figura~\ref{mood}) para determinar el fac
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{mood.png}
-\caption{Diagrama de Moody para tuber\'ias comerciales con flujo laminar y turbulento (tomado de \cite{white1990fluid}).}
+\caption{Diagrama de Moody para tuber\'ias comerciales con flujo laminar y turbulento (tomado de \cite{white1990fluid1990fluid}).}
 \label{mood}
 \end{figure}
 
@@ -1032,7 +1032,7 @@ L.F. Moody present\'o un diagrama (ver figura~\ref{mood}) para determinar el fac
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{rugo.jpeg}
-\caption{Rugosidades ($\varepsilon$) para tuber\'ias comerciales (tomado de \cite{white1990fluid}).}
+\caption{Rugosidades ($\varepsilon$) para tuber\'ias comerciales (tomado de \cite{white1990fluid1990fluid}).}
 \label{mood}
 \end{figure}
 
@@ -1349,7 +1349,7 @@ El flujo uniforme ocurre en largos y rectos canales con una pendiente y un ancho
 \begin{figure}[h]
 \centering
 \includegraphics[width=8cm]{fnor1.png}
-\caption{Tipos de flujo en un flujo a superficie libre en un canal (tomado de \cite{white}).}
+\caption{Tipos de flujo en un flujo a superficie libre en un canal (tomado de \cite{white1990fluid}).}
 \label{fnor1}
 \end{figure}
 
@@ -1373,7 +1373,7 @@ para el caso de canales. Sin embargo, teniendo en cuenta que para tuber\'ias $R_
 \begin{figure}[h]
 \centering
 \includegraphics[width=8cm]{fnor2.png}
-\caption{Geometr\'ia y notaci\'on en un canal inclinado, a) vista lateral y b) secci\'on transversal (tomado de \cite{white}).}
+\caption{Geometr\'ia y notaci\'on en un canal inclinado, a) vista lateral y b) secci\'on transversal (tomado de \cite{white1990fluid}).}
 \label{fnor2}
 \end{figure}
 
@@ -1425,8 +1425,8 @@ Valores experimentales de $n$ se encuentran en la figure~\ref{fnor3} para varias
 % Tabla 10.1 White 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{fnor3.png}
-\caption{Valores de $n$ de Manning para diferentes tipos de materiales en canales (tomado de \cite{white}).}
+\includegraphics[width=\textwidth]{fnor3.png}
+\caption{Valores de $n$ de Manning para diferentes tipos de materiales en canales (tomado de \cite{white1990fluid}).}
 \label{fnor3}
 \end{figure}
 
@@ -1440,12 +1440,235 @@ Unos ingenieros encontraron que el canal rectangular mas eficiente, el que trans
 
 
 
+\subsection{Estimaci\'on de la profundidad normal}
+En muchos problemas de ingenier\'ia, dado el $Q$ y las caracter\'isticas del canal y del fluido es necesario estimar la profundidad normal $y_n$. Dicho estimaci\'on se hace solucionando la ecuaci\'on~\ref{fno7} para $y_n$. En la tabla~\ref{fnor4} se presenta la geometr\'ia para las secciones transversales t\'ipicas de canales.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l c c c}
+ \hline
+ Tipo & Perimetro(P) & Area(A) & Variable \\ [0.5ex]
+ \hline\hline
+Rectangular & $b + 2y_n$ & $by_n$ & $y_n$ \\
+Triangular & $y_n \left( \frac{1}{\sin \theta_1} + \frac{1}{\sin \theta_2} \right)$ & $ \frac{y_n^2}{2} \left( \frac{1}{\tan \theta_1} + \frac{1}{\tan \theta_2}\right)$ & $y_n$ \\
+Trapezoidal & $y_n \left( \frac{1}{\sin \theta_1} + \frac{1}{\sin \theta_2} \right) + b$ & $ \frac{y_n}{2} \left[ y_n \left(\frac{1}{\tan \theta_1} + \frac{1}{\tan \theta_2}\right) +2b \right]$  & $y_n$ \\
+Circular & $2R\theta$ & $R^2 \left( \theta -\frac{\sin 2\theta}{2} \right)$ & $\begin{aligned} y_n = R  &\text{\hspace{0.5cm} Si $\theta = 90$} \\ y_n = R(1-\cos \theta) &\text{\hspace{0.5cm} Si $0 < \theta < 90$} \\ y_n = R(1+\sin \theta) &\text{\hspace{0.5cm} Si $90 < \theta < 180$} \end{aligned}$ \\
+\hline
+\end{tabular}
+\caption{Propiedades geom\'etricas para diferentes secciones transversales de un canal. La notaci\'on de la ecuaciones se puede observar en figura~\ref{fnor5}.}
+\label{fnor4}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{fnor5.jpeg}
+\caption{Notaci\'on en varios tipos de canales.}
+\label{fnor5}
+\end{figure}
 
 
+Reemplazando $R_h = \frac{A}{P}$ en la ecuaci\'on~\ref{fno7} para cualquiera de las secciones de la tabla~\ref{fnor4}, se obtiene una ecuaci\'on implicita en $y_n$, con exepci\'on de la seccion circular en donde la funci\'on es implicita para $0^o < \theta < 180^o$.  La ecuaci\'on a resolver es:
+
+\begin{equation}
+\color{red}\boxed{\color{black}
+\begin{split}
+& f(y_n) = Q - A\frac{\alpha}{n} R_h^{2/3} S_o^{1/2} \hspace{2cm} \text{Para todas las secciones exepto la circular}\\
+& f(\theta) = Q - A\frac{\alpha}{n} R_h^{2/3} S_o^{1/2} \hspace{2cm} \text{Para la secci\'on circular}\\
+\end{split}
+}
+\label{fno8}
+\end{equation}
+
+Para resolver la ecuaci\'on~\ref{fno8}, se presenta a continuaci\'on un procedimiento con base en el \emph{m\'etodo de bisecci\'on}:
+\begin{enumerate}
+\item Leer la siguiente informacion:
+
+\begin{enumerate}
+\item Para la todas las secciones exepto la circular leer: $n$, $\alpha$, $S_o$, $Q$, $b$, $\theta_1$ y $\theta_2$. Note que para la secci\'on rectangular $\theta_1 = \theta_2 = 90^o$, y para la secci\'on triangular $b=0$.
+\item Para la secci\'on circular leer: $n$, $\alpha$, $S_o$, $Q$, $R$ y $\theta$.
+\end{enumerate}
+
+\item Definir los l\'imites de iteraci\'on, $a$ y $b$, para el m\'etodo de bisecci\'on:
+\begin{enumerate}
+\item Para todas las secciones exepto la circular leer: $a = 0.01$ y $b=1000$ ($a \le y_n \le b$). Note que $y_n > 0$ y que $sign(f(a)) \neq sign(f(b)) $. Note que la funci\'on $sign$ extrae el signo de $f$.
+\item Para la secci\'on circular leer: $a=0.01^o$ y $b=179.9^o$ ($a \le \theta \le b$). Note que $ 0^o < \theta < 180^o $, y que $sign(f(a)) \neq sign(f(b)) $. 
+\end{enumerate}
+
+\item \label{st5} Si $N <= Nmax=10000$ ir a ~\ref{st1}. Si $N > Nmax$ ir a ~\ref{st3}.  
+\item \label{st1} Calcular $C = \frac{a+b}{2}$.
+\item Calcular $f(c)$ usando la ecuaci\'on~\ref{fno8}. Si $|f(c)|< Error$ o $\frac{b-a}{2} < Error$ ir a ~\ref{st2}. Si no se cumple alguna de estas  condiciones ir a ~\ref{st4}.
+
+\item \label{st4} Si $sign(f(c))$ = $sign(f(a))$, $a=c$, si no $b=c$. Incrementar $N=N+1$ e ir ~\ref{st5}. 
+
+\item \label{st2} Imprimir:
+\begin{enumerate}
+\item para todas las secciones exepto la circular: $y_n = c$.
+\item para la secci\'on circular: $\theta = c$. Usar las ecuaciones de la tabla~\ref{fnor4} para convertir $\theta$ en $y_n$.
+\end{enumerate}
+
+
+\item \label{st3} Ha fallado la iteraci\'on.
+
+\end{enumerate}
+
+% Ej 10.3 White 
+\begin{shaded}
+\begin{exa}
+Un canal trapezoidal en asfalto ($n=0.016$) y con $S_o = 0.0015$, transporta agua con un caudal de 300 $ft^3 s^{-1}$. Si el ancho del canal es $b=6$ $ft$ y $\theta_1 = \theta_2 = 50^o$, calcular la profundidad normal ($y_n$).
+\end{exa}
+\end{shaded}
+
+% seccion 10.2 White 
+\begin{shaded}
+\begin{exa}
+Determinar para que relaciones de $y_n /D$ es posible transportar un caudal m\'aximo y obtener una velocidad m\'axima en un canal de secci\'on circular.
+\end{exa}
+\end{shaded}
+
+
+\subsection{Secci\'on \'optima de un canal}
+El dise\~no de canales en ingenier\'ia requiere determinar la secci\'on \'optima (aquella que garantice la menor resistencia al flujo) en un canal para unas condiciones dadas. Usando la ecuaci\'on de Manning (ecuaci\'on~\ref{fno7}) es posible maximizar el radio hidr\'aulico ($R_h$) para un \'area ($A$) y un caudal ($Q$) dado. Teniendo en cuenta que $R_h = A/P$, para maximizar $R_h$ debemos minimizar el per\'imetro ($P$). 
+
+Considerando el canal trapezoidal de la figura~\ref{fnor6}, el area y el perimetro se pueden calcular como:
+% Fig 10.7 White 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=8cm]{fnor6.png}
+\caption{Geometria de un canal trapezoidal (tomado de \cite{white1990fluid}).}
+\label{fnor6}
+\end{figure}
+
+\begin{equation}
+A = b y + \beta y^2
+\label{fni1}
+\end{equation}
+
+\begin{equation}
+P = b + 2W = b + 2y \left( 1+\beta^2 \right)^{1/2}
+\label{fni2}
+\end{equation}
+donde $\beta = \cot \theta$ y $y=y_n$. Note que $W = \sqrt{y^2 \beta^2 + y^2}= y \left( \beta^2 +1 \right)^{1/2}$. Asumiendo que $b$ es un dato dado, se despeja de la ecuaci\'on~\ref{fni1}:
+
+\begin{equation}
+b = \frac{A}{y}- y\beta
+\label{fni3}
+\end{equation}
+
+y de la ecuaci\'on~\ref{fni2}:
+
+\begin{equation}
+b = P -2y \left( 1+\beta^2 \right)^{1/2}
+\label{fni4}
+\end{equation}
+
+igualando las ecuaciones~\ref{fni3} y ~\ref{fni4} y despejando para $P$, se tiene:
+
+\begin{equation}
+P = \frac{A}{y} - y\beta + 2y\left( 1+\beta^2 \right)^{1/2}
+\label{fni5}
+\end{equation}
+
+Para minimizar $P$, se obtiene $dP/dy$ de la ecuaci\'on~\ref{fni5} tomando como constantes $A$ y $\beta$:
+
+\begin{equation}
+\frac{dP}{dy} = -\frac{A}{y^2} - \beta + 2\left( 1+\beta^2 \right)^{1/2}
+\label{fni6}
+\end{equation}
+
+igualando $dP/dy=0$ y despejando $y$ se optiene el valor de $y$ que minimiza $P$:
+
+\begin{equation}
+y = \left[ \frac{A}{2\left( 1+\beta^2 \right)^{1/2} - \beta} \right]^{1/2}
+\label{fni7}
+\end{equation}
+
+Despejando $A$ de la ecuaci\'on~\ref{fni7} y reemplazando en la ecuaci\'on~\ref{fni5} para $P$, la geometr\'ia optima de un canal trapezoidal para un angulo $\theta$ dado es:
+
+\begin{equation}
+\color{red}\boxed{\color{black} A = y^2 \left[ 2\left( 1 + \beta^2 \right)^{1/2} - \beta \right] \hspace{1cm} P=4y\left( 1 + \beta^2 \right)^{1/2} -2\beta y \hspace{1cm} R_h = \frac{y}{2}}
+\label{fni8}
+\end{equation}
+
+La ecuaci\'on~\ref{fni8} indica que para un angulo $\theta$ dado, la secci\'on transversal mas eficiente de un canal en flujo uniforme ocurre cuando el radio hidr\'aulico es igual a la mitade la profundidad normal. Igualando las ecuaci\'ones~\ref{fni2} y ~\ref{fni8} para $P$, se tiene una expresi\'on para la base inferior del canal $b$:
+
+\begin{equation}
+b = 2y\left(\sqrt{1+\beta^2} - \beta \right)
+\label{fni8a}
+\end{equation}
  
+y la base superior $b_s$
+\begin{equation}
+b_s =b+2\beta y = 2y\left(\sqrt{1+\beta^2} \right)
+\label{fni8b}
+\end{equation}
 
+Teniendo en cuenta que cuando $\theta = 90^o$ $\beta = 0$ por lo que tenemos un canal rectangular, reemplazando esto en las ecuaciones~\ref{fni8} se tiene la secci\'on m\'as eficiente para un canal rectangular:
+    
+\begin{equation}
+\color{red}\boxed{\color{black} A = 2y^2 \hspace{1cm} P=4y  \hspace{1cm} R_h = \frac{y}{2} \hspace{1cm} b = 2y }
+\label{fni9}
+\end{equation}
 
+Para encontrar la profundidad correcta, es necesario solucionar las ecuaciones anteriores en conjunto con la ecuaci\'on~\ref{fno7} para un caudal dado. 
 
+Es posible encontrar el mejor angulo $\theta$ del canal trapezoidal para un \'area y una profundidad dada. Evaluando $dP/d\beta$ para $A$ y $y$ constante se tiene:
+
+\begin{equation}
+\frac{dP}{d\beta} = -y +2\beta y\left( 1 + \beta^2 \right)^{-1/2} 
+\label{fni10}
+\end{equation}
+
+igualando la ecuaci\'on~\ref{fni10} a cero se tiene:
+
+\begin{equation}
+2\beta = \left( 1 + \beta^2 \right)^{1/2} \hspace{1cm} \beta=\cot \theta = \frac{1}{\sqrt{3}} \hspace{1cm} \theta=60^o
+\label{fni10}
+\end{equation}
+
+Esto indica que para una profundidad dada, el angulo $\theta$ \'optimo es $60^o$, o que la secci\'on \'optima (la que maximiza el flujo) es la mitad de un hex\'agono. 
+
+Si se circunscribe una secci\'on circular de radio $R$ en la secci\'on trapezoidal donde $\theta=60^o$, se tiene que $R=\frac{1}{2}b_s \sin \theta$. Reemplazando $b_s$ en esta ecuaci\'on y sabiendo que $\beta=\frac{1}{\sqrt{3}}$, se tiene que $R=y$. Esto demuestra que una secci\'on circular tiene su m\'axima eficiencia cuando $y=R$ (semicirculo). 
+
+Para una secci\'on triangular ($b=0$ en la figura~\ref{fnor6}), el \'area y el per\'imetro son:
+\begin{equation}
+A = \beta y^2
+\label{fni11}
+\end{equation}
+
+\begin{equation}
+P = 2W =  2y \left( 1+\beta^2 \right)^{1/2}
+\label{fni12}
+\end{equation}
+
+Despejando $y$ de la ecuaci\'on~\ref{fni11} se tiene que $y = \left( \frac{A}{\beta} \right)^{1/2}$. Reemplazando en la ecuaci\'on~\ref{fni12}, el per\'imetro es:
+
+\begin{equation}
+P = 2W =  2\left(\frac{A}{\beta}\right)^{1/2} \left( 1+\beta^2 \right)^{1/2}
+\label{fni13}
+\end{equation}
+
+derivando $P$ con respecto a $\beta$ en la ecuaci\'on~\ref{fni13}, se tiene:
+
+\begin{equation}
+\frac{dP}{d\beta} =2A^{1/2}\left[ \beta \left( 1+\beta^2 \right)^{-1/2} \beta^{-1/2} - \frac{1}{2} \frac{\left( 1+\beta^2 \right)^{1/2}}{\beta^{3/2}} \right]
+\label{fni14}
+\end{equation}
+
+Haciendo $dP/d\beta = 0$, se tiene:
+
+\begin{equation}
+\frac{\beta^{1/2}}{\left( 1+\beta^2 \right)^{1/2}} = \frac{\left( 1+\beta^2 \right)^{1/2}}{2 \beta^{3/2}}
+\label{fni15}
+\end{equation}
+
+Solucionando la ecuaci\'on~\ref{fni15}, se tiene que $\beta=1$. Esto quiere decir que una secci\'on triangular con $\theta=45^o$ es la mas eficiente.
+
+% Ej 10.4 White 
+\begin{shaded}
+\begin{exa}
+Para un canal rectangular en ladrillo ($n=0.015$) dise\~nado para transportar 5 $m^3 /s$ y con una pendiente de $S_o = 0.001$, determinar las mejores dimensiones para $y$ y $b$. Realizar los mismos c\'alculos si la secci\'on transversal del canal es la mitad de un hex\'agono y si es un semicirculo. Comparar los resultados.  
+\end{exa}
+\end{shaded}
 
 
 % REFERENCES
