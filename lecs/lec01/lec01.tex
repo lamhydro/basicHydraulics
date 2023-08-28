@@ -1159,16 +1159,50 @@ Ecuaci\'on de Hazen-Williams (n=1.85) & $C=10.654 L \left[ \frac{1}{C_H D^{2.63}
 
 
 \section{P\'erdidas menores} % From Cengel and Duarte
-En un sistema de tuber\'ias, el flujo pasa a trav\'es de m\'ultiples \emph{entradas, salidas, uniones, v\'alvulas, codos, bifurcaciones, expansiones, contracciones, etc} (ver figura~\ref{acce}) en adici\'on de los tramos rectos de las tuber\'ias. Estos componentes del sistema causan separaci\'on y mezcla del flujo induciendo p\'erdidas de energ\'ia adicional. Comparadas con las perdidas por fricci\'on, $h_f$, las p\'erdidas debido a estos accesorios, $h_e$, son menores. Sin embargo, en algunos casos en donde existen muchos cambios de direcci\'on y v\'alvulas en un tramo corto de tuber\'ia,  $h_e$ llega a ser mayor que $h_f$. Cuando una v\'alvula esta totalmente abierta la p\'erdidas de energ\'ia a trav\'es de esta son despreciable. Sin embargo cuando la v\'alvula esta parcialmente abierta, existen p\'erdidas de energ\'ia debido a la disminuci\'on de caudal a trav\'es de la v\'alvula. 
-
+En un sistema de tuber\'ias, el flujo pasa a trav\'es de m\'ultiples \emph{entradas, salidas, uniones, v\'alvulas, codos, bifurcaciones, expansiones, contracciones, etc} (ver figura~\ref{acce}) en adici\'on de los tramos rectos de las tuber\'ias. Estos componentes del sistema causan separaci\'on y mezcla del flujo induciendo p\'erdidas de energ\'ia adicional. Comparadas con las perdidas por fricci\'on, $h_f$, las p\'erdidas debido a estos accesorios, $h_e$, son menores. Sin embargo, en algunos casos en donde existen muchos cambios de direcci\'on y v\'alvulas en un tramo corto de tuber\'ia,  $h_e$ llega a ser mayor que $h_f$. Cuando una v\'alvula esta totalmente abierta la p\'erdidas de energ\'ia a trav\'es de esta son despreciable. Sin embargo cuando la v\'alvula esta parcialmente abierta, existen p\'erdidas de energ\'ia debido a la disminuci\'on de caudal, como consequencia de la disminuci\'on de presi\'on, a trav\'es de la v\'alvula. 
 
 % Fig 5.26 Duarte 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{acce.jpeg}
+\includegraphics[width=12cm]{acce.jpeg}
 \caption{Accesorios de uso com\'un en tuber\'ias (tomado de \cite{agudelo2011mecanica}).}
 \label{acce}
 \end{figure}
+
+
+Hay muchas clases de v\'alvulas usadas comercialmente (ver figura~\ref{acce0}): la \emph{v\'alvula de compuerta} la cual se desliza hacia abajo en la secci\'on, la \emph{v\'alvula de globo} la cual obtura un agujero usando un mecanismo especial, la \emph{v\'alvula de angulo} la cual es similar a la de globo pero sobre un angulo de 90$^o$, la \emph{v\'alvula de cheque} la cual permite flujo en una sola direcci\'on y la \emph{v\'alvula de disco} la disco la cual cierra la secci\'on transversal con una compuerta circular. La v\'alvula de globo debido a su configuraci\'on interna es usualmente la que genera mayores p\'erdidas cuando esta totalmente abierta. Existen tambi\'en las \emph{v\'alvula de mariposa} la cual consiste en un disco que gita y obtura la secci\'on transversal dependiendo del angulo de rotaci\'on (ver figura{acce01}). Las p\'erdidas en v\'alvulas est\'an datas por el fabricante y dependen de su grado abertura. La figura~\ref{acce02} muestra una curva del coeficiente de p\'erdidas $K$ en funci\'on de la relaci\'on abertura ($h$) diametro ($D$). 
+
+% Fig 6.17 White 
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{acce0.png}
+\caption{V\'alvulas comerciales t\'ipicas: a) v\'alvula de compuerta, b) v\'alvula de globo, c) v\'alvula de angulo, d) v\'alvula de cheque y e) v\'alvula de disco (tomado de \cite{white1990fluid}).}
+\label{acce0}
+\end{figure}
+
+% Fig 6.18b White 
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{acce01.png}
+\caption{V\'alvula de mariposa (tomado de \cite{white1990fluid}).}
+\label{acce01}
+\end{figure}
+
+% Fig 6.18b White 
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{acce02.png}
+\caption{Coeficientes $K$ promedio para v\'alvulas parcialmente abiertas. (tomado de \cite{white1990fluid}).}
+\label{acce02}
+\end{figure}
+
+
+
+
+
+
+
+
 
 La cuantificaci\'on de las p\'erdidas menores es complejo desde el punto de vista te\'orico. Por esto, estas p\'erdidas son determinadas experimentalmente por los fabricantes de los accesorios. Las p\'erdidas menores, $h_e$, son expresadas usualmente como:
 
@@ -1184,7 +1218,7 @@ Vennard-Street explican  f\'isicamente el efecto de un accesorio sobre la energ\
 % Fig 5.27 Duarte 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{acce1.jpeg}
+\includegraphics[width=12cm]{acce1.jpeg}
 \caption{Comportamiento del flujo en una tuber\'ia con accesorio (tomado de \cite{agudelo2011mecanica}).}
 \label{acce1}
 \end{figure}
@@ -1294,7 +1328,7 @@ En las figuras~\ref{acce3} y ~\ref{acce4} se presentan valore de $K$ para difere
 % Fig 8-4 Cengel 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{acce3.png}
+\includegraphics[width=\textwidth]{acce3.png}
 \caption{Valores de $K$ para diferentes tipos de accesorios para flujo turbulento (tomado de \cite{cengel2013ebook}).}
 \label{acce3}
 \end{figure}
@@ -1302,7 +1336,7 @@ En las figuras~\ref{acce3} y ~\ref{acce4} se presentan valore de $K$ para difere
 % Fig 8-4 Cengel 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{acce4.png}
+\includegraphics[width=\textwidth]{acce4.png}
 \caption{Valores de $K$ para diferentes tipos de accesorios para flujo turbulento (tomado de \cite{cengel2013ebook}).}
 \label{acce4}
 \end{figure}

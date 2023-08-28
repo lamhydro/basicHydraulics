@@ -15,7 +15,7 @@
 \contentsline {subsection}{\numberline {6.5}C\'alculo del factor de fricci\'on}{19}{}%
 \contentsline {subsection}{\numberline {6.6}Otras ecuaciones para calcular las p\'erdidas de energ\'ia}{23}{}%
 \contentsline {section}{\numberline {7}P\'erdidas menores}{25}{}%
-\contentsline {subsection}{\numberline {7.1}Longitud equivalente}{29}{}%
-\contentsline {section}{\numberline {8}Flujo normal a superficie libre}{30}{}%
+\contentsline {subsection}{\numberline {7.1}Longitud equivalente}{30}{}%
+\contentsline {section}{\numberline {8}Flujo normal a superficie libre}{31}{}%
 \contentsline {subsection}{\numberline {8.1}Estimaci\'on de la profundidad normal}{32}{}%
-\contentsline {subsection}{\numberline {8.2}Secci\'on \'optima de un canal}{33}{}%
+\contentsline {subsection}{\numberline {8.2}Secci\'on \'optima de un canal}{34}{}%
