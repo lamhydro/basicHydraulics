@@ -1,9 +1,9 @@
-\contentsline {section}{\numberline {1}Fluido ideal y fluido real}{1}{}%
-\contentsline {subsection}{\numberline {1.1}Flujo ideal}{1}{}%
-\contentsline {subsection}{\numberline {1.2}Flujo real}{2}{}%
+\contentsline {section}{\numberline {1}Fluido ideal y fluido real}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Flujo ideal}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Flujo real}{3}{}%
 \contentsline {section}{\numberline {2}Capa limite en flujo a presi\'on}{3}{}%
 \contentsline {section}{\numberline {3}Esfuerzo de corte y perdidas de cabeza de energ\'ia}{4}{}%
-\contentsline {section}{\numberline {4}Experimentos de Reynolds}{6}{}%
+\contentsline {section}{\numberline {4}Experimentos de Reynolds}{7}{}%
 \contentsline {section}{\numberline {5}Flujo laminar}{7}{}%
 \contentsline {subsection}{\numberline {5.1}Flujo laminar en conductos y coronas}{9}{}%
 \contentsline {subsection}{\numberline {5.2}Flujo laminar en tuber\'ias circulares: ecuaci\'on de Hagen-Poiseuille}{11}{}%
@@ -12,10 +12,11 @@
 \contentsline {subsection}{\numberline {6.2}Longitud de mezcla de Prandtl}{14}{}%
 \contentsline {subsection}{\numberline {6.3}Distribuciones de velocidad}{15}{}%
 \contentsline {subsection}{\numberline {6.4}P\'erdidas de energ\'ia}{18}{}%
-\contentsline {subsection}{\numberline {6.5}C\'alculo del factor de fricci\'on}{19}{}%
-\contentsline {subsection}{\numberline {6.6}Otras ecuaciones para calcular las p\'erdidas de energ\'ia}{23}{}%
+\contentsline {subsection}{\numberline {6.5}C\'alculo del factor de fricci\'on}{20}{}%
+\contentsline {subsection}{\numberline {6.6}Otras ecuaciones para calcular las p\'erdidas de energ\'ia}{24}{}%
 \contentsline {section}{\numberline {7}P\'erdidas menores}{25}{}%
 \contentsline {subsection}{\numberline {7.1}Longitud equivalente}{30}{}%
 \contentsline {section}{\numberline {8}Flujo normal a superficie libre}{31}{}%
-\contentsline {subsection}{\numberline {8.1}Estimaci\'on de la profundidad normal}{32}{}%
+\contentsline {subsection}{\numberline {8.1}Estimaci\'on de la profundidad normal}{33}{}%
 \contentsline {subsection}{\numberline {8.2}Secci\'on \'optima de un canal}{34}{}%
+\contentsline {subsection}{\numberline {8.3}C\'alculo de la profundidad normal en cauces naturales}{36}{}%

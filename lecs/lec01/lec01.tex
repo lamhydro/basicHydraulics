@@ -1474,7 +1474,7 @@ Unos ingenieros encontraron que el canal rectangular mas eficiente, el que trans
 
 
 
-\subsection{Estimaci\'on de la profundidad normal}
+\subsection{Estimaci\'on de la profundidad normal}\label{normProf}
 En muchos problemas de ingenier\'ia, dado el $Q$ y las caracter\'isticas del canal y del fluido es necesario estimar la profundidad normal $y_n$. Dicho estimaci\'on se hace solucionando la ecuaci\'on~\ref{fno7} para $y_n$. En la tabla~\ref{fnor4} se presenta la geometr\'ia para las secciones transversales t\'ipicas de canales.
 
 \begin{table}[h!]
@@ -1540,8 +1540,7 @@ Para resolver la ecuaci\'on~\ref{fno8}, se presenta a continuaci\'on un procedim
 \item para la secci\'on circular: $\theta = c$. Usar las ecuaciones de la tabla~\ref{fnor4} para convertir $\theta$ en $y_n$.
 \end{enumerate}
 
-
-\item \label{st3} Ha fallado la iteraci\'on.
+\item \label{st3} Ha fallado la iteraci\'on. Revisar datos de entrada y l\'imites iniciales de iteraci\'on.
 
 \end{enumerate}
 
@@ -1703,6 +1702,58 @@ Solucionando la ecuaci\'on~\ref{fni15}, se tiene que $\beta=1$. Esto quiere deci
 Para un canal rectangular en ladrillo ($n=0.015$) dise\~nado para transportar 5 $m^3 /s$ y con una pendiente de $S_o = 0.001$, determinar las mejores dimensiones para $y$ y $b$. Realizar los mismos c\'alculos si la secci\'on transversal del canal es la mitad de un hex\'agono y si es un semicirculo. Comparar los resultados.  
 \end{exa}
 \end{shaded}
+
+\subsection{C\'alculo de la profundidad normal en cauces naturales}
+En la naturaleza, los canales por los cuales transcurre flujo posseen secciones irregulares como en el caso de rios y quebradas. Dicha secci\'on cambia en el tiempo debido a procesos de erosion y sedimentaci\'on en el fondo y en las orillas producto de cambios en la hidrodin\'amica del flujo. El c\'alculo de la profundidad normal se hace con base en la soluci\'on de la ecuaci\'on de Manning implicita para $y_n$ siguiendo un m\'etodo num\'erico. Si tenemos una secci\'on irregular de un canal como el mostrado en la figura~\ref{irre1}, conformada por una serie de $m$ puntos $p(x,y)$ con coordenadas espaciales $x$ y $y$, y cuyos coeficientes de Manning estan dados entre cada par de puntos $p_i$ y $p_{i+1}$ (segmento) para un total de $m-1$ coeficientes, el \'area mojada de la secci\'on para un valor de $y_n$ se puede calcular como:
+
+% LAM 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=8cm]{irre1.png}
+\caption{Secci\'on transversal de un cauce irregular (e.g. rio).}
+\label{irre1}
+\end{figure}
+
+
+\begin{equation}
+A = \sum_{i=1}^{m-1} A_i = \sum_{i=1}^{m-1} \left[ (y_n - y_i )+(y_n - y_{i+1}) \right] \frac{x_{i+1}-x_i }{2}
+\label{irr1}
+\end{equation}
+
+, perimetro se puede calcular como:
+
+\begin{equation}
+P = \sum_{i=1}^{m-1} P_i = \sum_{i=1}^{m-1} \sqrt{ (x_i - x_{i+1} )^2 + (y_i - y_{i+1})^2 }
+\label{irr2}
+\end{equation}
+
+y el coeficiente de rugosidad de Manning como:
+
+\begin{equation}
+n = \frac{\sum_{i=1}^{m-1} n_i A_i}{\sum_{i=1}^{m-1} A_i}
+\label{irr3}
+\end{equation}
+
+Note que la ecuaci\'on~\ref{irr1} c\'alcula el \'area mediante la sumatoria de las areas individuales (trapecios) $A_i$ formadas entre cada par de puntos $p_i$ y $p_{i+1}$, el perimetro en la ecuaci\'on~\ref{irr2} es la sumatoria de las distancias Euclidianas entre cada par de puntos $p_i$ y $p_{i+1}$ y el coeficiente de rugosidad de Manning es el promedio ponderado de los $m-1$ coeficientes de rugosidad usando como pesos las areas $A_i$.
+
+A continuaci\'on se muestra un procedimiento para el c\'alculo de $y_n$ en canales con secci\'on irregular basado en el m\'etodo de bisecci\'on:
+\begin{enumerate}
+\item Leer la siguiente informaci\'on: $n$, $\alpha$, $S_o$, $Q$, $xs$, $ys$ y $ns$. Note que $xs$ y $ys$ son dos vectores con las coordenadas $x$ y $y$ respectivamente para un numero $m$ de puntos que conforman la seci\'on transversal. $ns$ es un vector de coeficientes de Manning para los $m-1$ segmentos que conforman la seccion.
+
+\item Definir los l\'imites de iteraci\'on, $a$ y $b$, para el m\'etodo de bisecci\'on: $a = 0.01$ y $b=1000$ ($a \le y_n \le b$). Note que $y_n > 0$ y que $sign(f(a)) \neq sign(f(b)) $. Note que la funci\'on $sign$ extrae el signo de $f$.
+
+\item \label{st5} Si $N <= Nmax=10000$ ir a ~\ref{st1}. Si $N > Nmax$ ir a ~\ref{st3}.  
+\item \label{st1} Calcular $C = \frac{a+b}{2}$.
+\item Con base en las coordenadas datas ($xs$ y $ys$), interpolar un nuevo conjunto de puntos para las profundidades normales $a$, $b$ y $c$.   
+\item Calcular $f(a)$, $f(b)$ y $f(c)$ usando la ecuaci\'on ecuaci\'on~\ref{fno8} usando la nuevas secciones interpoladas para $a$, $b$ y $c$. Note que para evaluar la funci\'on es necesario, para cada nuevo conjunto de puntos, calcular el \'area (ecuaci\'on~\ref{irr1}), el perimetro (ecuaci\'on~\ref{irr2}) y la rugosidad de Manning (ecuaci\'on~\ref{irr3}.
+\item Si $|f(c)|< Error$ o $\frac{b-a}{2} < Error$ ir a ~\ref{st2}. Si no se cumple alguna de estas  condiciones ir a ~\ref{st4}.
+
+\item \label{st4} Si $sign(f(c))$ = $sign(f(a))$, $a=c$, si no $b=c$. Incrementar $N=N+1$ e ir ~\ref{st5}. 
+
+\item \label{st2} Imprimir: $y_n = c$.
+\item \label{st3} Ha fallado la iteraci\'on. Revisar datos de entrada y l\'imites iniciales de iteraci\'on.
+\end{enumerate}
+
 
 
 % REFERENCES
