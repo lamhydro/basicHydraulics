@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  29 AUG 2023 10:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  31 AUG 2023 08:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -639,6 +639,21 @@ LaTeX Warning: Label `mood' multiply defined.
 
 LaTeX Warning: Label `fni10' multiply defined.
 
+
+LaTeX Warning: Label `st5' multiply defined.
+
+
+LaTeX Warning: Label `st1' multiply defined.
+
+
+LaTeX Warning: Label `st4' multiply defined.
+
+
+LaTeX Warning: Label `st2' multiply defined.
+
+
+LaTeX Warning: Label `st3' multiply defined.
+
 )
 \openout1 = `lec01.aux'.
 
@@ -752,16 +767,12 @@ File: ./figs/ttub.jpeg Graphic file (type jpg)
 <use ./figs/ttub.jpeg>
 Package pdftex.def Info: ./figs/ttub.jpeg  used on input line 110.
 (pdftex.def)             Requested size: 227.62204pt x 67.12877pt.
-<./figs/cali.jpeg, id=59, 1027.84pt x 277.035pt>
+ [3 <./figs/ttub.jpeg>]
+<./figs/cali.jpeg, id=63, 1027.84pt x 277.035pt>
 File: ./figs/cali.jpeg Graphic file (type jpg)
 <use ./figs/cali.jpeg>
 Package pdftex.def Info: ./figs/cali.jpeg  used on input line 119.
 (pdftex.def)             Requested size: 227.62204pt x 61.34947pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3 <./figs/ttub.jpeg>]
 <./figs/fifr.jpeg, id=64, 1027.84pt x 378.41376pt>
 File: ./figs/fifr.jpeg Graphic file (type jpg)
 <use ./figs/fifr.jpeg>
@@ -772,34 +783,23 @@ File: ./figs/tau.jpeg Graphic file (type jpg)
 <use ./figs/tau.jpeg>
 Package pdftex.def Info: ./figs/tau.jpeg  used on input line 141.
 (pdftex.def)             Requested size: 227.62204pt x 151.81772pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4 <./figs/cali.jpeg> <./figs/fifr.jpeg>] [5 <./figs/tau.jpeg>]
-<./figs/taun.jpeg, id=74, 1027.84pt x 539.01375pt>
+ [4 <./figs/cali.jpeg> <./figs/fifr.jpeg>] [5 <./figs/tau.jpeg>]
+<./figs/taun.jpeg, id=73, 1027.84pt x 539.01375pt>
 File: ./figs/taun.jpeg Graphic file (type jpg)
 <use ./figs/taun.jpeg>
 Package pdftex.def Info: ./figs/taun.jpeg  used on input line 206.
 (pdftex.def)             Requested size: 227.62204pt x 119.36473pt.
-<./figs/reyn.jpeg, id=75, 1027.84pt x 427.5975pt>
+ [6 <./figs/taun.jpeg>]
+<./figs/reyn.jpeg, id=78, 1027.84pt x 427.5975pt>
 File: ./figs/reyn.jpeg Graphic file (type jpg)
 <use ./figs/reyn.jpeg>
 Package pdftex.def Info: ./figs/reyn.jpeg  used on input line 226.
 (pdftex.def)             Requested size: 227.62204pt x 94.69157pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<./figs/reyn1.jpeg, id=76, 1027.84pt x 202.7575pt>
+<./figs/reyn1.jpeg, id=79, 1027.84pt x 202.7575pt>
 File: ./figs/reyn1.jpeg Graphic file (type jpg)
 <use ./figs/reyn1.jpeg>
 Package pdftex.def Info: ./figs/reyn1.jpeg  used on input line 234.
 (pdftex.def)             Requested size: 227.62204pt x 44.9007pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6 <./figs/taun.jpeg>]
 <./figs/lami.jpeg, id=80, 1027.84pt x 640.3925pt>
 File: ./figs/lami.jpeg Graphic file (type jpg)
 <use ./figs/lami.jpeg>
@@ -810,7 +810,7 @@ Package pdftex.def Info: ./figs/lami.jpeg  used on input line 266.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [7 <./figs/reyn.jpeg> <./figs/reyn1.jpeg>] [8 <./figs/lami.jpeg>]
-<./figs/lamt.jpeg, id=89, 1027.84pt x 798.985pt>
+<./figs/lamt.jpeg, id=88, 1027.84pt x 798.985pt>
 File: ./figs/lamt.jpeg Graphic file (type jpg)
 <use ./figs/lamt.jpeg>
 Package pdftex.def Info: ./figs/lamt.jpeg  used on input line 341.
@@ -851,8 +851,11 @@ File: ./figs/distr.jpeg Graphic file (type jpg)
 <use ./figs/distr.jpeg>
 Package pdftex.def Info: ./figs/distr.jpeg  used on input line 693.
 (pdftex.def)             Requested size: 227.62204pt x 147.14981pt.
- [15 <./figs/distr.jpeg>]
-[16] [17]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15] [16 <./figs/distr.jpeg>] [17]
 <./figs/perd.jpeg, id=125, 1027.84pt x 436.63126pt>
 File: ./figs/perd.jpeg Graphic file (type jpg)
 <use ./figs/perd.jpeg>
@@ -905,29 +908,26 @@ LaTeX Warning: Citation `white1990fluid1990fluid' on page 22 undefined on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[22]
+[22] [23 <./figs/mood.png>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[23 <./figs/mood.png>] [24 <./figs/rugo.jpeg>]
-<./figs/acce.jpeg, id=154, 1027.84pt x 621.32124pt>
+[24 <./figs/rugo.jpeg>] [25]
+<./figs/acce.jpeg, id=158, 1027.84pt x 621.32124pt>
 File: ./figs/acce.jpeg Graphic file (type jpg)
 <use ./figs/acce.jpeg>
 Package pdftex.def Info: ./figs/acce.jpeg  used on input line 1167.
 (pdftex.def)             Requested size: 341.43306pt x 206.39236pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<./figs/acce0.png, id=155, 791.95876pt x 624.3325pt>
+<./figs/acce0.png, id=159, 791.95876pt x 624.3325pt>
 File: ./figs/acce0.png Graphic file (type png)
 <use ./figs/acce0.png>
 Package pdftex.def Info: ./figs/acce0.png  used on input line 1178.
 (pdftex.def)             Requested size: 341.43306pt x 269.1627pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./figs/acce01.png, id=156, 305.14pt x 539.01375pt>
+<./figs/acce01.png, id=160, 305.14pt x 539.01375pt>
 File: ./figs/acce01.png Graphic file (type png)
 <use ./figs/acce01.png>
 Package pdftex.def Info: ./figs/acce01.png  used on input line 1186.
@@ -935,7 +935,7 @@ Package pdftex.def Info: ./figs/acce01.png  used on input line 1186.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./figs/acce02.png, id=157, 610.28pt x 409.53pt>
+<./figs/acce02.png, id=161, 610.28pt x 409.53pt>
 File: ./figs/acce02.png Graphic file (type png)
 <use ./figs/acce02.png>
 Package pdftex.def Info: ./figs/acce02.png  used on input line 1194.
@@ -943,13 +943,11 @@ Package pdftex.def Info: ./figs/acce02.png  used on input line 1194.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[25]
 <./figs/acce1.jpeg, id=162, 1027.84pt x 536.0025pt>
 File: ./figs/acce1.jpeg Graphic file (type jpg)
 <use ./figs/acce1.jpeg>
 Package pdftex.def Info: ./figs/acce1.jpeg  used on input line 1221.
 (pdftex.def)             Requested size: 341.43306pt x 178.05092pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -963,18 +961,14 @@ Package pdftex.def Info: ./figs/acce2.jpeg  used on input line 1253.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[27 <./figs/acce0.png>]
-<./figs/contr.jpeg, id=171, 1007.765pt x 706.64pt>
+[27 <./figs/acce0.png>] [28 <./figs/acce01.png>] [29 <./figs/acce02.png> <./fig
+s/acce1.jpeg>]
+<./figs/contr.jpeg, id=179, 1007.765pt x 706.64pt>
 File: ./figs/contr.jpeg Graphic file (type jpg)
 <use ./figs/contr.jpeg>
 Package pdftex.def Info: ./figs/contr.jpeg  used on input line 1309.
 (pdftex.def)             Requested size: 227.62204pt x 159.60173pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[28 <./figs/acce01.png>]
-<./figs/acce3.png, id=176, 662.475pt x 792.9625pt>
+<./figs/acce3.png, id=180, 662.475pt x 792.9625pt>
 File: ./figs/acce3.png Graphic file (type png)
 <use ./figs/acce3.png>
 Package pdftex.def Info: ./figs/acce3.png  used on input line 1331.
@@ -983,7 +977,7 @@ Package pdftex.def Info: ./figs/acce3.png  used on input line 1331.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./figs/acce4.png, id=177, 932.48375pt x 622.325pt>
+<./figs/acce4.png, id=181, 932.48375pt x 622.325pt>
 File: ./figs/acce4.png Graphic file (type png)
 <use ./figs/acce4.png>
 Package pdftex.def Info: ./figs/acce4.png  used on input line 1339.
@@ -991,13 +985,12 @@ Package pdftex.def Info: ./figs/acce4.png  used on input line 1339.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[29 <./figs/acce02.png> <./figs/acce1.jpeg>]
-<./figs/exa20.jpeg, id=182, 1027.84pt x 362.35374pt>
+[30 <./figs/acce2.jpeg> <./figs/contr.jpeg>]
+<./figs/exa20.jpeg, id=185, 1027.84pt x 362.35374pt>
 File: ./figs/exa20.jpeg Graphic file (type jpg)
 <use ./figs/exa20.jpeg>
 Package pdftex.def Info: ./figs/exa20.jpeg  used on input line 1365.
 (pdftex.def)             Requested size: 227.62204pt x 80.24333pt.
- [30 <./figs/acce2.jpeg> <./figs/contr.jpeg> <./figs/exa20.jpeg>]
 <./figs/exa30.jpeg, id=186, 1027.84pt x 664.4825pt>
 File: ./figs/exa30.jpeg Graphic file (type jpg)
 <use ./figs/exa30.jpeg>
@@ -1012,15 +1005,16 @@ Package pdftex.def Info: ./figs/fnor1.png  used on input line 1385.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./figs/fnor2.png, id=188, 586.19pt x 216.81pt>
+[31 <./figs/exa20.jpeg> <./figs/exa30.jpeg>]
+<./figs/fnor2.png, id=192, 586.19pt x 216.81pt>
 File: ./figs/fnor2.png Graphic file (type png)
 <use ./figs/fnor2.png>
 Package pdftex.def Info: ./figs/fnor2.png  used on input line 1409.
 (pdftex.def)             Requested size: 227.62204pt x 84.18834pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[31 <./figs/exa30.jpeg>]
 
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 1453.
@@ -1033,15 +1027,12 @@ Package pdftex.def Info: ./figs/fnor3.png  used on input line 1462.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
+[32]
 Overfull \hbox (13.46149pt too wide) in paragraph at lines 1482--1492
  [][] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<./figs/fnor5.jpeg, id=194, 1027.84pt x 584.1825pt>
+<./figs/fnor5.jpeg, id=197, 1027.84pt x 584.1825pt>
 File: ./figs/fnor5.jpeg Graphic file (type jpg)
 <use ./figs/fnor5.jpeg>
 Package pdftex.def Info: ./figs/fnor5.jpeg  used on input line 1498.
@@ -1053,19 +1044,29 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 1512.
 
-[32] [33]
+[33]
 <./figs/fnor6.png, id=201, 399.4925pt x 184.69pt>
 File: ./figs/fnor6.png Graphic file (type png)
 <use ./figs/fnor6.png>
-Package pdftex.def Info: ./figs/fnor6.png  used on input line 1570.
+Package pdftex.def Info: ./figs/fnor6.png  used on input line 1569.
 (pdftex.def)             Requested size: 227.62204pt x 105.2321pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[34] [35] (./lec01.bbl) [36] [37 <./figs/acce3.png>] [38 <./figs/acce4.png> <./
-figs/fnor1.png> <./figs/fnor2.png>] [39 <./figs/fnor3.png> <./figs/fnor5.jpeg>]
-[40 <./figs/fnor6.png>] (./lec01.aux)
+[34] [35]
+<./figs/irre1.png, id=208, 860.21375pt x 454.69875pt>
+File: ./figs/irre1.png Graphic file (type png)
+<use ./figs/irre1.png>
+Package pdftex.def Info: ./figs/irre1.png  used on input line 1712.
+(pdftex.def)             Requested size: 227.62204pt x 120.3142pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[36] (./lec01.bbl) [37] [38 <./figs/acce3.png>] [39 <./figs/acce4.png> <./figs/
+fnor1.png> <./figs/fnor2.png>] [40 <./figs/fnor3.png> <./figs/fnor5.jpeg>]
+[41 <./figs/fnor6.png> <./figs/irre1.png>] (./lec01.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1074,10 +1075,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 21549 strings out of 480247
- 456098 string characters out of 5896151
- 759615 words of memory out of 5000000
- 39062 multiletter control sequences out of 15000+600000
+ 21562 strings out of 480247
+ 456290 string characters out of 5896151
+ 760672 words of memory out of 5000000
+ 39074 multiletter control sequences out of 15000+600000
  480530 words of font info for 73 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  90i,21n,99p,1361b,300s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1096,10 +1097,10 @@ m/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on lec01.pdf (40 pages, 2741808 bytes).
+Output written on lec01.pdf (41 pages, 2781243 bytes).
 PDF statistics:
- 300 PDF objects out of 1000 (max. 8388607)
- 156 compressed objects within 2 object streams
+ 305 PDF objects out of 1000 (max. 8388607)
+ 158 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 332 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 337 words of extra memory for PDF output out of 10000 (max. 10000000)
 
