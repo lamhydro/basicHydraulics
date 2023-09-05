@@ -72,12 +72,21 @@ fill=green!30]
 
 %%%%%%%%
 \section{Sistemas de tuber\'ias simples} \label{tubs}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/simpTub.png}
+\caption{Acueductos por gravedad.} 
+\label{simpTub}
+\end{figure}
+
+
 Una tuber\'ia simple es aquella que tiene un di\'ametro y esta hecha de un solo material a lo largo de su longitud (ver figura~\ref{ttub}). La energ\'ia que mueve el flujo dentro de la tuber\'ia es gracias a la acci\'on de la gravedad (tanque a la entrada) o a un m\'aquina (sistema de bombeo a la entrada). Dichas tuber\'ias pueden tener cualquier tipo de accesorio a lo largo de su longitud lo que implica unas p\'erdidas menores. Las ecuaciones de Prandl, Von-Karman y Darcy-Weisbach vistas en la Unidad 1, son utilizadas para el dise\~no de tuber\'ias simples. Note que existe cierta dificultad para el disen\~no teniendo en cuenta que la ecuaci\'on de Colebrook-White para calcular el coeficiente de rugosidad $f$ es implicita y requiere un proceso iterativo para su soluci\'on. Los algoritmos que aqu\'i se discutir\'an, constituyen las bases para el an\'alisis y dise\~no de tuber\'ias m\'as complejos. 
 
 % Fig 2.4 from Salda 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{comp1.jpeg}
+\includegraphics[width=10cm]{./figs/ttub.jpeg}
 \caption{Tuber\'ia simple alimentada por un tanque de nivel constante y con descarga a la atmosfera (tomado de \cite{saldarriaga}).} 
 \label{ttub}
 \end{figure}
@@ -96,7 +105,7 @@ Los problemas en sistemas de tuber\'ias se clasifican de acuerdo con las variabl
  
 De acuerdo con las variables involucradas en sistemas de tuber\'ias, existen tres tipos de problemas:
 \begin{enumerate}
-\item \textbf{Comprobaci\'on de dise\~no}: En este tipo de problemas la tuber\'ia existe y se conoce su longitud, su di\'ametro, su rugosidad absoluta (material), al igual que todos los accesorios y sus coeficiente de p\'erdidas menores. Tambi\'en se conoce la energ\'ia impulsora, ya sea una cabeza de energ\'ia (gravitacional por diferencia de niveles) o una energ\'ia mec\'anica (suministrada por una bomba). Las propiedades del fluido como la densidad y la viscosidad absoluta son tambi\'en conocidas. La incognita es entonce el caudal o la velocidad del flujo en el sistema.
+\item \textbf{Comprobaci\'on de dise\~no}: En este tipo de problemas la tuber\'ia existe y se conoce su longitud, su di\'ametro, su rugosidad absoluta (material), al igual que todos los accesorios y sus coeficiente de p\'erdidas menores. Tambi\'en se conoce la energ\'ia impulsora, ya sea una cabeza de energ\'ia (gravitacional por diferencia de niveles) o una energ\'ia mec\'anica (suministrada por una bomba). Las propiedades del fluido como la densidad y la viscosidad absoluta son tambi\'en conocidas. La inc\'ognita es entonce el caudal o la velocidad del flujo en el sistema.
 \begin{table}[h!]
 \centering
 \begin{tabular}{c c}
@@ -143,9 +152,9 @@ $\varepsilon$, Q (o V), P (o H), $\sum K$, $\rho$, $\mu$, g, L &  D \\
 
 \subsection{Ecuaciones para la soluci\'on de problemas}
 %Si se tiene el sistema de la figura~\ref{comp1}, la ecuaci\'on de Bernoulli entre los puntos 1(entrada) y 2(salida) es:
-A continuacion se presentan las ecuaciones necesarias para resolver los tres problemas ya mencionadas. Estas ecuaciones fueron discutidas en el capitulo anterio. 
+A continuaci\'on se presentan las ecuaciones necesarias para resolver los tres problemas ya mencionadas. Estas ecuaciones fueron discutidas en el capitulo anterior. 
 
-Si se tiene una tuber\'ia simpre cuya entrada es en la secci\'on 1 y cuya salida es en la secci\'on, aplicando la ecuacion de Bernoulli entre 1 y 2, de manera general,  se tiene:
+Si se tiene una tuber\'ia simple cuya entrada es en la secci\'on 1 y cuya salida es en la secci\'on, aplicando la ecuaci\'on de Bernoulli entre 1 y 2, de manera general,  se tiene:
 
 % Fig 2.4 from Salda 
 %\begin{figure}[h]
@@ -160,7 +169,7 @@ Si se tiene una tuber\'ia simpre cuya entrada es en la secci\'on 1 y cuya salida
 \label{com1}
 \end{equation}
 
-donde $h_b$ es la cabeza de energ\'ia suministrada por la bomba y $h_t$ es la cabeza de energ\'ia sustraida por la turbina. La energia total en una seccion (e.g. 1 o 2) de flujo se puede expresar como $E = \frac{{V}^2}{2g}+ z + \frac{p}{\gamma}$, por lo tanto la ecuaci\'on~\ref{com1} se puede expresar como:
+donde $h_b$ es la cabeza de energ\'ia suministrada por la bomba y $h_t$ es la cabeza de energ\'ia sustra\'ida por la turbina. La energ\'ia total en una secci\'on (e.g. 1 o 2) de flujo se puede expresar como $E = \frac{{V}^2}{2g}+ z + \frac{p}{\gamma}$, por lo tanto la ecuaci\'on~\ref{com1} se puede expresar como:
 
 \begin{equation}
 E_1 - E_2 = h_f + h_e - h_b + h_t
@@ -181,7 +190,7 @@ y $h_e$ son las perdidas por accesorios, las cuales se pueden calcular como:
 \label{com3}
 \end{equation}
 
-El factor de fricci\'on $f$ en la ecuacio\'on~\ref{com2}, se calcula usando el diagrama de Moody o numericamente usando la ecuaci\'on Colebrook-White como:
+El factor de fricci\'on $f$ en la ecuacio\'on~\ref{com2}, se calcula usando el diagrama de Moody o num\'ericamente usando la ecuaci\'on Colebrook-White como:
  
 \begin{equation}
 \color{red}\boxed{\color{black}  \frac{1}{\sqrt{f}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) }
@@ -209,7 +218,7 @@ despejando $V$ en la ecuaci\'on~\ref{com6}, se tiene:
 \label{com7}
 \end{equation}
 
-En los tres tipos de problemas, el objetivo es usar las ecuaciones~\ref{com2}, ~\ref{com3}, ~\ref{com4}, ~\ref{com5} y ~\ref{com7} para su soluci\'on. Note que la ecuaci\'on~\ref{com4} es una ecuaci\'on implicita que requiere del uso de algun m\'etodo iterativo o numerico para su soluci\'on. Note que la ecuaci\'on~\ref{com7} se usa en particular para la soluci\'on de problemas de \emph{comprobaci\'on de dise\~no} y de \emph{dise\~no de tuber\'ias}.
+En los tres tipos de problemas, el objetivo es usar las ecuaciones~\ref{com2}, ~\ref{com3}, ~\ref{com4}, ~\ref{com5} y ~\ref{com7} para su soluci\'on. Note que la ecuaci\'on~\ref{com4} es una ecuaci\'on impl\'icita que requiere del uso de alg\'un m\'etodo iterativo o num\'erico para su soluci\'on. Note que la ecuaci\'on~\ref{com7} se usa en particular para la soluci\'on de problemas de \emph{comprobaci\'on de dise\~no} y de \emph{dise\~no de tuber\'ias}.
 
 
 %donde $H$ es la altura de la superficie de agua del tanque o la energ\'ia total en el punto 1. Teniendo en cuenta que la tuber\'ia del sistema en la figura~\ref{comp1} descarga a la atmosfera, la velocidad as\'i como la presi\'on se vuelven cero ($\frac{{V_2}^2}{2g}= 0$, $\frac{p_2}{\gamma}=0$). Note que la velocidad no necesariamente es cero cuando descarga a la atm\'osfera; se supone entonces que esta \'es cero all\'i.  Como consecuencia de esto, se asume que existen p\'erdidas menores en la salida de la tuber\'ia. La ecuaci\'on~\ref{com1} queda entonces como:
@@ -252,12 +261,12 @@ y luego ir a ~\ref{prf}. Si $Re > 2000$ continuar.
 \item \label{prf} Imprimir $f$
 \end{enumerate} 
 
-\subsubsection{Metodo de Newton-Raphson} \label{sec:nr}
-El m\'etodo de Newton-Rapson es un m\'etodo n\'umerico para la soluci\'on de ecuaciones implicitas. Converge m\'as r\'apido que el m\'etodo de punto fijo. Algunas condiciones para poder aplicar el m\'etodo son para un intervalo $l$ del dominio:
+\subsubsection{M\'etodo de Newton-Raphson} \label{sec:nr}
+El m\'etodo de Newton-Rapson es un m\'etodo num\'erico para la soluci\'on de ecuaciones impl\'icitas. Converge m\'as r\'apido que el m\'etodo de punto fijo. Algunas condiciones para poder aplicar el m\'etodo son para un intervalo $l$ del dominio:
 \begin{itemize}
 \item $f(x)$ debe estar definida en $l$.
-\item La funci\'on de iteracion de $f(x)$ deber ser continua en $l$.
-\item La funci\'on implicita $f(x)$ debe ser diferenciable ($f'(x)$) en $l$.
+\item La funci\'on de iteraci\'on de $f(x)$ deber ser continua en $l$.
+\item La funci\'on impl\'icita $f(x)$ debe ser diferenciable ($f'(x)$) en $l$.
 \end{itemize}
 
 En general la ecuaci\'on de Colebrook-White cumple estas condiciones. El m\'etodo consiste en el siguiente procedimiento:
@@ -347,7 +356,7 @@ A continuaci\'on se describe el proceso para solucionar este tipo de problemas q
 \item Aplicar el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr} para calcular $f$.
 \item Calcular $h_f$ usando la ecuaci\'on~\ref{com2}.
 \item Calcular $h_e$ usando la ecuaci\'on~\ref{com3}.
-\item Calcular la cabeza de energ\'ia de la bomba ($h_b$) despejandola de la ecuaci\'on~\ref{com1a}.
+\item Calcular la cabeza de energ\'ia de la bomba ($h_b$) despej\'andola de la ecuaci\'on~\ref{com1a}.
 \item Calcular la potencia $P$ como:
 
 \begin{equation}
@@ -360,17 +369,17 @@ donde $\eta$ es la eficiencia de la bomba.
 \end{enumerate} 
 
 \subsection{Disen\~o de la  tuber\'ia}
-A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar el diametro \'optimo comercial de la tuber\'ia.
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar el di\'ametro \'optimo comercial de la tuber\'ia.
 \begin{enumerate} 
 \item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $Q$, $E1$, $E2$, $h_t$ y $\eta$.
 \item Asumir un di\'ametro comercial inicial $D_i$ para la tuber\'ia. El $D_i$ inicial debe ser peque\~no (e.g. 1 pulg.) pero no tan peque\~no ya que el procedimiento no converge.
-\item \label{fri} Aplicar el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr}. Note que lo \'unico que cambia dentro de estos procedimientos es que la velocidad $V$ es calculada usando la ecuaci\'on~\ref{com7}; ya no es un dato de entrada. De aqui sale un valor de $f$ y $V$.
+\item \label{fri} Aplicar el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr}. Note que lo \'unico que cambia dentro de estos procedimientos es que la velocidad $V$ es calculada usando la ecuaci\'on~\ref{com7}; ya no es un dato de entrada. De aqu\'i sale un valor de $f$ y $V$.
 \item Calcular el nuevo caudal $Q_n =VA$ usando $D_i$, donde $A=\frac{\pi D_i^2}{4}$.
 \item Si $Q_n >= Q $ ir a ~\ref{pri}. Si $Q_n < Q$ tomar el siguiente di\'ametro comercial superior $D_{i+1}$ e ir a ~\ref{fri}.
 \item \label{pri} Imprimir $D$.
 \end{enumerate} 
 
-El dise\~no \'optimo busca, en la mayoria de los casos, la soluci\'on m\'as econ\'omica. Por lo tanto es necesario muchas veces dise\~nar con otros materiales (diferente valor de $\varepsilon$) para encontrar  la mejor soluci\'on.
+El dise\~no \'optimo busca, en la mayor\'ia de los casos, la soluci\'on m\'as econ\'omica. Por lo tanto es necesario muchas veces dise\~nar con otros materiales (diferente valor de $\varepsilon$) para encontrar  la mejor soluci\'on.
  
 
 %%%%%%%%
