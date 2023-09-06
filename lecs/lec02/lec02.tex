@@ -323,7 +323,7 @@ f = \frac{1}{x_{i+1}^2}
 
 
 
-\subsection{Comprobaci\'on de dise\~no}
+\subsection{Comprobaci\'on de dise\~no}\label{tubeSimpleCompro}
 A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar el valor de $V$ o $Q$.
 \begin{enumerate} 
 \item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $E1$, $E2$, $h_b$ y $h_t$.
@@ -619,39 +619,22 @@ Q_T = \sum_{i=1}^n Q_i
 \end{itemize}
 
 \subsection{Comprobaci\'on de dise\~no}
-Para este caso se conocen las caracter\'isticas fisicas de $n$ tuber\'ias, los accesorios en cada una de ellas, la energ\'ia disponible en el sistema y las propiedades del fluido circulante. Se desea entonces conocer los caudales individuales en cada tuber\'ia ($Q_i$). A continuaci\'on se presenta el procedimiento de c\'alculo: 
+Para este caso se conocen las caracter\'isticas f\'isicas de $n$ tuber\'ias, los accesorios en cada una de ellas, la energ\'ia disponible en el sistema y las propiedades del fluido circulante. Se desea entonces conocer los caudales individuales en cada tuber\'ia ($Q_i$). A continuaci\'on se presenta el procedimiento de c\'alculo: 
 \begin{enumerate}
 \item Leer: $\rho$, $\mu$ o $\nu$, $h_{b_i}$, $E1$ y $E2$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
-\item Para llevar a cabo este proceso es necesario, para la primera iteraci\'on, asumir un valor inicial de $h_{f_1} $. Se ha encontrado que $h_f \propto \frac{L}{D^5}$, de acuerdo con esto, \cite{saldarriaga} ha establecido que este valor inicial de $h_{f_1}$ se puede expresar como:
-
-\begin{equation} 
-h_{f_1} = E1-E2 = H_T \frac{L_1 / D_1^5}{\sum_{i=1}^{n} L_i / D_i^5 }
-\label{cpd1}
-\end{equation}
-
-\item \label{vve} Para la tuber\'ia $i=1$: calcular el valor de $V_1$ usando la ecuaci\'on~\ref{com81}, calcular el caudal $Q_T = Q_1 = V_1 A_1$, calcular el valor de $f_1$ usando uno de los dos procedimientos descritos en la secciones~\ref{sec:pf} y ~\ref{sec:nr}, calcular $h_{f_1}$ utilizando la ecuaci\'on~\ref{com2} y $h_{m_1}$  utilizando la ecuaci\'on~\ref{com3}.
-
-\item Para el resto de tuber\'ias  $i = 2 ... n$: calcular el caudal $Q_i$ usando la ecuaci\'on~\ref{cesp4}, calcular la velocidad $V_i = Q_i /A_i$, $f_i$ usando uno de los dos procedimientos descritos en la secciones~\ref{sec:pf} y ~\ref{sec:nr}, calcular $h_{f_i}$ utilizando la ecuaci\'on~\ref{com2} y $h_{m_i}$  utilizando la ecuaci\'on~\ref{com3}.
-
-\item Calcular la p\'erdida de energ\'ia total estimada $\hat{H_T}$ usando la ecuaci\'on~\ref{cesp1}. Si $|\hat{H_T} - H_T | \leq \eta$ donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir a ~\ref{prf}. Si $|\hat{H_T} - H_T | > \eta$, actualizar el valor de $h_{f_1}$, como:
-
-\begin{equation} 
-h_{f_1}^t  = h_{f_1}^{t-1}  + \Delta h_{f_1}
-\label{cpd2}
-\end{equation}
-
-donde $\Delta h_{f_1}$, se calcula como
-
-\begin{equation} 
-\Delta h_{f_i} = (H_T - \hat{H_T}) \frac{L_1 / D_1^5}{\sum_{i=1}^{n} L_i / D_i^5 }
-\label{cpd3}
-\end{equation}
-
-Una v\'ez calculado el nuevo $h_{f_1}$ ir a ~\ref{vve}.
-
-\item \label{prf} Imprimir $Q_i$ donde $i = 1 ... n$. 
+\item Para cada una de las $n$ tuber\'ias en paralelo, hacer la comprobaci\'on de diseno para tuber\'ias simples descrito en la secci\'on~\ref{tubeSimpleCompro}. Se obtendran $n$ caudales $Q$ y $n$ velocidades $V$ para cada tuber\'ia. 
+\item El caudal total $Q_T$ se obtendra usando la ecuaci\'on~\ref{para5}. 
 
 \end{enumerate}
+
+\subsection{C\'alculo de la potencia requerida}
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar la cabeza de energ\'ia de la bomba ($h_b$) y su potencia  ($P$).
+
+\begin{enumerate}
+\item Leer: $\rho$, $\mu$ o $\nu$, $h_{b_i}$, $E1$ y $E2$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
+\item 
+\end{enumerate}
+
 
 %%%%%%%%
 \section{Sistemas de tuber\'ias ramificadas} 
