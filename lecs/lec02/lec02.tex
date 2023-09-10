@@ -389,7 +389,7 @@ Las tuber\'ias en serie son dos o mas tuber\'ias conectadas una tras de otra con
 % Fig 5.1 from Salda 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{comp2.jpeg}
+\includegraphics[width=10cm]{./figs/comp2.jpeg}
 \caption{Tres tuber\'ias en serie conectando dos tanques en donde $Q_{L_i}$ representa un caudal lateral de salida al final de la tuber\'ia $i$ (tomado de \cite{saldarriaga}).} 
 \label{ttuse}
 \end{figure}
@@ -567,15 +567,171 @@ Es importante revisar que $h_{m_v}$ sea positivo, de lo contrario esto supondr\'
 
 
 %%%%%%%
+\section{Tuber\'ias con perdida uniforme de caudal por unidad de longitud (Tubos porosos)}
+En sistemas de riego moderno existen sistemas de tuber\'ias que estan dise\~nados para entregar un caudal por unidad de longitud con el objetivo  de lograr uniformidad en el riego (ver figura~\ref{porot}). Estas tuber\'ias se conocen como \emph{tubos porosos} o \emph{mangueras exudantes}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/porot2.jpg}
+\caption{Sistema de riego con tuber\'ia porosa.} 
+\label{porot2}
+\end{figure}
+
+% Fig 5.6 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/porot.jpeg}
+\caption{Tuber\'ia porosa con entreaga de caudal por unidad de longitud ($q$) y su l\'inea de gradiente hidr\'aulico (tomado de \cite{saldarriaga}).} 
+\label{porot}
+\end{figure}
+Si se analiza la tuber\'ia de la figura~\ref{porot}, se sabe que la presi\'on disminuye a lo largo de la tuber\'ia debido a las p\'erdidas asi como la velocidad ya que el caudal disminuye por unidad de longitud. De la figura~\ref{porot}, tenemos:
+
+\begin{itemize}
+\item Conservaci\'on de la masa
+\begin{equation}
+Q_x = Q_1 - q x
+\label{poro1}
+\end{equation}
+donde $Q_x$ es el caudal en la tuber\'ia a una distancia $x$ de la secci\'on de entrada 1, $q$ es el caudal descargado por la tuber\'ia por unidad de longitud, $Q_1$ es el caudal a la entrada (1) de la tuber\'ia.
+
+\item Pendiente de la l\'inea de gradiente hidr\'aulico
+Aplicando la ecuaci\'on de Darcy-Weisbach (para p\'erdidas por fricci\'on), e ignorando p\'erdidas menores,  para una longitud infinitesimal de tuber\'ia $dx$,  en donde no existe salida de caudal, se tiene:
+\begin{equation}
+d h_f = f_x \frac{dx}{D}\frac{V_x^2}{2g}
+\label{poro2}
+\end{equation}
+donde $d h_f$ es la p\'erdida de energ\'ia a lo largo de $dx$, $f_x$ es el factor de fricci\'on en $dx$ y $V_x$ es la velocidad en $dx$. Expresando la ecuaci\'on~\ref{poro2} en t\'erminos del caudal $Q_x$, se tiene:
+\begin{equation}
+\frac{d h_f}{dx} = \frac{f_x}{2g}\frac{Q_x^2}{D A^2}
+\label{poro3}
+\end{equation}
+
+o
+
+\begin{equation}
+\frac{d h_f}{dx} = \frac{8 f_x Q_x^2}{\pi^2 g D^5}
+\label{poro4}
+\end{equation}
+
+reemplazando la ecuaci\'on~\ref{poro1} en la ecuaci\'on~\ref{poro4}, se tiene:
+
+\begin{equation}
+\frac{d h_f}{dx} = \frac{8}{\pi^2 g D^5} f_x \left( Q_1 - q x\right)^2
+\label{poro5}
+\end{equation}
+
+Integrando la ecuaci\'on~\ref{poro5} para calcular las p\'erdidas a lo largo de la longitud de la tuber\'ia ($L$), se tiene:
+
+\begin{equation}
+ \color{red}\boxed{\color{black} h_f = \frac{8}{\pi^2 g D^5} \int_0^L f_x \left( Q_1 - q x\right)^2 dx }
+\label{poro6}
+\end{equation}
+
+donde $f_x$ esta dado por la ecuaci\'on de Colebrook-White:
+
+\begin{equation}
+%\color{red}\boxed{\color{black}  \frac{1}{\sqrt{f}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) }
+\frac{1}{\sqrt{f_x}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52 \nu}{V_x D \sqrt{f_x}} \right) 
+\label{poro7}
+\end{equation}
+
+Note que la ecuaci\'on~\ref{poro6} no se puede resolver analiticamente ya que el valor de $f_x$, coeficiente de fricci\'on a una distancia $x$, se calcula a trav\'es de la ecuaci\'on implicita ~\ref{poro7}. Sin embargo la ecuaci\'on~\ref{poro6} se puede resolver aproximadamente utilizando los m\'etodos siguientes:
+
+\begin{enumerate}
+\item Factor de fricci\'on constante\\
+Si se supone que $f_x$ es constante y se calcula como el promedio del factor de fricci\'on a la entrada ($f_1$) y a la salida ($f_L$):
+
+\begin{equation}
+f_x = \frac{f_1 + f_L}{2}
+\label{poro8}
+\end{equation}
+
+integrando la ecuaci\'on~\ref{poro6} para $x$, se tiene:
+
+\begin{equation}
+ h_f = \frac{8 f_x}{\pi^2 g D^5} \left( Q_1^2 x - Q_1 q x^2  + \frac{q^2 x^3 }{3} \right) \Bigg|_{x=0}^{x=L}
+\label{poro9}
+\end{equation}
+
+en donde se obtiene:
+
+\begin{equation}
+\color{red}\boxed{\color{black} h_f = \frac{8 f_x}{\pi^2 g D^5} \left( Q_1^2 L - Q_1 q L^2  + \frac{q^2 L^3 }{3} \right) }
+\label{poro10}
+\end{equation}
+
+\item Factor de fricci\'on constante tramo a tramo\\
+Para utilizar este m\'etodo se supone que la tuber\'ia de longitud $L$ est\'a dividida en $n$ tramos de igual longitud $l=L/n$. Por lo tanto se calculan las p\'erdidas para cada tramo de la tuber\'ia suponiendo que $f_x$ es constante en el tramo, y luego se suman. Las p\'erdidas de energ\'ia $h_{f_i}$ para un tramo $i$ donde $i=1 \cdots n$ son:
+
+\begin{equation}
+\color{red}\boxed{\color{black} h_{f_i} = \frac{8 f_{x_i}}{\pi^2 g D^5} \left( Q_{1_i}^2 l - Q_{1_i} q l^2  + \frac{q^2 l^3 }{3} \right) }
+\label{poro11}
+\end{equation}
+
+donde $Q_{1_i}$ es el caudal transportado por el tramo $i$ e igual a $Q_{1_i} = Q_1 - ql(i-1)$. Note que $f_{x_i}$ es el promedio entre tramos:
+
+\begin{equation}
+f_{x_i} = \frac{f_i + f_{i+1}}{2}
+\label{poro12}
+\end{equation}
+
+Las p\'erdidas totales a lo largo de la tuber\'ia se calculan como:
+
+\begin{equation}
+h_f = \sum_{i=1}^{n} h_{f_i}
+\label{poro13}
+\end{equation}
+
+\end{enumerate}
+\end{itemize}
+
+El procedimiento para el calculo de la p\'erdida de energ\'ia en una tuber\'ia porosa de describe a continuaci\'on.
+\begin{enumerate}
+\item Calcular el caudal de entrada a la tuber\'ia  ($Q_1$) de longitud $L$ como:
+\begin{equation}
+Q_1 = q L
+\label{poro14}
+\end{equation}
+
+\item C\'alculo de la zona laminar. Debido a que la manguera o tuber\'ia va perdiendo caudal su velocidad disminuye y el flujo, en alg\'un punto, se convierte en laminar. Para calcular ese punto, se asume un n\'umero de Reynolds cr\'itico (donde cambia a laminar) igual a $Re_c=2000$. Dicho caudal, para el cual ocurre $Re_c$, se calcular como:
+
+\begin{equation}
+Q_c = \frac{Re_c \pi D \nu}{4}
+\label{poro15}
+\end{equation}
+
+la distancia desde el final de la tuber\'ia en donde el flujo cambia a laminar, se calcula como:
+
+\begin{equation}
+L_c = \frac{L_c Q_c}{Q_1}
+\label{poro16}
+\end{equation}
+
+Teniendo en cuenta que en los \'ultimos tramos de la tuber\'ia ($x < x_c$) el n\'umero de Reynolds tiende a cero,  el $f$ tiende a infinito. Por esto, es necesario dejar cierta longitud de la tuber\'ia en donde no se c\'alculan p\'erdidas. En estos ultimos tramos, las p\'erdidas son muy peque\~nas por lo tanto no influyen en el resultado final. Dicho valor puede ser el 0.3\% de $L$.
+
+\item Implementar cualquiera de los dos m\'etodos descritos: 1) factor de fricci\'on constante para la tuber\'ia y 2) factor de fricci\'on constante tramo a tramo.
+
+\end{enumerate}
+
+
+%%%%%%%
 \section{Sistemas de tuber\'ias en paralelo} 
 Las tuber\'ias en paralelo son un conjunto de dos tuber\'ias o mas las cuales se derivan de un nodo com\'un (nodo de entrada) y convergen hacia otro nodo (nodo de salida). Esto implica que, de acuerdo a la \emph{ley de conservaci\'on de la masa}, la suma de los caudales que viajan por cada una de las tuber\'ias debe ser igual aguas arriba del nodo de entrada y aguas abajo del nodo de salida; esto implica que el caudal de entrada y de salida de las tuber\'ias es le mismo. En casos pr\'acticos y cotidianos, los sistemas de tuber\'ias en paralelo est\'an limitados a m\'aximo 3 o 4 tuber\'ias, y son mas comunes los sistemas de dos tuber\'ias. En estos sistemas, cada tuberia puede tener longitudes, di\'ametros, accesorios y materiales diferentes.  
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/comp31.jpeg}
+\caption{Aumento de la capacidad de un acueducto veredal mediante la construcci\'on de una tercera tuber\'ia.}
+\label{comp3}
+\end{figure}
+
 
 \subsection{Ecuaciones para la soluci\'on de problemas}
 Teniendo en cuenta las tuber\'ias en paralelo de la figura~\ref{comp3}, se plantean las siguientes ecuaciones:
 % Fig 5.6 from Salda 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{comp3.jpeg}
+\includegraphics[width=10cm]{./figs/comp3.jpeg}
 \caption{Esquema tridimensional de dos tuber\'ias en paralelo y sus lineas de energ\'ia, con un nodo de entrada 1 y un nodo de salida 2. (tomado de \cite{saldarriaga}).} 
 \label{comp3}
 \end{figure}
