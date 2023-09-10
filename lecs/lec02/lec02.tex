@@ -368,7 +368,7 @@ donde $\eta$ es la eficiencia de la bomba.
 \item Imprimir $h_b$ y $P$.
 \end{enumerate} 
 
-\subsection{Disen\~o de la  tuber\'ia}
+\subsection{Disen\~o de la  tuber\'ia}\label{tubeSimpleDesign}
 A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar el di\'ametro \'optimo comercial de la tuber\'ia.
 \begin{enumerate} 
 \item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $Q$, $E1$, $E2$, $h_t$ y $\eta$.
@@ -618,7 +618,7 @@ Q_T = \sum_{i=1}^n Q_i
 \end{equation}
 \end{itemize}
 
-\subsection{Comprobaci\'on de dise\~no}
+\subsection{Comprobaci\'on de dise\~no} 
 Para este caso se conocen las caracter\'isticas f\'isicas de $n$ tuber\'ias, los accesorios en cada una de ellas, la energ\'ia disponible en el sistema y las propiedades del fluido circulante. Se desea entonces conocer los caudales individuales en cada tuber\'ia ($Q_i$). A continuaci\'on se presenta el procedimiento de c\'alculo: 
 \begin{enumerate}
 \item Leer: $\rho$, $\mu$ o $\nu$, $h_{b}$ (Cabeza de la bomba), $E1$ y $E2$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
@@ -626,7 +626,7 @@ Para este caso se conocen las caracter\'isticas f\'isicas de $n$ tuber\'ias, los
 \item El caudal total $Q_T$ se obtendra usando la ecuaci\'on~\ref{para5}. 
 \end{enumerate}
 
-\subsection{C\'alculo de la potencia requerida}
+\subsection{C\'alculo de la potencia requerida}\label{tubeParallPoten}
 A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar la presi\'on en el nodo de entrada (1) o en el nodo de salida (2) de las tuber\'ias en paralelo. Con esto es posible calcular la potencia consumida por el flujo a trav\'es de las tuber\'ias en paralelo. 
 
 Uno de los problemas es que, a pesar de que el caudal total $Q_T$ es un dato dado en el problema, no se sabe como \'este se distribuye a trav\'es de las tuber\'ias. Para esto se ha encontrado la siguiente ecuaci\'on a partir de la ecuaci\'on de Darcy-Weisbach:
@@ -649,20 +649,34 @@ donde
 Q_T^* = \sum_{i=1}^n Q_i^k 
 \label{para8}
 \end{equation}
-es el caudal total para la iteraci\'on $k$. El proceso de iteracion termina cuando $Q_T = Q_T^*$.
+es el caudal total estimado para la iteraci\'on $k$. El proceso de iteracion termina cuando $Q_T = Q_T^*$.
 
 A continuaci\'on se describe el algoritmo para encontrar la presi\'on (energ\'ia) en el nodo de entrada o de salida al sistema y la potencia disipada. 
 
 \begin{enumerate}
-\item Leer: $\rho$, $\mu$ o $\nu$, $h_{b}$ (Cabeza de la bomba), $Q_T$ y $E1$($E2$). Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
-\item Inicializar el caudal transportado por la tuber\'ia 1 $Q_1$ usando la ecuaci\'on~\ref{para6}.
-\item Con base en el caudal $Q_1$ determinar la energ\'ia en el nodo 1 $E_1$ o en el nodo 2 $E_2$ siguiente el algoritmo de la secci\'on~\ref{tubeSimplePoten}.
-\item Una vez calculada la energ\'ia en el nodo 1 $E_1$ o en el node 2 $E_2$ para cada una de las $n-1$ tuber\'ias restantes, calcular el caudal $Q_i$ siguiendo el procedimiento descrito en la secci\'on~\ref{tubeSimpleCompro}.  
+\item Leer: $\rho$, $\mu$ o $\nu$, $h_{b}$ (Cabeza de la bomba), $Q_T$ y $E1$ o $E2$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
+\item Inicializar el caudal transportado por la tuber\'ia 1 ($Q_1$) usando la ecuaci\'on~\ref{para6}.
+\item \label{la1} Con base en el caudal $Q_1$ determinar la energ\'ia en el nodo 1 ($E_1$) o en el nodo 2 ($E_2$) siguiendo el algoritmo de la secci\'on~\ref{tubeSimplePoten}.
+\item Una vez calculada la energ\'ia en el nodo 1 ($E_1$) o en el node 2 ($E_2$) para cada una de las $n-1$ tuber\'ias restantes, calcular el caudal $Q$ siguiendo el procedimiento descrito en la secci\'on~\ref{tubeSimpleCompro}.  
+\item Una vez calculado el caudal $Q$ en cada tuber\'ia, calcular el caudal total estimado $Q_T^*$ para la iteraci\'on $k$. Si $|Q_T - Q_T^*| \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir a ~\ref{prf}. Si $|Q_T - Q_T^*| > \eta$, corregir $Q_1$ usando la ecuaci\'on~\ref{para7} e ir ~\ref{la1}.
+\item \label{prf} Imprimir $E1$ o $E2$ y $Q_i$ donde $i=1 \cdots n$. Con base en las p\'erdidas a lo largo de la tuber\'ia $i$, calcular la potencia disipada en el sistema.
 \end{enumerate}
 
+\subsection{Disen\~o de  tuber\'ias en paralelo}
+En la practica en ingenier\'ia no es com\'un dise\~nar sistemas de tuber\'ias en paralelo debido a su ineficiencia a nivel hidr\'aulico ya que el per\'imetro mojado de 2 o mas tuber\'ias es mayor que el per\'imetro mojado de una sola tuber\'ia. Este dise\~no solo se justifica si el di\'ametro de dise\~no es mayor al di\'ametro comercial disponible. De ser as\'i, cada tuber\'ia se dise\~na como una tuber\'ia simple para un caudal $Q_T/n$, donde $n$ es el n\'umero de tuber\'ias en paralelo. Sin embargo, lo que si es com\'un es la ampliaci\'on de un sistema conformado por una tuber\'ia simple ya existente debido a un incremento en la demanda, lo cual es com\'un en acueductos y sistemas de riego. Para esta ampliaci\'on se dise\~na y se construye una tuber\'ia paralela a la ya existen para la cual se conocen sus caracter\'isticas. Para este dise\~no se conoce el nuevo caudal total $Q_T$, la energ\'ia en el nodo de entrada al sistema y las caracter\'isticas de las tuber\'ias. Las inc\'ognitas son el di\'ametro de la nueva tuber\'ia y la energ\'ia en el nodo de salida del sistema. Note que la energ\'ia en el nodo final ser\'a diferente a la energ\'ia inicial para este nodo (antes de la ampliaci\'on) ya que la hidr\'aulica de la tuber\'ia existente se modifica tambi\'en.
+
+A continuaci\'on se presenta un algoritmo para el dise\~no de la nueva tuber\'ia (n\'umero 2), en donde la tuber\'ia 1 es existente.
+
+\begin{enumerate}
+\item Leer: $\rho$, $\mu$ o $\nu$, $h_b$ (Cabeza de la bomba), $Q_1$, $Q_T$, $E1$ (energ\'ia del nodo a la entrada) y $E2$ (energ\'ia del nodo a la salida. Esta energ\'ia cambia durante el proceso). Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina) donde $i=1 \cdots 2$.
+\item Calcular el caudal por la tuber\'ia 2: $Q_2 = Q_T - Q_1$.
+\item Dise\~nar la tuber\'ia 2 como una tuber\'ia simple siguiendo el procedimiento descrito en la secci\'on~\ref{tubeSimpleDesign}. Teniendo en cuenta que, debido a que el di\'ametro comercial siempre deja pasar mas caudal, $Q_2$ es mayor al caudal deseado (caudal inicial), la energ\'ia en el nodo 2 aumenta y por lo tanto el caudal $Q_1$ cambia tambi\'en.
+\item De aqu\'i en adelante se vuelve un problema de c\'alculo de la potencia requerida para dos tuber\'ias en paralelo partiendo del numeral 2 en el procedimiento descrito en la secci\'on~\ref{tubeParallPoten}. 
+\end{enumerate}
 
 %%%%%%%%
 \section{Sistemas de tuber\'ias ramificadas} 
+En la practica, los sistemas de tuber\'ias suelen ser mas complejos que tuber\'ias simples, en serie o en paralelo, por lo que las tuber\'ias suelen estar conectadas unas con otras formando diferentes configuraciones. Las tuber\'ias ramificadas o \emph{redes abiertas de tuberi\'ias} suelen ser las tuberias principales 
 
 %%%%%%%%
 \section{Redes de distribuci\'on: M\'etodo de an\'alisis de Cross}
