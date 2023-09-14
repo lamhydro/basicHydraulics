@@ -373,10 +373,10 @@ A continuaci\'on se describe el proceso para solucionar este tipo de problemas q
 \begin{enumerate} 
 \item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $Q$, $E1$, $E2$, $h_t$ y $\eta$.
 \item Asumir un di\'ametro comercial inicial $D_i$ para la tuber\'ia. El $D_i$ inicial debe ser peque\~no (e.g. 1 pulg.) pero no tan peque\~no ya que el procedimiento no converge.
-\item \label{fri} Aplicar el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr}. Note que lo \'unico que cambia dentro de estos procedimientos es que la velocidad $V$ es calculada usando la ecuaci\'on~\ref{com7}; ya no es un dato de entrada. De aqu\'i sale un valor de $f$ y $V$.
+\item \label{frii} Aplicar el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr}. Note que lo \'unico que cambia dentro de estos procedimientos es que la velocidad $V$ es calculada usando la ecuaci\'on~\ref{com7}; ya no es un dato de entrada. De aqu\'i sale un valor de $f$ y $V$.
 \item Calcular el nuevo caudal $Q_n =VA$ usando $D_i$, donde $A=\frac{\pi D_i^2}{4}$.
-\item Si $Q_n >= Q $ ir a ~\ref{pri}. Si $Q_n < Q$ tomar el siguiente di\'ametro comercial superior $D_{i+1}$ e ir a ~\ref{fri}.
-\item \label{pri} Imprimir $D$.
+\item Si $Q_n >= Q $ ir a ~\ref{prii}. Si $Q_n < Q$ tomar el siguiente di\'ametro comercial superior $D_{i+1}$ e ir a ~\ref{frii}.
+\item \label{prii} Imprimir $D$.
 \end{enumerate} 
 
 El dise\~no \'optimo busca, en la mayor\'ia de los casos, la soluci\'on m\'as econ\'omica. Por lo tanto es necesario muchas veces dise\~nar con otros materiales (diferente valor de $\varepsilon$) para encontrar  la mejor soluci\'on.
@@ -389,7 +389,7 @@ Las tuber\'ias en serie son dos o mas tuber\'ias conectadas una tras de otra con
 % Fig 5.1 from Salda 
 \begin{figure}[h]
 \centering
-\includegraphics[width=10cm]{./figs/comp2.jpeg}
+\includegraphics[width=12cm]{./figs/comp2.jpeg}
 \caption{Tres tuber\'ias en serie conectando dos tanques en donde $Q_{L_i}$ representa un caudal lateral de salida al final de la tuber\'ia $i$ (tomado de \cite{saldarriaga}).} 
 \label{ttuse}
 \end{figure}
