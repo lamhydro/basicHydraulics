@@ -402,15 +402,15 @@ Teniendo en cuenta las tuberias en serie de la figura~\ref{ttuse}, se plantean l
 \Delta E = E1-E2 = H_T = z_1 - z_2 = h_e + h_{f_1} + h_{m_1} + h_{f_2} + h_{m_2} + h_{f_3} + h_{m_3} + h_s
 \label{cesp}
 \end{equation}
-donde $H_T$ es la diferencia de niveles entre los dos tanque; la energ\'ia total disponible en el sistema, $h_e$ p\'erdidas menores de entrada, $h_{f_i}$ p\'erdidas por fricci\'on en el tubo $i$, $h_{m_i}$ p\'erdidas menores (por v\'alvulas, uniones, etc) en la tuber\'ia $i$ y $h_s$ p\'erdidas por salida.
+donde $H_T$ es la diferencia de niveles entre los dos tanque (la energ\'ia total disponible en el sistema), $h_e$ p\'erdidas menores de entrada, $h_{f_i}$ p\'erdidas por fricci\'on en el tubo $i$, $h_{m_i}$ p\'erdidas menores (por v\'alvulas, uniones, etc) en la tuber\'ia $i$ y $h_s$ p\'erdidas por salida.
 
-Para un numero $n$ de tuber\'ias en series la ecuaci\'on~\ref{cesp} se puede excribir como:
+Para un numero $n$ de tuber\'ias en serie la ecuaci\'on~\ref{cesp} se puede escribir como:
 \begin{equation}
 H_T = h_e + \sum_{i=1}^{n} h_{f_i} + \sum_{i=1}^{n} \sum_{j=1}^{m} h_{m_{i,j}} + h_s 
 \label{cesp1}
 \end{equation}
 
-donde $m$ es numero de accesorios en la tuber\'ia $i$; $m$ puede ser variable. La ecuaci\'on~\ref{cesp1} establece que la energ\'ia disponible en el sistema se disipa en p\'erdidas a lo largo de la tuber\'ia. Puede haber el caso en el cual tengamos, por ejemplo, una tuber\'ia horizontal por lo cual una bomba ser\'ia necesaria para impulsar el flujo por lo que en la parte izquierda de la ecuaci\'on~\ref{cesp} tendr\'iamos $H_T + h_b$. Tambi\'en se puede dar el caso de una turbina en alguna secci\'on de la tuber\'ia por lo que habria que sumarle a la derecha de la ecuaci\'on $h_t$.
+donde $m$ es numero de accesorios en la tuber\'ia $i$; $m$ puede ser variable. La ecuaci\'on~\ref{cesp1} establece que la energ\'ia disponible en el sistema se disipa en p\'erdidas a lo largo de la tuber\'ia. Puede haber el caso en el cual tengamos, por ejemplo, una tuber\'ia horizontal por lo cual una bomba ser\'ia necesaria para impulsar el flujo por lo que en la parte izquierda de la ecuaci\'on~\ref{cesp} tendr\'iamos $H_T=h_b$. Tambi\'en se puede dar el caso de una turbina en alguna secci\'on de la tuber\'ia por lo que habr\'ia que sumarle a la derecha de la ecuaci\'on $h_t$.
 
 Desarrollando la ecuaci\'on~\ref{cesp1}, se tiene:
 
@@ -482,7 +482,7 @@ A continuaci\'on se describe el proceso para solucionar este tipo de problemas q
 \item Para llevar a cabo este proceso es necesario, para la primera iteraci\'on, asumir un valor inicial de $h_{f_1} $. Se ha encontrado que $h_f \propto \frac{L}{D^5}$, de acuerdo con esto, \cite{saldarriaga} ha establecido que este valor inicial de $h_{f_1}$ se puede expresar como:
 
 \begin{equation} 
-h_{f_1} = E1-E2 = H_T \frac{L_1 / D_1^5}{\sum_{i=1}^{n} L_i / D_i^5 }
+h_{f_1} = H_T \frac{L_1 / D_1^5}{\sum_{i=1}^{n} L_i / D_i^5 }
 \label{cpd1}
 \end{equation}
 
