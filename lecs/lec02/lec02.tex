@@ -1,4 +1,4 @@
-\documentclass[10pt, oneside]{article} 
+\documentclass[11pt, oneside]{article} 
 \usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, graphicx, geometry}
 \usepackage[most]{tcolorbox}
 \usepackage{xcolor}
@@ -736,8 +736,7 @@ Teniendo en cuenta las tuber\'ias en paralelo de la figura~\ref{comp3}, se plant
 \label{comp3}
 \end{figure}
 
-\begin{itemize}
-\item Conservaci\'on de la energ\'ia
+\subsubsection*{Conservaci\'on de la energ\'ia}
 
 \begin{equation}
 \Delta E = E1-E2 = H_T = h_{f_1}^1 + h_{m_1}^1 + h_{f_2}^1 + h_{m_2}^1 + h_{f_3}^1 + h_{m_3}^1 + h_{f_4}^1 + h_{m_4}^1 + h_{f_5}^1
@@ -758,7 +757,7 @@ H_T = \sum_{i=1}^{n_1} h_{f_i}^1 + \sum_{i=1}^{m_1} h_{m_i}^1 = \sum_{i=1}^{n_2}
 \label{para3}
 \end{equation}
 
-\item Conservaci\'on de la masa
+\subsubsection*{Conservaci\'on de la masa}
 De acuerdo con la \emph{ley de conservaci\'on de la masa}, el caudal que entra al nodo de entrada ($Q_T$), debe ser igual a la suma de los caudales que se distribuyen en las tuber\'ias e igual al caudal en el nodo de salida. Para el esquema de la figura~\ref{comp3}, se tiene que:
 
 \begin{equation}
@@ -772,7 +771,6 @@ donde $Q_1$ es el caudal que transporta la tuber\'ia 1 y $Q_2$ es el caudal que 
 Q_T = \sum_{i=1}^n Q_i
 \label{para5}
 \end{equation}
-\end{itemize}
 
 \subsection{Comprobaci\'on de dise\~no} 
 Para este caso se conocen las caracter\'isticas f\'isicas de $n$ tuber\'ias, los accesorios en cada una de ellas, la energ\'ia disponible en el sistema y las propiedades del fluido circulante. Se desea entonces conocer los caudales individuales en cada tuber\'ia ($Q_i$). A continuaci\'on se presenta el procedimiento de c\'alculo: 
@@ -832,7 +830,91 @@ A continuaci\'on se presenta un algoritmo para el dise\~no de la nueva tuber\'ia
 
 %%%%%%%%
 \section{Sistemas de tuber\'ias ramificadas} 
-En la practica, los sistemas de tuber\'ias suelen ser mas complejos que tuber\'ias simples, en serie o en paralelo, por lo que las tuber\'ias suelen estar conectadas unas con otras formando diferentes configuraciones. Las tuber\'ias ramificadas o \emph{redes abiertas de tuberi\'ias} suelen ser las tuberias principales 
+En la practica, los sistemas de tuber\'ias suelen ser mas complejos que tuber\'ias simples, en serie o en paralelo, por lo que las tuber\'ias suelen estar conectadas unas con otras formando diferentes configuraciones. Las tuber\'ias ramificadas o \emph{redes abiertas de tuberi\'ias} suelen ser las tuber\'ias principales (l\'ineas madres o expresas) en sistemas de acueductos, sistemas de irrigaci\'on o sistemas de tratamiento de agua, que est\'an compuestas ademas por tanques de almacenamiento, desarenadores, plantas de tratamiento y obras de captaci\'on (ver~\ref{opn1}). En muchos casos estas redes abiertas est\'n conectadas a redes cerradas. 
+
+% Fig 6.1 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/opn1.jpeg}
+\caption{Red abierta compuesta por tuber\'ias, tanques de almacenamiento y nodos (tomado de \cite{saldarriaga}).} 
+\label{opn1}
+\end{figure}
+
+Los problemas que se estudiaran para redes cerradas son el problema de comprobaci\'on de dise\~no, el cual busca determinar los caudales en cada una de las tuber\'ias, y el de dise\~no de la red en donde se determina el di\'ametro de cada tuber\'ia. Note que el problema de calculo de la potencia no es pertinente ya que la energ\'ia del sistema siempre es un dato dado que es determinado por la localizaci\'on topogr\'afica de la red o por la la energ\'ia suministrada por un bomba en una tuber\'ia. 
+
+\subsection{Ecuaciones para la soluci\'on de problemas}
+Teniendo en cuenta la figura~\ref{opn2}, se plantean las siguientes leyes de conservaci\'on para la soluci\'on de problemas de redes abiertas.
+
+% Fig 6.2 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/opn2.jpeg}
+\caption{Red abierta conectando un tanque de suministro A, al cual llega un caudal total demandado, con los tanques de almacenamiento B,C y D, de los cuales se demandan caudales (tomado de \cite{saldarriaga}).} 
+\label{opn2}
+\end{figure}
+
+
+\subsubsection*{Conservaci\'on de la masa}
+En una red abierta es necesario conservar la masa a lo largo de toda la red. Se plantea entonces que en cada nodo se conserva la masa, teniendo en cuenta las posibles demandas desde los tanques de almacenamiento y desde los nodos. Analizando la red de la figura~\ref{opn2} se tiene que el tanque de distribuci\'on A conduce el caudal total demandado a trav\'es de la tuber\'ia madrea AU hacia el nodo U de donde se distribuye el caudal hacia los tanques B,C y D, de donde se derivan unas demandas. De acuerdo con esto, la ecuaci\'on de conservaci\'on de la masa en el nodo U es:
+
+\begin{equation}
+\sum_{i=1}^{n} Q_{iU} - Q_{L_U} = 0
+\label{opne1}
+\end{equation}
+
+donde $Q_{iU}$ es el caudal en la tuber\'ia $iU$, $Q_{L_U}$ es el caudal demandado en el nodo $U$ que puede ser cero, y $n$ es el n\'umero de tuber\'ias conectadas con el nodo $U$. 
+
+\subsubsection*{Conservaci\'on de la energ\'ia}
+De acuerdo con la figura~\ref{opn2}, la ecuacion de conservaci\'on de la energ\'ia entre un tanque $i = A,B,C,D$ y un nodo $U$, se expresa como:
+
+\begin{equation}
+| Z_i - Z_U | =Ht_{iU}= \left( f_{iU} \frac{L_{iU}}{D_{iU}} + \sum K_{iU} \right)\frac{V_{iU}^2}{2g}
+\label{opne2}
+\end{equation}
+
+donde $Ht_{iU}$ es la energ\'ia disponible entre $iU$, $Z_U$ es la cabeza piezom\'etrica en la uni\'on (siempre es desconocida), $Z_i$ es la cabeza piezom\'etrica en el tanque $i$, $V_{iU}$ es la velocidad de flujo en la tuber\'ia $iU$, $d_{iU}$ es el di\'ametro en la tuber\'ia $iU$, $L_{iU}$ es la longitud de la tuber\'ia $iU$, $f_{iU}$ es el factor de fricci\'on de Darcy en la tuber\'ia $iU$ y $\sum K_{iU}$ es el coeficiente de global de p\'erdidas menores en la tuber\'ia $iU$.
+
+La ecuaci\'on~\ref{opne2} se puede expresar en t\'erminos del caudal como:
+
+\begin{equation}
+| Z_i - Z_U | =Ht_{iU}= \left( f_{iU} \frac{L_{iU}}{2gD_{iU}} + \frac{\sum K_{iU}}{2g} \right)\frac{Q_{iU}^2}{A_{iU}^2}
+\label{opne3}
+\end{equation}
+
+
+\subsection{Comprobaci\'on de dise\~no} 
+En este caso se conocen las caracter\'isticas del fluido transportado, las caracter\'isticas de las tuber\'ias (di\'ametros, rugosidades y longitudes), las cotas de los tanques que integran el sistema y las posibles demandas de caudal en los nodos. Se desea conocer el caudal total demandado y las demandas de caudal en cada uno de los tanques $Q_{L_i}$. El proceso iterativo se base en el proceso de comprobaci\'on de dise\~no para tuber\'ias simples aplicado a cada tuber\'ia del sistema. Sin embargo como las cabeza de energ\'ia ($Z_{U_j}$) en los nodos no son conocidas estas se deben ir corrigiendo en el proceso de iteraci\'on hasta cumplir (aproximadamente) con la ecuaci\'on~\ref{opne1} en cada nodo. A continuaci\'on se presenta un algoritmo para resolver este tipo de problemas:
+
+\begin{enumerate}
+\item Leer: $\rho$ y $\mu$ o $\nu$. Para cada tuber\'ia $i=1\cdots n$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{p_i}$ y $\eta_i$ (eficiencia de la bomba). Para cada embalse o tanque de almacenamiento $i$ leer la cota piezom\'etrica $Z_i$. Para cada nodo $j=1 \cdots m$, leer la demanda de caudal en el nodo $Q_{L_{U_j}}$.
+
+\item Estimar los valores iniciales de $Z_{U_j}$. Esta estimaci\''on se debe hacer cuidadosamente ya que el algoritmo puede converger hacia una soluci\'on errada (quedar atrapado en un minimo local de la funci\'on objetivo). En el caso en donde no existan bombas en las tuber\'ias los valores de $Z_{U_j}$ pueden asumirse por debajo del tanque principal y por encima de los tanques a los que se distribuye el flujo. En el caso de un tramo con un sistema de bombeo $Z_{U_j}$ puede asumirse por debajo del tanque al cual se esta bombeando. 
+
+\item Para cada tuber\'ia $i=1 \cdots n$, calcular el caudal siguiendo el algoritmo de comprobaci\'on de dise\~no para tuber\'ias simples descrito en la secci\'on~\ref{tubeSimpleCompro}.
+
+\item Para cada nodo $j = 1 \cdots m$ comprobar que $| \sum_{i=1}^{n} Q_{ij} - Q_{L_{U_j}} | \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$). Note que $Q_{ij}$ es positivo si entra al nodo y es negativo si sale del nodo. Si esta condici\'on no se cumple se debe corregir $Z_{U_j}$ de la siguiente manera:
+
+\begin{equation}
+Z_{U_j}^t = Z_{U_j}^{t+1} + \Delta Z_{U_j} 
+\label{opne4}
+\end{equation}
+
+donde $\Delta Z_{U_j}$ es la correci\'on que se debe calcular siguiendo la metodolog\'ian de R.J. Cornish (1940) como:
+
+\begin{equation}
+\Delta Z_{U_j} = \frac{2 \left( \sum_{i=1}^{n} Q_{ij} - Q_{L_{U_j}} \right ) }{\sum_{i=1}^{n} \frac{Q_{ij}}{Z_i - Z_{U_j}}} 
+\label{opne5}
+\end{equation}
+
+Note que en la medida que la condicio\'on $| \sum_{i=1}^{n} Q_{ij} - Q_{L_{U_j}} |$ se va acercando a cero, el valor de $\Delta Z_{U_j}$ tambi\'en se acerca a cero. El proceso terminar cuando $\sum_{j=1}^m | \Delta Z_{U_j} | \leq \eta $.
+
+\item Imprimir $Q_{ij}$, donde $i= 1 \cdots n$ y $j=1 \cdots m$. Tambi\'en es conveniente imprimir $Z_{U_j}$.
+
+\end{enumerate}
+
+
+\subsection{Disen\~o de  redes abiertas de tuber\'ias}
+
 
 %%%%%%%%
 \section{Redes de distribuci\'on: M\'etodo de an\'alisis de Cross}
