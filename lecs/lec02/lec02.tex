@@ -912,9 +912,22 @@ Note que en la medida que la condicio\'on $| \sum_{i=1}^{n} Q_{ij} - Q_{L_{U_j}}
 
 \end{enumerate}
 
-
 \subsection{Disen\~o de  redes abiertas de tuber\'ias}
+En este caso se conocen las caracter\'isticas del fluido transportado, las caracter\'isticas de las tuber\'ias (rugosidades y longitudes), las cotas de los tanques que integran el sistema y las posibles demandas de caudal en los nodos. Se desea conocer el di\'ametro de cada tuber\'ia $D_i$. El proceso iterativo se base en el proceso de comprobaci\'on de dise\~no para tuber\'ias simples aplicado a cada tuber\'ia del sistema, asumiendo previamente los di\'ametros de cada tuber\'ia. Sin embargo como las cabeza de energ\'ia ($Z_{U_j}$) en los nodos no son conocidas estas se deben ir corrigiendo en el proceso de iteraci\'on hasta cumplir (aproximadamente) con la ecuaci\'on~\ref{opne1} en cada nodo. A continuaci\'on se presenta un algoritmo para resolver este tipo de problemas:
 
+\begin{enumerate}
+\item Leer: $\rho$ y $\mu$ o $\nu$. Para cada tuber\'ia $i=1\cdots n$, leer: $\varepsilon_i$, $L_i$, $\sum K_i$, $h_{p_i}$, $\eta_i$ (eficiencia de la bomba) y $Q_i$. Para cada embalse o tanque de almacenamiento $i$ leer la cota piezom\'etrica $Z_i$. Para cada nodo $j=1 \cdots m$, leer la demanda de caudal en el nodo $Q_{L_{U_j}}$.
+
+\item Estimar los valores iniciales de $Z_{U_j}$. Esta estimaci\''on se debe hacer cuidadosamente ya que el algoritmo puede converger hacia una soluci\'on errada (quedar atrapado en un m\'inimo local de la funci\'on objetivo). En el caso en donde no existan bombas en las tuber\'ias los valores de $Z_{U_j}$ pueden asumirse por debajo del tanque principal y por encima de los tanques a los que se distribuye el flujo. En el caso de un tramo con un sistema de bombeo $Z_{U_j}$ puede asumirse por debajo del tanque al cual se esta bombeando. 
+
+\item \label{diseOp} Disenar cada tuber\'ia $i=1 \cdots n$  de la red abierta siguiento el algoritmo de dise\~no para tuberias simples descrito en la secci\'on~\ref{tubeSimpleDesign}.
+
+\item Para cada nodo $j = 1 \cdots m$ y con base en los caudales ($Q_{ij}$) calculados (generalmetne diferentes a los leidos en el paso 1) para cada tuber\'ia en el paso anterior, determinar la correcci\'on de cabeza de energ\'ia para cada nodo con base en la ecuaci\'on~\ref{opne5}. 
+
+\item Verificar que la condici\'on $\sum_{j=1}^m | \Delta Z_{U_j} | \leq \eta $ donde donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$). Note que $| \Delta Z_{U_j} = Z_{U_j}^t - Z_{U_j}^{t+1} |$. Si la condici\'on anterior se cumple ir a ~\ref{imprD}. Si la condici\'on no se cumple ir a ~\ref{diseOp}.
+
+\item \label{imprD} Imprimir $D_i$, donde $i= 1 \cdots n$. 
+\end{enumerate}
 
 %%%%%%%%
 \section{Redes de distribuci\'on: M\'etodo de an\'alisis de Cross}
