@@ -524,9 +524,9 @@ A continuaci\'on se describe el proceso para solucionar este tipo de problemas q
 
 
 \subsection{Disen\~o de la  tuber\'ia}
-Como se habia mencionado anteriormente, el dise\~no, y en este caso, de tuber\'ias en serie es un problema complejo por que eso implica buscar, en la mayoria de los casos, la soluci\'on optima desde el punto de vista economico. Por esto, no solo basta con determinar el diametro si no tambien el material de la tuber\'ia. A esto hay que sumarle que los coeficiente de perdida dependen del material de la tuber\'ia, esta es otra variable que hay que tener en cuenta. Esto quiere decir que pueden existir multiples soluciones para un mismo problema. 
+Como se hab\'ia mencionado anteriormente, el dise\~no, y en este caso, de tuber\'ias en serie es un problema complejo por que eso implica buscar, en la mayor\'ia de los casos, la soluci\'on \'optima desde el punto de vista econ\'omico. Por esto, no solo basta con determinar el di\'ametro si no tambi\'en el material de la tuber\'ia. A esto hay que sumarle que los coeficientes de perdida dependen del material de la tuber\'ia, esta es otra variable que hay que tener en cuenta. Esto quiere decir que pueden existir multiples soluciones para un mismo problema. 
 
-A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar el diametro \'optimo comercial $D_i$ de la tuber\'ia para $i=1...n$. En este proceso se asume que el material es un dato dado. 
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar el di\'ametro \'optimo comercial $D_i$ de la tuber\'ia para $i=1...n$. En este proceso se asume que el material es un dato dado. 
 
 \begin{enumerate}
 \item Leer: $\rho$, $\mu$ o $\nu$, $K_e$ (coef. de p\'erdidas a la entrada), $K_s$ (coef. de p\'erdidas a la salida), $E1$, $E2$ y $Q_T = Q_1$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$,  $\sum K_i$, $Q_{L_i}$, $h_{b_i}$, $h_{t_i}$ y $\eta_i$ (eficiencia de la bomba o turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
@@ -536,7 +536,7 @@ A continuaci\'on se describe el proceso para solucionar este tipo de problemas q
 h_{f_i} = H_T \frac{L_i \cos \theta_i}{\sum_{i=1}^n L_i \cos \theta_i}
 \label{desp1}
 \end{equation}
-donde $\theta_i$ es el angulo formado entre la horizontal y la tuber\'ia. Usualmente este angulo es el mismo para todas las tuber\'ias ya que todas tienen la misma pendiente, por lo tanto $\theta = \frac{z_1 - z_2}/\sum_{i=1}^n L_i$, donde $z_1$ es la altura a la entrada del sistema y $z_2$ es la altura a la salida del sistema.
+donde $\theta_i$ es el angulo formado entre la horizontal y la tuber\'ia. Usualmente este angulo es el mismo para todas las tuber\'ias ya que todas tienen la misma pendiente, por lo tanto $\theta = \frac{z_1 - z_2}/{\sum_{i=1}^n L_i}$, donde $z_1$ es la altura a la entrada del sistema y $z_2$ es la altura a la salida del sistema.
 \item \label{fff} Para cada tuber\'ia $i=1...n$
 \begin{enumerate}
 \item \label{fri} Asumir un di\'ametro comercial inicial $D_i$. El $D_i$ inicial debe ser peque\~no (e.g. 1 pulg.) pero no tan peque\~no ya que el procedimiento no converge.
