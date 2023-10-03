@@ -930,10 +930,35 @@ En este caso se conocen las caracter\'isticas del fluido transportado, las carac
 \end{enumerate}
 
 %%%%%%%%
-\section{Redes de distribuci\'on: M\'etodo de an\'alisis de Cross}
+\section{Redes cerradas}
+Las redes cerradas son tambi\'en conocidas como  \emph{redes de distribuci\'on} (en sistemas de abastecimiento de agua). Estas redes se caracterizan por tener al menos un circuito cerrado garatizando que cualquier zona de la red sea alcanzada por una tuber\'ia, lo cual incrementa la confiabilidad del abastecimiento. Al igual que en los casos de sistemas de tuber\'ias ya vistos, las ecuaciones para el an\'alisis de redes cerradas se basan en las ecuaciones de conservaci\'on de la energ\'ia y de la masa, as\'i como de las ecuaciones para el calculo de las p\'erdidas.
+Se presentan aqu\'i los diferentes m\'etodos de an\'alisis para la comprobaci\'on de dise\~no, en donde se calculan los caudales en las tuber\'ias y las presiones en los nodos de las redes. Los m\'etodos se presentan en orden cronol\'ogico, en donde los m\'etodos m\'as antiguos son menos eficientes desde el punto de vista computacional.  
+
+\subsection{Principios fundamentales del an\'alisis de redes cerradas}
+Si se considera la red cerrada de la figura~\ref{cpn1} en donde $Q_{D_1}$, $Q_{D_2}$, $Q_{D_3}$, $\cdots$, $Q_{D_Nu}$ son los caudales demandados en los nodos donde $Nu$ es el n\'umero de nodos de la red, y $Q_{e_1}$,  $Q_{e_2}$, $\cdots$, $Q_{e_m}$ son los caudales que alimentan la red, la ecuacion de continuidad se puede escribir como:
+
+% Fig 7.1 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/cpn1.jpeg}
+\caption{Red cerrada de tuber\'ias en donde se indican los caudales demandados y los caudales que la alimentan (tomado de \cite{saldarriaga}).} 
+\label{cpn1}
+\end{figure}
+
+\begin{equation}
+\sum_{i=1}^m Q_e = \sum_{i=1}^Nu Q_D
+\label{cpne1}
+\end{equation}
+
+
+
+
+\subsection{M\'etodo de Hardy-Cross con correcci\'on de caudales}
+\subsection{M\'etodo de Hardy-Cross con correcci\'on de cabezas}
+\subsection{M\'etodo de an\'alisis lineal}
+
 
 %%%%%%%%
-\section{Redes de distribuci\'on: M\'etodo de an\'alisis lineal}
 
 
 
