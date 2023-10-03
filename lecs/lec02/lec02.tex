@@ -822,14 +822,23 @@ En la practica en ingenier\'ia no es com\'un dise\~nar sistemas de tuber\'ias en
 A continuaci\'on se presenta un algoritmo para el dise\~no de la nueva tuber\'ia (n\'umero 2), en donde la tuber\'ia 1 es existente.
 
 \begin{enumerate}
-\item Leer: $\rho$, $\mu$ o $\nu$, $h_b$ (Cabeza de la bomba), $Q_1$, $Q_T$, $E1$ (energ\'ia del nodo a la entrada) y $E2$ (energ\'ia del nodo a la salida. Esta energ\'ia cambia durante el proceso). Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina) donde $i=1 \cdots 2$.
+\item Leer: $\rho$, $\mu$ o $\nu$, $h_b$ (Cabeza de la bomba), $Q_1$, $Q_T$, $E1$ (energ\'ia del nodo a la entrada) y $E2$ (energ\'ia del nodo a la salida. Esta energ\'ia cambia durante el proceso). Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina) donde $i=1 \cdots 2$. Leer el diametro $D$ de la tuber\'ia existente.
 \item Calcular el caudal por la tuber\'ia 2: $Q_2 = Q_T - Q_1$.
 \item Dise\~nar la tuber\'ia 2 como una tuber\'ia simple siguiendo el procedimiento descrito en la secci\'on~\ref{tubeSimpleDesign}. Teniendo en cuenta que, debido a que el di\'ametro comercial siempre deja pasar mas caudal, $Q_2$ es mayor al caudal deseado (caudal inicial), la energ\'ia en el nodo 2 aumenta y por lo tanto el caudal $Q_1$ cambia tambi\'en.
 \item De aqu\'i en adelante se vuelve un problema de c\'alculo de la potencia requerida para dos tuber\'ias en paralelo partiendo del numeral 2 en el procedimiento descrito en la secci\'on~\ref{tubeParallPoten}. 
 \end{enumerate}
 
 %%%%%%%%
-\section{Sistemas de tuber\'ias ramificadas} 
+\section{Redes abiertas de tuber\'ias} 
+% Fig from leonardo albornoz tesis
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{./figs/opn0.png}
+\caption{Red de embalses de para el sumunistro de agua en Bogot\'a D.C.} 
+\label{opn0}
+\end{figure}
+
+
 En la practica, los sistemas de tuber\'ias suelen ser mas complejos que tuber\'ias simples, en serie o en paralelo, por lo que las tuber\'ias suelen estar conectadas unas con otras formando diferentes configuraciones. Las tuber\'ias ramificadas o \emph{redes abiertas de tuberi\'ias} suelen ser las tuber\'ias principales (l\'ineas madres o expresas) en sistemas de acueductos, sistemas de irrigaci\'on o sistemas de tratamiento de agua, que est\'an compuestas ademas por tanques de almacenamiento, desarenadores, plantas de tratamiento y obras de captaci\'on (ver~\ref{opn1}). En muchos casos estas redes abiertas est\'n conectadas a redes cerradas. 
 
 % Fig 6.1 from Salda 
@@ -840,12 +849,12 @@ En la practica, los sistemas de tuber\'ias suelen ser mas complejos que tuber\'i
 \label{opn1}
 \end{figure}
 
-Los problemas que se estudiaran para redes cerradas son el problema de comprobaci\'on de dise\~no, el cual busca determinar los caudales en cada una de las tuber\'ias, y el de dise\~no de la red en donde se determina el di\'ametro de cada tuber\'ia. Note que el problema de calculo de la potencia no es pertinente ya que la energ\'ia del sistema siempre es un dato dado que es determinado por la localizaci\'on topogr\'afica de la red o por la la energ\'ia suministrada por un bomba en una tuber\'ia. 
+Los problemas que se estudiaran para redes cerradas son el problema de comprobaci\'on de dise\~no, el cual busca determinar los caudales en cada una de las tuber\'ias, y el de dise\~no de la red en donde se determina el di\'ametro de cada tuber\'ia. Note que el problema de c\'alculo de la potencia no es pertinente ya que la energ\'ia del sistema siempre es un dato dado que es determinado por la localizaci\'on topogr\'afica de la red o por la energ\'ia suministrada por un bomba en una tuber\'ia. 
 
 \subsection{Ecuaciones para la soluci\'on de problemas}
 Teniendo en cuenta la figura~\ref{opn2}, se plantean las siguientes leyes de conservaci\'on para la soluci\'on de problemas de redes abiertas.
 
-% Fig 6.2 from Salda 
+% Fig 6.4 from Salda 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{./figs/opn2.jpeg}
@@ -883,7 +892,7 @@ La ecuaci\'on~\ref{opne2} se puede expresar en t\'erminos del caudal como:
 
 
 \subsection{Comprobaci\'on de dise\~no} 
-En este caso se conocen las caracter\'isticas del fluido transportado, las caracter\'isticas de las tuber\'ias (di\'ametros, rugosidades y longitudes), las cotas de los tanques que integran el sistema y las posibles demandas de caudal en los nodos. Se desea conocer el caudal total demandado y las demandas de caudal en cada uno de los tanques $Q_{L_i}$. El proceso iterativo se base en el proceso de comprobaci\'on de dise\~no para tuber\'ias simples aplicado a cada tuber\'ia del sistema. Sin embargo como las cabeza de energ\'ia ($Z_{U_j}$) en los nodos no son conocidas estas se deben ir corrigiendo en el proceso de iteraci\'on hasta cumplir (aproximadamente) con la ecuaci\'on~\ref{opne1} en cada nodo. A continuaci\'on se presenta un algoritmo para resolver este tipo de problemas:
+En este caso se conocen las caracter\'isticas del fluido transportado, las caracter\'isticas de las tuber\'ias (di\'ametros, rugosidades y longitudes), las cotas de los tanques que integran el sistema y las posibles demandas de caudal en los nodos. Se desea conocer el caudal total demandado y las demandas de caudal en cada uno de los tanques $Q_{L_i}$. El proceso iterativo se basa en el proceso de comprobaci\'on de dise\~no para tuber\'ias simples aplicado a cada tuber\'ia del sistema. Sin embargo como las cabeza de energ\'ia ($Z_{U_j}$) en los nodos no son conocidas estas se deben ir corrigiendo en el proceso de iteraci\'on hasta cumplir (aproximadamente) con la ecuaci\'on~\ref{opne1} en cada nodo. A continuaci\'on se presenta un algoritmo para resolver este tipo de problemas:
 
 \begin{enumerate}
 \item Leer: $\rho$ y $\mu$ o $\nu$. Para cada tuber\'ia $i=1\cdots n$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{p_i}$ y $\eta_i$ (eficiencia de la bomba). Para cada embalse o tanque de almacenamiento $i$ leer la cota piezom\'etrica $Z_i$. Para cada nodo $j=1 \cdots m$, leer la demanda de caudal en el nodo $Q_{L_{U_j}}$.
