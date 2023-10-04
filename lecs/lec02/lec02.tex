@@ -944,7 +944,8 @@ Las redes cerradas son tambi\'en conocidas como  \emph{redes de distribuci\'on} 
 Se presentan aqu\'i los diferentes m\'etodos de an\'alisis para la comprobaci\'on de dise\~no, en donde se calculan los caudales en las tuber\'ias y las presiones en los nodos de las redes. Los m\'etodos se presentan en orden cronol\'ogico, en donde los m\'etodos m\'as antiguos son menos eficientes desde el punto de vista computacional.  
 
 \subsection{Principios fundamentales del an\'alisis de redes cerradas}
-Si se considera la red cerrada de la figura~\ref{cpn1} en donde $Q_{D_1}$, $Q_{D_2}$, $Q_{D_3}$, $\cdots$, $Q_{D_Nu}$ son los caudales demandados en los nodos donde $Nu$ es el n\'umero de nodos de la red, y $Q_{e_1}$,  $Q_{e_2}$, $\cdots$, $Q_{e_m}$ son los caudales que alimentan la red, la ecuacion de continuidad se puede escribir como:
+\subsubsection*{Conservaci\'on de la masa}
+Si se considera la red cerrada de la figura~\ref{cpn1} en donde $Q_{D_1}$, $Q_{D_2}$, $Q_{D_3}$, $\cdots$, $Q_{D_Nu}$ son los caudales demandados en los nodos y $Q_{e_1}$,  $Q_{e_2}$, $\cdots$, $Q_{e_m}$ son los caudales que alimentan la red, la ecuacion de continuidad se puede escribir como:
 
 % Fig 7.1 from Salda 
 \begin{figure}[h]
@@ -955,9 +956,44 @@ Si se considera la red cerrada de la figura~\ref{cpn1} en donde $Q_{D_1}$, $Q_{D
 \end{figure}
 
 \begin{equation}
-\sum_{i=1}^m Q_e = \sum_{i=1}^Nu Q_D
+\sum_{i=1}^{m} Q_{e} =  \sum_{i=1}^{Nu} Q_{D}
 \label{cpne1}
 \end{equation}
+
+donde $m$ es el n\'umero de nodos con entrada de caudales a la red y $Nu$ es el n\'umero de nodos con demandas. La ecuaci\'on de continuidad para cada nodo, se puede expresar como:
+
+\begin{equation}
+\sum_{i=1}^{NT_i} Q_{ij} - Q_{Di} = 0
+\label{cpne2}
+\end{equation}
+
+donde $NT_i$ es el n\'umero de tubos que llegan al nodo $i$ y $Q_{ij}$ es el caudal que pasa por la tuber\'ia $ij$ hacia el nodo $i$ desde el nodo $j$. $Q_{ij}$ es positivo si entra a $i$ y negativo si sale de este.
+
+\subsubsection*{Conservaci\'on de la energ\'ia}
+
+Para cada tramo $ij$, se puede expresar la ecuaci\'on de conservaci\'on de la energ\'ia como:
+
+\begin{equation}
+H_j - H_i = \sum K_{m_{ij}} \frac{V_{ij}^2}{2g} + h_f
+\label{cpne3}
+\end{equation}
+
+En t\'erminos de caudal, la ecuaci\'on~\ref{cpne3} se expresa como:
+
+\begin{equation}
+H_j - H_i = \frac{Q_{ij}^2}{2gA_{ij}^2}\left( \sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} \right)
+\label{cpne4}
+\end{equation}
+
+despejando $Q_{ij}$ de la ecuaci\'on~\ref{cpne4}, se tiene:
+
+\begin{equation}
+Q_{ij} = \left(\frac{H_j - H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right)^{\frac{1}{2}} \sqrt{2g} A_{ij}
+\label{cpne5}
+\end{equation}
+
+Reemplazando la ecuaci\'on~\ref{cpne5} en la ecuaci\'on~\ref{cpne2}, donde:
+
 
 
 
