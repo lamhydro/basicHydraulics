@@ -1014,14 +1014,14 @@ Q_{ij} = \left(\frac{H_j - H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} 
 Con el fin de tener en cuenta el signo de los caudales, la ecuaci\'on anterior se expresa como 
 
 \begin{equation}
-Q_{ij} = \left(\frac{H_j - H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right) |H_j - H_i|^{\frac{1}{2}} \sqrt{2g} A_{ij}
+Q_{ij} = \left(\frac{H_j - H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right) |H_j - H_i|^{-\frac{1}{2}} \sqrt{2g} A_{ij}
 \label{cpne6}
 \end{equation}
 
 Reemplazando la ecuaci\'on~\ref{cpne5} en la ecuaci\'on~\ref{cpne2}, se tiene:
 
 \begin{equation}
-\color{red}\boxed{\color{black} Q_{ij} = \sum_{j=1}^{NT_i} \left(\frac{H_j - H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right)^{\frac{1}{2}} \sqrt{2g} A_{ij} - Q_{Di} }
+\color{red}\boxed{\color{black} \sum_{j=1}^{NT_i} \left(\frac{H_j - H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right)^{\frac{1}{2}} \sqrt{2g} A_{ij} - Q_{Di} }
 \label{cpne7}
 \end{equation}
 
@@ -1100,26 +1100,26 @@ Despejando $\Delta Q_i$ y simplificando la ecuaci\'on~\ref{cpne14}, tenemos:
 \subsubsection*{Comprobaci\'on de dise\~no y dise\~no}
 Pasos para la comprobaci\'on de dise\~no y para el dise\~no usando el m\'etodo de Hardy-Cross con correci\'on de caudales.
 \begin{enumerate}
-\item Definici\'on de la topolog\'ia de la red. Los circuitos estan conformados por tuber\'ias y la conecci\'on de las tuber\'ias en los circuitos es positiva siguiendo las manecillas del reloj y negativo en sentido contrario. Todos los tubos deben quedar incluidos en almenos un circuito. Definir los nodos con cabeza conocida. 
-\item Si existe mas de un nodo con cabeza conocida es necesario conectarlos a trav\'es de una tuber\'ia imaginaria formando un circuito que los una. En estas tuber\'ias imaginarias se deben suponer sus caracter\'isticas con el fin de calcular el caudal hipot\'etico que circular\'ia por ellas. Sin embargo en las correciones de caudal, los tubos imaginarios no deben ser incluidos.
+\item Definici\'on de la topolog\'ia de la red. Los circuitos est\'an conformados por tuber\'ias y la conecci\'on de las tuber\'ias en los circuitos es positiva siguiendo las manecillas del reloj y negativo en sentido contrario. Todos los tubos deben quedar incluidos en almenos un circuito. Definir los nodos con cabeza conocida. 
+\item Si existe m\'as de un nodo con cabeza conocida es necesario conectarlos a trav\'es de una tuber\'ia imaginaria formando un circuito que los una. En estas tuber\'ias imaginarias se deben suponer sus caracter\'isticas con el fin de calcular el caudal hipot\'etico que circular\'ia por ellas. Sin embargo en las correcciones de caudal, los tubos imaginarios no deben ser incluidos.
 \item Se suponen unos caudales iniciales en cada una de las tuber\'ias de la red. Recuerde que los caudales que van en el sentido de las manecillas del reloj son positivos, de lo contrario son negativos. Recuerde ademas que los caudales que entran a un nodo son positivos y los que salen son negativos.
 \item Para cada circuito, calcular las p\'erdidas a lo largo de cada tuber\'ia utilizando la ecuaci\'on~\ref{cpne9}.
-\item Se calcula la sumatoria de las p\'erdidas a lo largo del circuito, teniendo en cuenta que los flujos en sentido de las manecillas del reloj arrojan perdidas positivas y las flujos en sentido contrario dan p\'erdidas negativas. Si la sumatoria es diferente de cero, se procede a calcular la correcci\'on de caudal para las tuber\'ias del circuito con la ecuaci\'on~\ref{cpne15}. Note que el balance de perdidas se deben restar las cabezas de bombas que existiesen en alguna tuber\'ia del circuito. 
-\item Los pasos 4 y 5 se repiten para el numerto de circuitos. Note que hay tubos comunes en circuitos lo que implica que el caudal por ellos debe estar corregido para el siguiente circuito en la iteraci\'on. 
-\item los pasos 4,5 y 6 se repiten hasta que las ecuaciones de cabeza (ecuaci\'on~\ref{cpne7}) en los nodos que conforman el circuito se cumplan, es decir, cuando su valor sea muy cercano a 0.  
+\item Se calcula la sumatoria de las p\'erdidas a lo largo del circuito, teniendo en cuenta que los flujos en sentido de las manecillas del reloj arrojan perdidas positivas y los flujos en sentido contrario dan p\'erdidas negativas. Si la sumatoria es diferente de cero, se procede a calcular la correcci\'on de caudal para las tuber\'ias del circuito con la ecuaci\'on~\ref{cpne15}. Note que al balance de perdidas se deben restar las cabezas de bombas que existiesen en alguna tuber\'ia del circuito. 
+\item Los pasos 4 y 5 se repiten para el n\'umero de circuitos. Note que hay tubos comunes en circuitos lo que implica que el caudal por ellos debe estar corregido para el siguiente circuito en la iteraci\'on. 
+\item Los pasos 4,5 y 6 se repiten hasta que las ecuaciones de cabeza (ecuaci\'on~\ref{cpne7}) en los nodos que conforman el circuito se cumplan, es decir, cuando su valor sea muy cercano a 0.  
 \end{enumerate}
 
 \subsection{M\'etodo de Hardy-Cross con correcci\'on de cabezas}
-Este m\'etodo se utiliza para resolver las ecuaciones de cabeza (ecuaci\'on~\ref{cpne7}) para los nodos de la red. Las ecuaciones del m\'etodo son las ecuaciones~\ref{cpne5}. Por lo tanto en lugar de suponer caudales en las tuber\'ias, se supone la cabeza en cada uno de los ($Nu-1$) nodos de la red. Note que la cabeza en almenos uno de los nodos debe ser conocida. Luego, se ajustan las cabezas en cada uno de los nodos y el proceso de ajuste se repite hasta que la ecuaci\'on de continuidad en los nodos (ecuaci\'on~\ref{cpne2}) se cumpla. 
+Este m\'etodo se utiliza para resolver las ecuaciones de cabeza (ecuaci\'on~\ref{cpne7}) para los nodos de la red. Las ecuaciones del m\'etodo son las ecuaciones~\ref{cpne5}. Por lo tanto en lugar de suponer caudales en las tuber\'ias, se supone la cabeza en cada uno de los ($Nu-1$) nodos de la red. Note que la cabeza en al menos uno de los nodos debe ser conocida. Luego, se ajustan las cabezas en cada uno de los nodos y el proceso de ajuste se repite hasta que la ecuaci\'on de continuidad en los nodos (ecuaci\'on~\ref{cpne2}) se cumpla. 
 
-Si se considera que la cabeza $H_i$ en un nodo $i$ esta sobrestimado o subestimada, el factor de ajuste de cabeza en un nodo $i$ es $\Delta H_i$, la ecuaci\'on~\ref{cpne5} se convierte en:
+Si se considera que la cabeza $H_i$ en un nodo $i$ esta sobrestimada o subestimada, el factor de ajuste de cabeza en un nodo $i$ es $\Delta H_i$, la ecuaci\'on~\ref{cpne5} se convierte en:
 
 \begin{equation}
 Q_{ij} = \left(\frac{ (H_j - H_i)- \Delta H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right)^{\frac{1}{2}} \sqrt{2g} A_{ij}
 \label{cpne16}
 \end{equation}
 
-Analizando el termino $\left( (H_j - H_i)- \Delta H_i \right)^{1/2} $ utilizando el teorema del binomio, la ecuaci\'on~\ref{cpne16} se expresa como:
+Analizando el termino $\left( (H_j - H_i)- \Delta H_i \right)^{1/2} $ y utilizando el teorema del binomio, la ecuaci\'on~\ref{cpne16} se expresa como:
 
 \begin{equation}
 Q_{ij} = \frac{\sqrt{2g} A_{ij} }{\left( \sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} \right)^{\frac{1}{2}}} \left((H_j - H_i)^{1/2} -\frac{1}{2} (H_j - H_i)^{-1/2}\Delta H_i \right)  
@@ -1136,7 +1136,7 @@ Teniendo en cuenta la ecuaci\'on~\ref{cpne5} y reemplazando la ecuaci\'on~\ref{c
 Despejando el factor de correcci\'on de cabezas ($\Delta H_i$) para el nodo $i$, se tiene que:
 
 \begin{equation}
-\Delta H_i = \frac{2(\sum Q_{ij}-Q_{Di})}{\sum \frac{Q_{ij}}{H_j - H_i }}
+\color{red}\boxed{\color{black} \Delta H_i = \frac{2(\sum Q_{ij}-Q_{Di})}{\sum \frac{Q_{ij}}{H_j - H_i }} }
 \label{cpne19}
 \end{equation}
 
@@ -1161,19 +1161,95 @@ H_j - H_i = \frac{Q_{ij}^2}{2gA_{ij}^2}\left( \sum K_{m_{ij}}  + f_{ij}\frac{L_{
 \label{cpne22}
 \end{equation}
 
-Teniendo en cuenta que la ecuaci\'on~\ref{cpne22} tiene la forma de una polin\'omio de grado 2, $aQ_{ij}^2 + bQ_{ij} + c$, $Q_{ij} = 0$, la soluci\'on es encontrar las ra\'ices reales del polinomio.
+Teniendo en cuenta que la ecuaci\'on~\ref{cpne22} tiene la forma de una polin\'omio de grado 2, $aQ_{ij}^2 + bQ_{ij} + c = 0$,  la soluci\'on es encontrar las ra\'ices reales del polin\'omio.
 
 \subsubsection*{Comprobaci\'on de dise\~no y dise\~no}
 Pasos para la comprobaci\'on de dise\~no y para el dise\~no usando el m\'etodo de Hardy-Cross con correci\'on de cabezas.
+\begin{enumerate}
+\item Definici\'on de la topolog\'ia de la red. Los circuitos est\'an conformados por tuber\'ias y la conecci\'on de las tuber\'ias en los circuitos es positiva siguiendo las manecillas del reloj y negativo en sentido contrario. Todos los tubos deben quedar incluidos en al menos un circuito. Definir los nodos con cabeza conocida. 
+\item Suponer la cabeza de energ\'ia en cada uno de los nodos de la red. Note que al menos un nodo es de cabeza conocida y constante en el tiempo. Entre mejor la estimaci\'on de cabezas iniciales, m\'as r\'apido converger\'a el m\'etodo.
+\item Calcular el caudal en cada una de las tuber\'ias utilizando la ecuaci\'on~\ref{cpne5}.
+\item Utilizando la ecuaci\'on~\ref{cpne2}, comprobar la conservaci\'on de la masa en el nodo $i$. Si esta ecuaci\'on no se cumple ($> \eta$ = 1x10$^{-6}$), se debe corregir la cabeza del nodo utilizando la ecuaci\'on~\ref{cpne19}.
+\item Se repiten los pasos 3 y 4 para cada nodo.
+\item El algoritmo se detendr\'a una vez la ecuaci\'on~\ref{cpne2} se cumpla (con un margen de error muy peque\~no) en todos los nodos de la red. 
+\end{enumerate}
 
 
-
-
-
-
+\subsection{Comparaci\'on de los m\'etodos de Hardy-Cross}
+\begin{itemize}
+\item El m\'etodo de H-C con correcci\'on de caudale converge mas r\'apido ya que la correcci\'on de caudales en todas las tuber\'ias de circuito se hace de manera simult\'anea en cada iteraci\'on, a diferencia del m\'etodo de correci\'on de cabezas en donde la correci\'on se hace nodo por nodo.
+\item El m\'etodo de H-C con correci\'on de cabezas tiene la ventaja de que inicializar la energ\'ia en los nodos es m\'as sensillo, por lo tanto el paso previo al proceso iterativo es m\'as r\'apido. Esto contrasta con la suposici\'on de caudales iniciales en la red, lo cual es m\'as lento ya que es necesario que se cumpla la conservaci\'on de la masa en cada nodo. 
+\item El dise\~no de redes de tuber\'ias cerradas se hace mediante prueba y error. Esto quiere decir que se asumen diferentes combinaciones de di\'ametros en la red hasta llegar al dise\~no m\'as adecuado (\'optimo) para la cual hay que correr la red tantas veces como combinaciones de di\'ametros en la red tengamos. Es por esto que el m\'etodo de H-C con correci\'on de cabezas, teniendo en cuenta la rapidez para calcular las cabezas iniciales en los nodos, es m\'as apropiado en general.  
+\end{itemize}
 
 \subsection{M\'etodo de an\'alisis lineal}
+Este m\'etodo fue desarrollado por D.J Wood y C.O. Charles entre 1970 y 1972. Se basa en la linearizaci\'on de las ecuaciones de conservaci\'on de la energ\'ia de cada una de las tuber\'ias de la red. Este conjunto de ecuaciones linealizadas junto con las ecuaciones lineales de coservaci\'on de la masa en los nodos de la red, forman un sistema de ecuaciones lineales que se resuelve a traves del algebra lineal. El problema consiste en formar la matriz que contiene los t\'erminos de las ecuaciones e invertirla para solucionar el sistema de ecuaciones que son los caudales por cada tuber\'ia. Se ha demostrado  que este m\'etodo converge m\'as r\'apido que los m\'etodos ya explicados. 
 
+\subsubsection*{Ecuaciones usadas en el m\'etodo}
+\begin{enumerate}
+\item \textbf{Conservaci\'on de la masa en el nodo:} Para cada nodo de la red, se debe cumplir la ecuaci\'on de continuidad:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \sum_{j=1}^{NT_i} Q_{ij} - Q_{Di}= 0}
+\label{cpne23}
+\end{equation}
+Note que los caudales entrantes a la red ($Q_{ei}$) en un nodo $i$ deben tenerse encuenta en la ecuaci\'on~\ref{cpne23}. Recuerde que los caudales que entran al nodo son positivos y que los que salen son negativos. Si $Nu$ es el n\'umero de nodos habr\'a $Nu$ ecuaciones~\ref{cpne23} y una redundande.
+
+\item \textbf{Conservaci\'on de la energ\'ia en el circuito:} Para cada uno de los circuitos de la red se debe cumplir la ecuaci\'on de la energ\'ia:
+
+\begin{equation}
+\sum_{j=1}^{NT_i} h_{f_{ij}} + h_{m_{ij}}= 0
+\label{cpne24}
+\end{equation}
+
+donde $NT_i$ es el numero de tubos conectados en el circuito $i$. Si el numero de circuitos es $NC$, se tendr\'an $NC$ ecuaciones~\ref{cpne24}. La ecuaci\'on~\ref{cpne24} se puede expresar como:
+
+\begin{equation}
+\sum_{j=1}^{NT_i} \frac{Q_{ij}}{2gA_{ij}^2} \left(\sum K_{m_{ij}} + f_{ij}\frac{L_{ij}}{D_{ij}}  \right)= 0
+\label{cpne25}
+\end{equation}
+
+Note que la ecuaci\'on~\ref{cpne25} es una ecuaci\'on no lineal. Para la soluci\'on de las $NC$ ecuaciones no lineales, las ecuaciones~\ref{cpne25}, se puede expresar como:
+
+\begin{equation}
+\sum_{j=1}^{NT_i} k_{ij}Q_{ij}^2 = 0
+\label{cpne26}
+\end{equation}
+
+donde $k_{ij} = \frac{K_{m_{ij}} + f_{ij}\frac{L_{ij}}{D_{ij}}}{2gA_{ij}^2}$.
+
+Para resolver el sistema de ecuaciones~\ref{cpne23} y ~\ref{cpne26}, el m\'etodo de teoria lineal propone que para un tramo $ij$:
+
+\begin{equation}
+h_{f_{ij}}+h_{m_{ij}}= k'_{ij}Q_{ij}
+\label{cpne27}
+\end{equation}
+
+donde $k'{ij} = k_{ij}Q_{0_{ij}}$. El caudal $Q_{0_{ij}}$ es el caudal estimado para la primera iteraci\'on, o el caudal corregido en la iteraci\'on previa para las dem\'as iteraciones. Al reemplazar la ecuaci\'on~\ref{cpne27} en la ecuaci\'on{cpne26}, se tiene:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \sum_{j=1}^{NT_i} k'_{ij}Q_{ij}^2 = 0}
+\label{cpne28}
+\end{equation}
+
+En el caso de existir una bomba en una de las tuber\'ias del circuito, la cual sumistra una cabeza de energ\'ia $H_B$, la ecuaci\'on~\ref{cpne28} queda:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \sum_{j=1}^{NT_i} k'_{ij}Q_{ij}^2 = H_B }
+\label{cpne29}
+\end{equation}
+
+El numero total de ecuaciones a resolver es $NT=(NU-1) + NC$; $NU-1$ ecuaciones~\ref{cpne23} y $NC$ ecuaciones~\ref{cpne28}. En $NT$ coincide con el n\'umero de tuber\'ias en la red y lo que se desea es encontrar $Q_{ij}$ para cada tuber\'ia. 
+
+Para utilizar el m\'etodo, es necesario estimar caudales iniciales en las tuber\'ias ($Q_{0_{ij}}$). Una de las ventajas del m\'etodos es que al suponer estos caudales iniciales no es necesario que se conserve la masa en los nodos; los caudales pueden ser los mismos en todas las tuber\'ias. 
+
+
+
+
+
+
+
+\end{enumerate}
 
 %%%%%%%%
 
