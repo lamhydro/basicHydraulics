@@ -1209,6 +1209,7 @@ donde $NT_i$ es el numero de tubos conectados en el circuito $i$. Si el numero d
 \label{cpne25}
 \end{equation}
 
+\end{enumerate}
 Note que la ecuaci\'on~\ref{cpne25} es una ecuaci\'on no lineal. Para la soluci\'on de las $NC$ ecuaciones no lineales, las ecuaciones~\ref{cpne25}, se puede expresar como:
 
 \begin{equation}
@@ -1241,14 +1242,97 @@ En el caso de existir una bomba en una de las tuber\'ias del circuito, la cual s
 
 El numero total de ecuaciones a resolver es $NT=(NU-1) + NC$; $NU-1$ ecuaciones~\ref{cpne23} y $NC$ ecuaciones~\ref{cpne28}. En $NT$ coincide con el n\'umero de tuber\'ias en la red y lo que se desea es encontrar $Q_{ij}$ para cada tuber\'ia. 
 
-Para utilizar el m\'etodo, es necesario estimar caudales iniciales en las tuber\'ias ($Q_{0_{ij}}$). Una de las ventajas del m\'etodos es que al suponer estos caudales iniciales no es necesario que se conserve la masa en los nodos; los caudales pueden ser los mismos en todas las tuber\'ias. 
+Para utilizar el m\'etodo, es necesario estimar caudales iniciales en las tuber\'ias ($Q_{0_{ij}}$). Una de las ventajas del m\'etodo es que al suponer estos caudales iniciales no es necesario que se conserve la masa en los nodos; los caudales pueden ser los mismos en todas las tuber\'ias. Este m\'etodo propone que el caudal en la iteraci\'on siguiente es igual a:
+
+\begin{equation}
+\color{red}\boxed{\color{black} Q_{0_{ij}}^{t+1} = \frac{Q_{0_{ij}}^{t} + Q_{ij}^t}{2} }
+\label{cpne30}
+\end{equation}
+
+Las $NT$ ecuaciones se pueden expresar matricialmente, y el metodo consiste en invertir la matrix $NT x NT$ para determinar los caudales $Q_{ij}$. Si se tiene la red de la figura~\ref{cpnf}, se tiene las siguientes ecuaciones que forman el sistema de ecuaciones:
+
+% Fig 7.11 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/cpnf.jpeg}
+\caption{Red cerrada que ilustra el uso del m\'etodo de programaci\'on lineal (tomado de \cite{saldarriaga}).} 
+\label{cpnf}
+\end{figure}
 
 
+\begin{itemize}
+\item \textbf{Ecuaciones de continuidad en los nodos:} Las siguientes ecuaciones se deducen teniendo en cuenta que los caudales entrantes al nodo son positivos y los caudales salientes son negativos.
+\begin{equation}
+\begin{aligned}
+-Q_{12}+Q_{16} &= -Q_E \\
+Q_{12}-Q_{23}-Q_{25} &= Q_{D2} \\
+Q_{23}-Q_{34} &= Q_{D3}\\
+Q_{34}-Q_{45} &= Q_{D4} \\
+Q_{25}+Q_{45}-Q_{56} &= Q_{D5}\\
+Q_{56}-Q_{61}&=Q_{D6} && \text{Redundante}
+\end{aligned}
+\label{cpne31}
+\end{equation}
 
 
+\item \textbf{Ecuaciones de conservaci\'on de la energ\'ia en los circuitos:} Las siguientes ecuaciones se deducen teniendo en cuenta que las p\'erdidas de energ\'ia en el circuito que siguen las manecillas del reloj son positivas mientras que las p\'erdidas en sentido contrario son negativas.
+\begin{equation}
+\begin{aligned}
+k'_{12} Q_{12} + k'_{25} Q_{25} + k'_{56} Q_{56} + k'_{16} Q_{16} &= 0 \\
+k'_{23} Q_{23} + k'_{34} Q_{34} + k'_{45} Q_{45} - k'_{25} Q_{25} &= 0 \\
+\end{aligned}
+\label{cpne32}
+\end{equation}
 
+Ordenando las ecuaciones~\ref{cpne31} y ~\ref{cpne32} em forma matricial se tiene:
+\begin{equation}
+\begin{bmatrix}
+-1 & 0 & 0 & 0 & 0 & 0 & 1 \\
+1 & -1 & 0 & 0 & -1 & 0 & 0 \\
+0 & 1 & -1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & -1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 1 & -1 & 0 \\
+k'_{12} & 0 & 0 & 0 & k'_{25} & k'_{56} & k'_{61} \\
+0 & k'_{23} &  k'_{34} & k'_{45} & -k'_{25} & 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+Q_{12} \\Q_{23} \\Q_{34} \\Q_{45} \\Q_{25} \\Q_{56} \\Q_{61}
+\end{bmatrix}
+=
+\begin{bmatrix}
+-Q_{E} \\ Q_{D2} \\Q_{D3} \\Q_{D4} \\Q_{D5} \\ 0 \\ 0
+\end{bmatrix}
+\label{cpne33}
+\end{equation}
 
+\end{itemize}
 
+La ecuaci\'on~\ref{cpne33} en la forma compacta, se expresa como:
+
+\begin{equation}
+\mathbf{A}\cdot \mathbf{B} = \mathbf{C}
+\label{cpne34}
+\end{equation}
+
+La incognita es el vector $\mathbf{B}$, el cual contiene los caudales de cada tuber\'ia. La soluci\'on del sistema es:
+
+\begin{equation}
+\mathbf{B} = \mathbf{A}^{-1} \cdot \mathbf{C}
+\label{cpne35}
+\end{equation}
+Note que los valores de $k'{ij}$ se calculan en funci\'on de $Q_{0_{ij}}$ para la primera iteraci\'on. Para las iteraciones siguientes $Q_{0_{ij}}$ es calculado con la ecuaci\'on~\ref{cpne30}.
+
+El algoritmo para solucionar la ecuaci\'on~\ref{cpne34} utilizando el m\'etodo de programaci\'on lineal es el siguiente:
+
+\begin{enumerate}
+\item Se suponen todos los caudales en cada una de las tuber\'ias asi como la direcci\'on del caudal (siguiendo las manecillas del reloj o en sentido contrario). No es necesario cumplir con ecuaci\'on de continuidad en los nodos.
+\item Con estos caudales se calculan los valores de $k'_{ij}$.
+\item Se plantean las ecuaciones lineales de continuidad (ecuaci\'on~\ref{cpne23}) y de conservaci\'on de energ\'ia (ecuaci\'on~\ref{cpne28}).
+\item Se construye la matriz $\mathbf{A}$ de la ecuaci\'on~\ref{cpne34}.
+\item Se encuentran los caudales $Q_{ij}$ al solucionar la ecuaci\'on~\ref{cpne35}.
+\item Utilizando la ecuaci\'on~\ref{cpne30}, se corrigen los caudales $Q_{0_{ij}}$.
+\item Se calculan de nuevo los valores de $k'_{ij}$ para los caudales corregidos.
+\item Se repiten los pasos 3 al 7 hasta que los caudales $Q_{ij}$ cambien muy poco entre dos iteraciones sucesivas. 
 \end{enumerate}
 
 %%%%%%%%
