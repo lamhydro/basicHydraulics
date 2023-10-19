@@ -1,0 +1,1385 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, graphicx, geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{framed}
+\colorlet{shadecolor}{blue!15}
+\graphicspath{ {./} }
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}  
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{exa}{Example}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, 
+minimum width=3cm, 
+minimum height=1cm,
+text centered, 
+draw=black, 
+fill=red!30]
+
+\tikzstyle{io} = [trapezium, 
+trapezium stretches=true, % A later addition
+trapezium left angle=70, 
+trapezium right angle=110, 
+minimum width=3cm, 
+minimum height=1cm, text centered, 
+draw=black, fill=blue!30]
+
+\tikzstyle{process} = [rectangle, 
+minimum width=3cm, 
+minimum height=1cm, 
+text centered, 
+text width=3cm, 
+draw=black, 
+fill=orange!30]
+
+\tikzstyle{decision} = [diamond, 
+minimum width=3cm, 
+minimum height=1cm, 
+text centered, 
+draw=black, 
+fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+
+\title{Hidr\'aulica B\'asica [2015961] \\ \textbf{Tema \# 3: An\'alisis de sistemas de bombeo}}
+\author{\textbf{Luis Alejandro Morales (Ph.D)}\\ \vspace{0.4cm} Profesor Asistente \\ Universidad Nacional de Colombia-Bogot\'a\\Facultad de Ingenier\'ia \\ Departamento de Ingenieria Civil y Agr\'icola}
+%\date{Periodo 2023-II}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%\vspace{.25in}
+
+
+%%%%%%%%
+\section{Generalidades}
+Una bomba es una m\'aquina que introduce energ\'ia al flujo con el fin de vencer diferencias topogr\'aficas o p\'erdidas de energ\'i por fricci\'on o por accesorios, lo cual permite llevar el flujo de un punto (de menor energ\'ia) a otro (de mayor energ\'ia). En general, los ingenieros civiles y agr\'icolas se encargan \'unicamente de la selecci\'on de la bomba m\'as apropiada para el sistema en particular dejando de lado el dise\~no mec\'anico (rotor) y electrico (motor) a otras disciplinas. Existen varios tipos de bombas, sin embargo las m\'as comunes son las bombas \emph{rotodin\'amicas} las cuales analizaremos para fluidos incompresibles y flujo permanente en sistemas de tuber\'ias.
+
+De acuerdo con la forma del rotor o impulsor, las bombas rotodin\'amicas se pueden clasificar como (ver figura~\ref{bom0})
+\begin{itemize}
+\item Bomba centrifugas o de flujo radial: Se caracterizan por presentar una presi\'on alta para caudales relativamente bajos.
+\item Bomba de flujo axial: Pueden generar un caudal alto con una baja presi\'on.
+\item Bomba de flujo mixto: Comportamiento intermedio con respecto a las dos anteriores.
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom0.png}
+\caption{Tipos de bombas rotodin\'amicas} 
+\label{bom0}
+\end{figure}
+
+
+Las bombas mas comunes son las bombas centrifugas y centraremos la mayori\'ia de nuestro an\'alisis sobre este tipo de bombas. Una bomba centrifuga (ver figura~\ref{bom1}) esta compuesta por:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom1.png}
+\caption{Bombas centrifugas.} 
+\label{bom1}
+\end{figure}
+
+\begin{enumerate}
+\item Impulsor o rotor: Es un elemento rotatorio compuesto por \emph{alabes} que gira con una alta velocidad angular gracias al trabajo del \emph{motor}. Los alabes crean canales divergentes a trav\'es de los cuales fluye el l\'iquido.
+\item Carcasa: Estructura en donde se encuentra el impulsor. Esta estructura posse un orificio por donde ingresa el fluido a baja pres\'ion (\emph{tuber\'ia de succi\'on}) y y otro por donde converge el liquido a trav\'es de los alabes (\emph{tuber\'ia de descarga}) el cual posse una mayor presi\'on. 
+\item Eje o flecha: Estructura que transfiere la potencia del motor al impulsor. 
+\end{enumerate}
+
+%%%%%%%%
+\section{Ecuaciones para bombas centrifugas}
+Se puede establecer ecuaciones para el calculo de potencia y de cabeza hidr\'aulica introducida por la bomba a la tuber\'ia. Cuando el flujo entra a trav\'es de la tuber\'ia de succi\'on al impulsor, este llega con una presi\'on relativamente baja, al entrar a los alabes, la velocidad angular $N$ con la cual se mueven los alabes, le suministra una energ\'ia al flujo el cual es expulsado (punto $S$) hacia la espiral (dentro de la carcasa) con una mayor energ\'ia. Teniendo en cuenta que es el impulsor el que le suministra la energ\'ia al flujo, este puede considerarse como el volumen de control para el siquiente analisis. 
+%%%%%%%%
+\section{Sistemas de tuber\'ias simples} \label{tubs}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/simpTub.png}
+\caption{Acueductos por gravedad.} 
+\label{simpTub}
+\end{figure}
+
+
+Una tuber\'ia simple es aquella que tiene un di\'ametro y esta hecha de un solo material a lo largo de su longitud (ver figura~\ref{ttub}). La energ\'ia que mueve el flujo dentro de la tuber\'ia es gracias a la acci\'on de la gravedad (tanque a la entrada) o a un m\'aquina (sistema de bombeo a la entrada). Dichas tuber\'ias pueden tener cualquier tipo de accesorio a lo largo de su longitud lo que implica unas p\'erdidas menores. Las ecuaciones de Prandl, Von-Karman y Darcy-Weisbach vistas en la Unidad 1, son utilizadas para el dise\~no de tuber\'ias simples. Note que existe cierta dificultad para el disen\~no teniendo en cuenta que la ecuaci\'on de Colebrook-White para calcular el coeficiente de rugosidad $f$ es implicita y requiere un proceso iterativo para su soluci\'on. Los algoritmos que aqu\'i se discutir\'an, constituyen las bases para el an\'alisis y dise\~no de tuber\'ias m\'as complejos. 
+
+% Fig 2.4 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/ttub.jpeg}
+\caption{Tuber\'ia simple alimentada por un tanque de nivel constante y con descarga a la atmosfera (tomado de \cite{saldarriaga}).} 
+\label{ttub}
+\end{figure}
+
+
+\subsection{Tipos de problema en sistemas de tuber\'ias}
+Los problemas en sistemas de tuber\'ias se clasifican de acuerdo con las variables desconocidas. Las variables involucradas en estos problemas se pueden clasificar como:
+\begin{itemize}
+\item \emph{Caracter\'isticas la tuber\'ia}: Di\'ametro ($D$), longitud ($L$), rugosidad absoluta ($\varepsilon$).
+\item \emph{Propiedades del fluido}: Densidad ($\rho$) y viscosidad din\'amica ($\mu$) o cinem\'atica ($\nu$). 
+\item \emph{Variables relacionadas con el esquema del sistema}: Coeficientes de p\'erdidas menores ($K$) de todos los accesorios en el sistema. 
+\item \emph{Variables relacionas con la energ\'ia impulsora del sistema}: Cabeza de energ\'ia ($H$ = $E1$-$E2$), entre la energ\'ia en el embalse de entrada ($E1$) y la energ\'ia salida del sistema ($E2$), o potencia de la bomba ($P$). 
+\item \emph{Propiedades del flujo}: Caudal ($Q$) y velocidad ($V$) del flujo.
+\item \emph{Otras variables}: Aceleraci\'on de la gravedad ($g$).
+\end{itemize}
+ 
+De acuerdo con las variables involucradas en sistemas de tuber\'ias, existen tres tipos de problemas:
+\begin{enumerate}
+\item \textbf{Comprobaci\'on de dise\~no}: En este tipo de problemas la tuber\'ia existe y se conoce su longitud, su di\'ametro, su rugosidad absoluta (material), al igual que todos los accesorios y sus coeficiente de p\'erdidas menores. Tambi\'en se conoce la energ\'ia impulsora, ya sea una cabeza de energ\'ia (gravitacional por diferencia de niveles) o una energ\'ia mec\'anica (suministrada por una bomba). Las propiedades del fluido como la densidad y la viscosidad absoluta son tambi\'en conocidas. La inc\'ognita es entonce el caudal o la velocidad del flujo en el sistema.
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c}
+ \hline
+ Variables conocidas & Inc\'ognita \\ [0.5ex]
+% \hline\hline
+D, $\varepsilon$, H (o P), $\sum K$, $\rho$, $\mu$, g, L & Q (o V) \\
+\hline
+\end{tabular}
+%\caption{Coeficientes de rugosidad de Hazen-Williams, $C_H$ (tomado de \cite{agudelo2011mecanica}).}
+%\label{hwi}
+\end{table}
+ 
+\item \textbf{C\'alculo de la potencia requerida}: En este tipo de problemas, el sistema existe por lo que se conocen su longitud, su di\'ametro, su rugosidad absoluta (material), al igual que todos los accesorios y sus coeficiente de p\'erdidas menores. Las propiedades del fluido como la densidad y la viscosidad din\'amica as\'i como el caudal (o velocidad) que fluye por el sistema son tambi\'en conocidas. La finalidad es determinar la potencia, ya sea mec\'anica o gravitacional, requerida para mover cierto caudal a trav\'es de la tuber\'ia dada. 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c}
+ \hline
+ Variables conocidas & Inc\'ognita \\ [0.5ex]
+% \hline\hline
+D, $\varepsilon$, Q (o V), $\sum K$, $\rho$, $\mu$, g, L & P (o H) \\
+\hline
+\end{tabular}
+%\caption{Coeficientes de rugosidad de Hazen-Williams, $C_H$ (tomado de \cite{agudelo2011mecanica}).}
+%\label{hwi}
+\end{table}
+ 
+\item \textbf{Dise\~no de la tuber\'ia}: En este tipo de problemas se conoce el caudal o la velocidad de flujo y la potencia disponible (mec\'anica o gravitacional), algunas caracter\'isticas de la tuber\'ia como la longitud, los accesorios y sus coeficientes de p\'erdida y las propiedades del fluido como la densidad y la viscosidad din\'amica. Se desconoce el di\'ametro necesario para permitir el paso de el caudal demandado. En cuanto a la rugosidad absoluta, se debe cambiar el tipo de tuber\'ia (rugosidad absoluta) con el fin de obtener la mejor opci\'on. 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c}
+ \hline
+ Variables conocidas & Inc\'ognita \\ [0.5ex]
+% \hline\hline
+$\varepsilon$, Q (o V), P (o H), $\sum K$, $\rho$, $\mu$, g, L &  D \\
+\hline
+\end{tabular}
+%\caption{Coeficientes de rugosidad de Hazen-Williams, $C_H$ (tomado de \cite{agudelo2011mecanica}).}
+%\label{hwi}
+\end{table}
+ \end{enumerate}
+
+\subsection{Ecuaciones para la soluci\'on de problemas}
+%Si se tiene el sistema de la figura~\ref{comp1}, la ecuaci\'on de Bernoulli entre los puntos 1(entrada) y 2(salida) es:
+A continuaci\'on se presentan las ecuaciones necesarias para resolver los tres problemas ya mencionadas. Estas ecuaciones fueron discutidas en el capitulo anterior. 
+
+Si se tiene una tuber\'ia simple cuya entrada es en la secci\'on 1 y cuya salida es en la secci\'on, aplicando la ecuaci\'on de Bernoulli entre 1 y 2, de manera general,  se tiene:
+
+% Fig 2.4 from Salda 
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=8cm]{comp1.jpeg}
+%\caption{Tuber\'ia simple alimentada por un tanque de nivel constante y con descarga a la atmosfera (tomado de \cite{saldarriaga}).} 
+%\label{ttub}
+%\end{figure}
+
+\begin{equation}
+\frac{{V_1}^2}{2g}+ z_1 + \frac{p_1}{\gamma} =  \frac{{V_2}^2}{2g}+ z_2 + \frac{p_2}{\gamma} + h_f + \sum h_e - h_b + h_t
+\label{com1}
+\end{equation}
+
+donde $h_b$ es la cabeza de energ\'ia suministrada por la bomba y $h_t$ es la cabeza de energ\'ia sustra\'ida por la turbina. La energ\'ia total en una secci\'on (e.g. 1 o 2) de flujo se puede expresar como $E = \frac{{V}^2}{2g}+ z + \frac{p}{\gamma}$, por lo tanto la ecuaci\'on~\ref{com1} se puede expresar como:
+
+\begin{equation}
+E_1 - E_2 = h_f + h_e - h_b + h_t
+\label{com1a}
+\end{equation}
+
+en donde $h_f$ son las p\'erdidas por fricci\'on   estimadas con la ecuaci\'on de Darcy-Weisbach como:
+
+\begin{equation}
+\color{red}\boxed{\color{black} h_f = f \frac{L}{D}\frac{V^2}{2g} }
+\label{com2}
+\end{equation}
+
+y $h_e$ son las perdidas por accesorios, las cuales se pueden calcular como:
+
+\begin{equation}
+\color{red}\boxed{\color{black} h_e = \sum K \frac{V^2}{2g} }
+\label{com3}
+\end{equation}
+
+El factor de fricci\'on $f$ en la ecuacio\'on~\ref{com2}, se calcula usando el diagrama de Moody o num\'ericamente usando la ecuaci\'on Colebrook-White como:
+ 
+\begin{equation}
+\color{red}\boxed{\color{black}  \frac{1}{\sqrt{f}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) }
+\label{com4}
+\end{equation}
+
+donde el n\'umero de Reynolds ($Re$) se calcula como
+
+\begin{equation}
+\color{red}\boxed{\color{black} Re = \frac{VD}{\nu} } 
+\label{com5}
+\end{equation}
+
+Si se reemplaza las ecuaciones~\ref{com2} y ~\ref{com3} en la ecuaci\'on~\ref{com1a}, se tiene:
+
+\begin{equation}
+E_1 - E_2 =  f \frac{L}{D}\frac{V^2}{2g} + \sum K \frac{V^2}{2g} - h_b + h_t
+\label{com6}
+\end{equation}
+
+despejando $V$ en la ecuaci\'on~\ref{com6}, se tiene:
+ 
+\begin{equation}
+\color{red}\boxed{\color{black} V = \sqrt{2g\frac{E_1 - E_2 + h_b - h_t}{f\frac{L}{D} + \sum K } } }
+\label{com7}
+\end{equation}
+
+En los tres tipos de problemas, el objetivo es usar las ecuaciones~\ref{com2}, ~\ref{com3}, ~\ref{com4}, ~\ref{com5} y ~\ref{com7} para su soluci\'on. Note que la ecuaci\'on~\ref{com4} es una ecuaci\'on impl\'icita que requiere del uso de alg\'un m\'etodo iterativo o num\'erico para su soluci\'on. Note que la ecuaci\'on~\ref{com7} se usa en particular para la soluci\'on de problemas de \emph{comprobaci\'on de dise\~no} y de \emph{dise\~no de tuber\'ias}.
+
+
+%donde $H$ es la altura de la superficie de agua del tanque o la energ\'ia total en el punto 1. Teniendo en cuenta que la tuber\'ia del sistema en la figura~\ref{comp1} descarga a la atmosfera, la velocidad as\'i como la presi\'on se vuelven cero ($\frac{{V_2}^2}{2g}= 0$, $\frac{p_2}{\gamma}=0$). Note que la velocidad no necesariamente es cero cuando descarga a la atm\'osfera; se supone entonces que esta \'es cero all\'i.  Como consecuencia de esto, se asume que existen p\'erdidas menores en la salida de la tuber\'ia. La ecuaci\'on~\ref{com1} queda entonces como:
+%
+%\begin{equation}
+%H = z_2 + h_f + \sum h_e 
+%\label{com2}
+%\end{equation}
+%
+%Despejando de la ecuaci\'on~\ref{com2}, las p\'erdidas por fricci\'on se pueden calcular como: 
+%
+%\begin{equation}
+%\color{red}\boxed{\color{black} h_f = H - z_2 - \sum K \frac{{V_2}^2}{2g} }
+%\label{com3}
+%\end{equation}
+%
+\subsection{Solucio\'on de la ecuaci\'on de Colebrook-White}
+\subsubsection{Metodo de punto fijo} \label{sec:pf}
+Consiste en el siguiente procedimiento:
+\begin{enumerate} 
+\item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $V$ o $Q$, $D$ 
+\item Calcular el $Re$ usando la ecuaci\'on~\ref{com5}
+\item Si $Re<2000$ (Flujo laminar), calcular $f$ como:
+
+\begin{equation}
+f=Re/64  
+\label{com8}
+\end{equation}
+y luego ir a ~\ref{prf}. Si $Re > 2000$ continuar.
+
+\item Asumir un valor inicial de $f_i$ (e.g. $f=0.01$).
+\item \label{fi1} Usando la siguiente forma de la ecuaci\'on~\ref{com4}, calcular un valor $f_{i+1}$:
+
+\begin{equation}
+ f_{i+1} = \left[-2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f_i}} \right) \right]^{-2}
+\label{com8}
+\end{equation}
+
+\item Si $|f_{i}- f_{i+1}| \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir a ~\ref{prf}. Si $|f_{i}- f_{i+1}| > \eta$, hacer $f_i = f_{i+1}$ e ir a ~\ref{fi1},  para  calcular un nuevo valor $f_{i+1}$.
+\item \label{prf} Imprimir $f$
+\end{enumerate} 
+
+\subsubsection{M\'etodo de Newton-Raphson} \label{sec:nr}
+El m\'etodo de Newton-Rapson es un m\'etodo num\'erico para la soluci\'on de ecuaciones impl\'icitas. Converge m\'as r\'apido que el m\'etodo de punto fijo. Algunas condiciones para poder aplicar el m\'etodo son para un intervalo $l$ del dominio:
+\begin{itemize}
+\item $f(x)$ debe estar definida en $l$.
+\item La funci\'on de iteraci\'on de $f(x)$ deber ser continua en $l$.
+\item La funci\'on impl\'icita $f(x)$ debe ser diferenciable ($f'(x)$) en $l$.
+\end{itemize}
+
+En general la ecuaci\'on de Colebrook-White cumple estas condiciones. El m\'etodo consiste en el siguiente procedimiento:
+
+\begin{enumerate} 
+\item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $V$ o $Q$, $D$ 
+\item Calcular el $Re$ usando la ecuaci\'on~\ref{com5}
+\item Si $Re<2000$ (Flujo laminar), calcular $f$ como:
+
+\begin{equation}
+f=Re/64 
+\label{com7a}
+\end{equation}
+y luego ir a ~\ref{prf}. Si $Re > 2000$ continuar.
+
+\item Asumir un valor inicial de $f_i$ (e.g. $f=0.01$).
+\item Calcular 
+
+\begin{equation}
+x_i = \frac{1}{\sqrt{f}}
+\label{com9}
+\end{equation}
+
+\item \label{fi1} Calcular 
+
+\begin{equation}
+f(x_i ) =  -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52 x_i }{Re} \right)
+\label{com10}
+\end{equation}
+
+\item Calcular 
+
+\begin{equation}
+f' (x_i ) =\left[\frac{-2}{\ln 10} \right] \left[ \frac{\frac{2.52}{Re}}{\frac{\varepsilon}{3.7D}+\frac{2.52 x_i }{Re}}\right] 
+\label{com11}
+\end{equation}
+
+\item Calcular el nuevo valor de $x_{i+1}$ como:
+
+\begin{equation}
+ x_{i+1} = x_{i} - \frac{f(x_i ) - x_i}{f'(x_i ) -1} 
+\label{com12}
+\end{equation}
+
+\item Si $|x_{i}- x_{i+1}| \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir a ~\ref{prf}. Si $|x_{i}- x_{i+1}| > \eta$, hacer $x_i = x_{i+1}$ e ir a ~\ref{fi1},  para  calcular un nuevo valor $x_{i+1}$.
+
+\item \label{prf} Imprimir $f$, donde:
+\begin{equation}
+f = \frac{1}{x_{i+1}^2}
+\label{com12}
+\end{equation}
+
+\end{enumerate} 
+
+
+
+\subsection{Comprobaci\'on de dise\~no}\label{tubeSimpleCompro}
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar el valor de $V$ o $Q$.
+\begin{enumerate} 
+\item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $E1$, $E2$, $h_b$ y $h_t$.
+\item Aplicar el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr}. Note que lo \'unico que cambia dentro de estos procedimientos es que la velocidad $V$ es calculada usando la ecuaci\'on~\ref{com7}; ya no es un dato de entrada.
+%\item Asumir un valor inicial de $f_i$ (e.g. $f=0.01$).
+%\item \label{vel} Calcular $V$ usando la ecuaci\'on~\ref{com7}.
+%\item Calcular $Re$ usando la ecuacion~\ref{com5}.
+%\item Si $Re<2000$ (Flujo laminar), calcular un nuevo valor de $f$ con la ecuaci\'on~\ref{com7a}. Si $f_{i}- f_{i+1} \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir ~\ref{res}. Si $f_{i}- f_{i+1} > \eta$, hacer $f_i = f_{i+1}$ e ir a ~\ref{vel},  para  calcular un nuevo valor de $V$.
+%\item Si $Re>2000$, calcular un nuevo valor de $f$ usando la ecuaci\'on~\ref{com8}. Si $f_{i}- f_{i+1} \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir ~\ref{res}. Si $f_{i}- f_{i+1} > \eta$, hacer $f_i = f_{i+1}$ e ir a ~\ref{vel},  para  calcular un nuevo valor de $V$.
+\item Imprimir $V$ y $f$.
+\end{enumerate} 
+
+%En este tipo de problemas, la supocisi\'on m\'as importante es que $h_f = H$, es decir que la energ\'ia disponible en el sistema se pierde debido a la fricci\'on.
+%% DF 1 from Salda 
+%\begin{figure}[h]
+%\centering
+%\input{dflow1.tex}
+%\caption{Diagrama de flujo para comprobaci\'on de dise\~no (adaptado de \cite{saldarriaga})}
+%\label{dflow1}
+%\end{figure}
+%
+%En la figura~\ref{dflow1} $E$ representa un error que debe ser determinado por el modelador (e.g. 1x10$^{-5}$). Este procedimiento es aplicable a cualquier problema de comprobaci\'on de dise\~no para cualquier sistema de tuber\'ia simple.
+%
+
+\subsection{C\'alculo de la potencia requerida}\label{tubeSimplePoten}
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar la cabeza de energ\'ia de la bomba ($h_b$) y su potencia  ($P$).
+\begin{enumerate} 
+\item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $Q$, $E1$, $E2$, $h_t$ y $\eta$.
+\item Calcular la velocidad como $V=Q/A$.
+\item Aplicar el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr} para calcular $f$.
+\item Calcular $h_f$ usando la ecuaci\'on~\ref{com2}.
+\item Calcular $h_e$ usando la ecuaci\'on~\ref{com3}.
+\item Calcular la cabeza de energ\'ia de la bomba ($h_b$) despej\'andola de la ecuaci\'on~\ref{com1a}.
+\item Calcular la potencia $P$ como:
+
+\begin{equation}
+P = \frac{\rho Q g h_b}{\eta}
+\label{com12a}
+\end{equation}
+donde $\eta$ es la eficiencia de la bomba.
+
+\item Imprimir $h_b$ y $P$.
+\end{enumerate} 
+
+\subsection{Disen\~o de la  tuber\'ia}\label{tubeSimpleDesign}
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar el di\'ametro \'optimo comercial de la tuber\'ia.
+\begin{enumerate} 
+\item Leer la informaci\'on de entrada: $\varepsilon$, $\rho$, $\mu$ o $\nu$, $L$, $D$, $\sum K$, $Q$, $E1$, $E2$, $h_t$ y $\eta$.
+\item Asumir un di\'ametro comercial inicial $D_i$ para la tuber\'ia. El $D_i$ inicial debe ser peque\~no (e.g. 1 pulg.) pero no tan peque\~no ya que el procedimiento no converge.
+\item \label{frii} Aplicar el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr}. Note que lo \'unico que cambia dentro de estos procedimientos es que la velocidad $V$ es calculada usando la ecuaci\'on~\ref{com7}; ya no es un dato de entrada. De aqu\'i sale un valor de $f$ y $V$.
+\item Calcular el nuevo caudal $Q_n =VA$ usando $D_i$, donde $A=\frac{\pi D_i^2}{4}$.
+\item Si $Q_n >= Q $ ir a ~\ref{prii}. Si $Q_n < Q$ tomar el siguiente di\'ametro comercial superior $D_{i+1}$ e ir a ~\ref{frii}.
+\item \label{prii} Imprimir $D$.
+\end{enumerate} 
+
+El dise\~no \'optimo busca, en la mayor\'ia de los casos, la soluci\'on m\'as econ\'omica. Por lo tanto es necesario muchas veces dise\~nar con otros materiales (diferente valor de $\varepsilon$) para encontrar  la mejor soluci\'on.
+ 
+
+%%%%%%%%
+\section{Sistemas de tuber\'ias en serie} 
+Las tuber\'ias en serie son dos o mas tuber\'ias conectadas una tras de otra con diferente di\'ametro o rugosidad (material) o ambos (ver figura~\ref{ttuse}). Estas tuber\'ias son muy comunes en sistemas de riego localizado de alta frequencia o en l\'ineas de coducci\'on para acueductos veredales. Al igual que en la secci\'on~\ref{tubs}, aqu\'i se describir\'an las ecuaciones generales para resolver problemas relacionados con tuber\'ias en serie y se explicar\'an los procedimientos para resolver los tres problemas en tuber\'ias: 1) Comprobaci\'on de dise\~no, 2) c\'alculo de la potencia y 3) dise\~no de las tuber\'ias.
+
+% Fig 5.1 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/comp2.jpeg}
+\caption{Tres tuber\'ias en serie conectando dos tanques en donde $Q_{L_i}$ representa un caudal lateral de salida al final de la tuber\'ia $i$ (tomado de \cite{saldarriaga}).} 
+\label{ttuse}
+\end{figure}
+
+\subsection{Ecuaciones para la soluci\'on de problemas}
+Teniendo en cuenta las tuberias en serie de la figura~\ref{ttuse}, se plantean las siguientes ecuaciones:
+\begin{itemize}
+\item Conservaci\'on de la energ\'ia
+\begin{equation}
+\Delta E = E1-E2 = H_T = z_1 - z_2 = h_e + h_{f_1} + h_{m_1} + h_{f_2} + h_{m_2} + h_{f_3} + h_{m_3} + h_s
+\label{cesp}
+\end{equation}
+donde $H_T$ es la diferencia de niveles entre los dos tanque (la energ\'ia total disponible en el sistema), $h_e$ p\'erdidas menores de entrada, $h_{f_i}$ p\'erdidas por fricci\'on en el tubo $i$, $h_{m_i}$ p\'erdidas menores (por v\'alvulas, uniones, etc) en la tuber\'ia $i$ y $h_s$ p\'erdidas por salida.
+
+Para un numero $n$ de tuber\'ias en serie la ecuaci\'on~\ref{cesp} se puede escribir como:
+\begin{equation}
+H_T = h_e + \sum_{i=1}^{n} h_{f_i} + \sum_{i=1}^{n} \sum_{j=1}^{m} h_{m_{i,j}} + h_s 
+\label{cesp1}
+\end{equation}
+
+donde $m$ es numero de accesorios en la tuber\'ia $i$; $m$ puede ser variable. La ecuaci\'on~\ref{cesp1} establece que la energ\'ia disponible en el sistema se disipa en p\'erdidas a lo largo de la tuber\'ia. Puede haber el caso en el cual tengamos, por ejemplo, una tuber\'ia horizontal por lo cual una bomba ser\'ia necesaria para impulsar el flujo por lo que en la parte izquierda de la ecuaci\'on~\ref{cesp} tendr\'iamos $H_T=h_b$. Tambi\'en se puede dar el caso de una turbina en alguna secci\'on de la tuber\'ia por lo que habr\'ia que sumarle a la derecha de la ecuaci\'on $h_t$.
+
+Desarrollando la ecuaci\'on~\ref{cesp1}, se tiene:
+
+\begin{equation}
+\color{red}\boxed{\color{black} H_T = K_e \left( \frac{V^2}{2g} \right)_1 + \sum_{i=1}^{n} \left( f\frac{L}{D}\frac{V^2}{2g} \right)_i + \sum_{i=1}^{n} \left(\frac{V^2}{2g}\right)_i \sum_{j=1}^{m} K_j + K_s \left( \frac{V^2}{2g} \right)_n }
+\label{cesp2}
+\end{equation}
+
+\item Conservaci\'on de la masa o ecuaci\'on de continuidad:
+
+\begin{equation}
+Q_T = Q_1 = Q_2 + Q_{L_1} = Q_3 + Q_{L_1} + Q_{L_2}
+\label{cesp3}
+\end{equation}
+
+Donde $Q_i$ es el caudal que viaja por la tuber\'ia $i$ y $Q_{L_i}$ es el caudal derivado de la tuber\'ia $i$. La ecuaci\'on~\ref{cesp3} se puede expresar de forma mas compacta como:
+
+\begin{equation}
+\color{red}\boxed{\color{black} Q_T = Q_i + \sum_{j=1}^{i-1} Q_{L_j} }
+\label{cesp4}
+\end{equation}
+
+En caso de que no existiera derivaciones ($Q_{L_i} = 0$) la ecuaci\'on~\ref{cesp4} queda como:
+
+\begin{equation}
+\color{red}\boxed{\color{black} Q_T = Q_1 = ...= Q_i = ...  = Q_n }
+\label{cesp5}
+\end{equation}
+
+\end{itemize}
+
+\subsection{Comprobaci\'on de dise\~no}
+Se desea calcular el valor de $Q_T = Q_1$. Antes de describir el proceso de c\'alculo, deduciremos una ecuaci\'on que se utilizar\'a para resolver este tipo de problemas. 
+
+De la ecuaci\'on de Darcy-Weisbach, despejando el factor de fricci\'on se tiene que:
+
+\begin{equation}
+f = \frac{h_f D 2g}{L V^2}
+\label{com41}
+\end{equation}
+
+Sacando ra\'iz cuadrada e invirtiendo los t\'erminos a ambos lados se tiene:
+
+\begin{equation}
+\frac{1}{\sqrt{f}} = \frac{V\sqrt{L}}{\sqrt{h_f D 2g}}
+\label{com51}
+\end{equation}
+
+Igualando a la ecuaci\'on de Colebrook-White, se tiene:
+
+\begin{equation}
+\frac{V\sqrt{L}}{\sqrt{h_f D 2g}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) 
+\label{com71}
+\end{equation}
+
+Reemplazando $Re = \frac{VD}{\nu}$ y la ecuaci\'on~\ref{com51} en la ecuaci\'on~\ref{com71} y despejando la velocidad, se tiene:
+
+\begin{equation}
+\color{red}\boxed{\color{black} V= \frac{-2\sqrt{2gD h_f}}{\sqrt{L}} \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52 \nu \sqrt{L}}{D \sqrt{2gD h_f}} \right) }
+\label{com81}
+\end{equation}
+
+Note que la ecuaci\'on~\ref{com81} es explicita para la velocidad $V$. 
+
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar $Q_T = Q_1$.
+
+\begin{enumerate}
+\item Leer: $\rho$, $\mu$ o $\nu$, $K_e$ (coef. de p\'erdidas a la entrada), $K_s$ (coef. de p\'erdidas a la salida), $E1$ y $E2$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$,$L_i$, $D_i$, $\sum K_i$, $Q_{L_i}$, $h_{b_i}$, $h_{t_i}$ y $\eta_i$ (eficiencia de la bomba o turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
+\item Para llevar a cabo este proceso es necesario, para la primera iteraci\'on, asumir un valor inicial de $h_{f_1} $. Se ha encontrado que $h_f \propto \frac{L}{D^5}$, de acuerdo con esto, \cite{saldarriaga} ha establecido que este valor inicial de $h_{f_1}$ se puede expresar como:
+
+\begin{equation} 
+h_{f_1} = H_T \frac{L_1 / D_1^5}{\sum_{i=1}^{n} L_i / D_i^5 }
+\label{cpd1}
+\end{equation}
+
+\item \label{vve} Para la tuber\'ia $i=1$: calcular el valor de $V_1$ usando la ecuaci\'on~\ref{com81}, calcular el caudal $Q_T = Q_1 = V_1 A_1$, calcular el valor de $f_1$ usando uno de los dos procedimientos descritos en la secciones~\ref{sec:pf} y ~\ref{sec:nr}, calcular $h_{f_1}$ utilizando la ecuaci\'on~\ref{com2} y $h_{m_1}$  utilizando la ecuaci\'on~\ref{com3}.
+
+\item Para el resto de tuber\'ias  $i = 2 ... n$: calcular el caudal $Q_i$ usando la ecuaci\'on~\ref{cesp4}, calcular la velocidad $V_i = Q_i /A_i$, $f_i$ usando uno de los dos procedimientos descritos en la secciones~\ref{sec:pf} y ~\ref{sec:nr}, calcular $h_{f_i}$ utilizando la ecuaci\'on~\ref{com2} y $h_{m_i}$  utilizando la ecuaci\'on~\ref{com3}.
+
+\item Calcular la p\'erdida de energ\'ia total estimada $\hat{H_T}$ usando la ecuaci\'on~\ref{cesp1}. Si $|\hat{H_T} - H_T | \leq \eta$ donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir a ~\ref{prf}. Si $|\hat{H_T} - H_T | > \eta$, actualizar el valor de $h_{f_1}$, como:
+
+\begin{equation} 
+h_{f_1}^t  = h_{f_1}^{t-1}  + \Delta h_{f_1}
+\label{cpd2}
+\end{equation}
+
+donde $\Delta h_{f_1}$, se calcula como
+
+\begin{equation} 
+\Delta h_{f_i} = (H_T - \hat{H_T}) \frac{L_1 / D_1^5}{\sum_{i=1}^{n} L_i / D_i^5 }
+\label{cpd3}
+\end{equation}
+
+Una v\'ez calculado el nuevo $h_{f_1}$ ir a ~\ref{vve}.
+
+\item \label{prf} Imprimir $Q_i$ donde $i = 1 ... n$. 
+
+\end{enumerate}
+\subsection{C\'alculo de la potencia requerida}
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar la cabeza de energ\'ia de la bomba ($h_b$) y su potencia  ($P$).
+
+\begin{enumerate}
+\item Leer: $\rho$, $\mu$ o $\nu$, $K_e$ (coef. de p\'erdidas a la entrada), $K_s$ (coef. de p\'erdidas a la salida), $E1$, $E2$ y $Q_T = Q_1$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $Q_{L_i}$, $h_{t_i}$ y $\eta_i$ (eficiencia de la bomba o turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
+\item Utilizando la ecuaci\'on~\ref{cesp4}, calcular el valor de $Q_i$ para $i=2...n$.
+\item Para cada una de las tuber\'ias $i=1...n$, calcular: la velocidad como $V_i = Q_i /A_i $, $f_i$ usando uno de los dos procedimientos descritos en la secciones~\ref{sec:pf} y ~\ref{sec:nr}, calcular $h_{f_i}$ utilizando la ecuaci\'on~\ref{com2} y $h_{m_i}$  utilizando la ecuaci\'on~\ref{com3}.
+\item Calcular la cabeza de energ\'ia de la bomba ($h_b$) despejandola de la ecuaci\'on~\ref{com1a}. Note que  en esta ecuaci\'on, $h_f$ es la sumatoria de todas $h_{f_i}$ y $h_m$ es la sumatoria de todas las $h_{m_i}$. 
+\item Calcular la potencia $P$ usando la ecuaci\'on~\ref{com12a}.
+\item Imprimir $h_b$ y $P$.
+\end{enumerate}
+
+
+
+\subsection{Disen\~o de la  tuber\'ia}
+Como se hab\'ia mencionado anteriormente, el dise\~no, y en este caso, de tuber\'ias en serie es un problema complejo por que eso implica buscar, en la mayor\'ia de los casos, la soluci\'on \'optima desde el punto de vista econ\'omico. Por esto, no solo basta con determinar el di\'ametro si no tambi\'en el material de la tuber\'ia. A esto hay que sumarle que los coeficientes de perdida dependen del material de la tuber\'ia, esta es otra variable que hay que tener en cuenta. Esto quiere decir que pueden existir multiples soluciones para un mismo problema. 
+
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar el di\'ametro \'optimo comercial $D_i$ de la tuber\'ia para $i=1...n$. En este proceso se asume que el material es un dato dado. 
+
+\begin{enumerate}
+\item Leer: $\rho$, $\mu$ o $\nu$, $K_e$ (coef. de p\'erdidas a la entrada), $K_s$ (coef. de p\'erdidas a la salida), $E1$, $E2$ y $Q_T = Q_1$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$,  $\sum K_i$, $Q_{L_i}$, $h_{b_i}$, $h_{t_i}$ y $\eta_i$ (eficiencia de la bomba o turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
+\item Utilizando la ecuaci\'on~\ref{cesp4}, calcular el valor de $Q_i$ para $i=2...n$.
+\item Inicializar $h_{f_i}$ para cada tuber\'ia $i=1...n$. I-pai Wu en 1975 encontr\'o la siguiente ecuaci\'on para inicializar $h_{f_i}$ antes de iniciar las iteraciones:
+\begin{equation} 
+h_{f_i} = H_T \frac{L_i \cos \theta_i}{\sum_{i=1}^n L_i \cos \theta_i}
+\label{desp1}
+\end{equation}
+donde $\theta_i$ es el angulo formado entre la horizontal y la tuber\'ia. Usualmente este angulo es el mismo para todas las tuber\'ias ya que todas tienen la misma pendiente, por lo tanto $\theta = \frac{z_1 - z_2}/{\sum_{i=1}^n L_i}$, donde $z_1$ es la altura a la entrada del sistema y $z_2$ es la altura a la salida del sistema.
+\item \label{fff} Para cada tuber\'ia $i=1...n$
+\begin{enumerate}
+\item \label{fri} Asumir un di\'ametro comercial inicial $D_i$. El $D_i$ inicial debe ser peque\~no (e.g. 1 pulg.) pero no tan peque\~no ya que el procedimiento no converge.
+\item Aplicar el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr}. Note que lo \'unico que cambia dentro de estos procedimientos es que la velocidad $V$ es calculada usando la ecuaci\'on~\ref{com7}; ya no es un dato de entrada. De aqui sale un valor de $f$ y $V$.
+\item Calcular el nuevo caudal $Q_{n_i} =V_i A_i $ usando $D_i$, donde $A_i =\frac{\pi D_i^2}{4}$.
+\item Si $Q_{n_i} >= Q_i $ ir a ~\ref{pri}. Si $Q_{n_i} < Q_i $ tomar el siguiente di\'ametro comercial superior $D_{i+1}$ e ir a ~\ref{fri}.
+\end{enumerate}
+\item \label{pri} Para cada tuber\'ia $i=1...n$, calcular la velocidad real como $V_{R_i} = Q_i / A_i$
+\item Para cada tuber\'ia $i=1...n$, y con el $D_i$ y $V_{R_i}$, calcular $f_i$ usando el procedimiento descrito en la secci\'on~\ref{sec:pf} o en la secci\'on ~\ref{sec:nr}.
+\item Para cada tuber\'ia $i=1...n$, calcular $h_{f_{Ri}}$ utilizando la ecuaci\'on~\ref{com2} y $h_{m_{Ri}}$  utilizando la ecuaci\'on~\ref{com3}. Usar en estas ecuaciones $D_i$ y $V_{R_i}$.
+\item La energ\'ia del sistema a la salida de la tuber\'ia $n$ suele ser superior a la energ\'ia requerida del sistema all\'i ($E2$), por lo que usualmente se utiliza una valvula para hacer caer la energ\'ia a $E2$. Dicha caida $h_{m_v}$, se calcula como:
+\begin{equation} 
+h_{m_v} = H_T - \sum_{i=1}^n h_{f_{Ri}} - \sum_{i=1}^n h_{m_{Ri}}
+\label{desp2}
+\end{equation}
+\item Si $h_{m_v} > 0$ y $h_{m_v} \approx E2$, ir a ~\ref{ttt}. Si $h_{m_v} >> E2$, para cada tuber\'ia $i=1...n$, actualizar el valor de $h_{f_i}$ para la siguiente iteraci\'on como:
+\begin{equation} 
+h_{f_i} = h_{f_{Ri}} + h_{m_v}
+\label{desp3}
+\end{equation}
+Luego ir a ~\ref{fff}.
+
+\item \label{ttt} Imprimir $D_i$ para $i=1...n$.
+
+\end{enumerate}
+
+Es importante revisar que $h_{m_v}$ sea positivo, de lo contrario esto supondr\'ia presiones negativas que podr\'ian generar cavitaci\'on en el sistema. El procedimiento anterior puede ser repetido para diferentes materiales de tuber\'ia (diferentes valores de $\varepsilon$) con el fin de escoger el dise\~no m\'as econ\'omico.
+
+
+%%%%%%%
+\section{Tuber\'ias con perdida uniforme de caudal por unidad de longitud (Tubos porosos)}
+En sistemas de riego moderno existen sistemas de tuber\'ias que estan dise\~nados para entregar un caudal por unidad de longitud con el objetivo  de lograr uniformidad en el riego (ver figura~\ref{porot}). Estas tuber\'ias se conocen como \emph{tubos porosos} o \emph{mangueras exudantes}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/porot2.jpg}
+\caption{Sistema de riego con tuber\'ia porosa.} 
+\label{porot2}
+\end{figure}
+
+% Fig 5.6 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/porot.jpeg}
+\caption{Tuber\'ia porosa con entreaga de caudal por unidad de longitud ($q$) y su l\'inea de gradiente hidr\'aulico (tomado de \cite{saldarriaga}).} 
+\label{porot}
+\end{figure}
+Si se analiza la tuber\'ia de la figura~\ref{porot}, se sabe que la presi\'on disminuye a lo largo de la tuber\'ia debido a las p\'erdidas asi como la velocidad ya que el caudal disminuye por unidad de longitud. De la figura~\ref{porot}, tenemos:
+
+\begin{itemize}
+\item Conservaci\'on de la masa
+\begin{equation}
+Q_x = Q_1 - q x
+\label{poro1}
+\end{equation}
+donde $Q_x$ es el caudal en la tuber\'ia a una distancia $x$ de la secci\'on de entrada 1, $q$ es el caudal descargado por la tuber\'ia por unidad de longitud, $Q_1$ es el caudal a la entrada (1) de la tuber\'ia.
+
+\item Pendiente de la l\'inea de gradiente hidr\'aulico
+Aplicando la ecuaci\'on de Darcy-Weisbach (para p\'erdidas por fricci\'on), e ignorando p\'erdidas menores,  para una longitud infinitesimal de tuber\'ia $dx$,  en donde no existe salida de caudal, se tiene:
+\begin{equation}
+d h_f = f_x \frac{dx}{D}\frac{V_x^2}{2g}
+\label{poro2}
+\end{equation}
+donde $d h_f$ es la p\'erdida de energ\'ia a lo largo de $dx$, $f_x$ es el factor de fricci\'on en $dx$ y $V_x$ es la velocidad en $dx$. Expresando la ecuaci\'on~\ref{poro2} en t\'erminos del caudal $Q_x$, se tiene:
+\begin{equation}
+\frac{d h_f}{dx} = \frac{f_x}{2g}\frac{Q_x^2}{D A^2}
+\label{poro3}
+\end{equation}
+
+o
+
+\begin{equation}
+\frac{d h_f}{dx} = \frac{8 f_x Q_x^2}{\pi^2 g D^5}
+\label{poro4}
+\end{equation}
+
+reemplazando la ecuaci\'on~\ref{poro1} en la ecuaci\'on~\ref{poro4}, se tiene:
+
+\begin{equation}
+\frac{d h_f}{dx} = \frac{8}{\pi^2 g D^5} f_x \left( Q_1 - q x\right)^2
+\label{poro5}
+\end{equation}
+
+Integrando la ecuaci\'on~\ref{poro5} para calcular las p\'erdidas a lo largo de la longitud de la tuber\'ia ($L$), se tiene:
+
+\begin{equation}
+ \color{red}\boxed{\color{black} h_f = \frac{8}{\pi^2 g D^5} \int_0^L f_x \left( Q_1 - q x\right)^2 dx }
+\label{poro6}
+\end{equation}
+
+donde $f_x$ esta dado por la ecuaci\'on de Colebrook-White:
+
+\begin{equation}
+%\color{red}\boxed{\color{black}  \frac{1}{\sqrt{f}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52}{Re \sqrt{f}} \right) }
+\frac{1}{\sqrt{f_x}}= -2 \log \left( \frac{\varepsilon}{3.7D} + \frac{2.52 \nu}{V_x D \sqrt{f_x}} \right) 
+\label{poro7}
+\end{equation}
+
+Note que la ecuaci\'on~\ref{poro6} no se puede resolver analiticamente ya que el valor de $f_x$, coeficiente de fricci\'on a una distancia $x$, se calcula a trav\'es de la ecuaci\'on implicita ~\ref{poro7}. Sin embargo la ecuaci\'on~\ref{poro6} se puede resolver aproximadamente utilizando los m\'etodos siguientes:
+
+\begin{enumerate}
+\item Factor de fricci\'on constante\\
+Si se supone que $f_x$ es constante y se calcula como el promedio del factor de fricci\'on a la entrada ($f_1$) y a la salida ($f_L$):
+
+\begin{equation}
+f_x = \frac{f_1 + f_L}{2}
+\label{poro8}
+\end{equation}
+
+integrando la ecuaci\'on~\ref{poro6} para $x$, se tiene:
+
+\begin{equation}
+ h_f = \frac{8 f_x}{\pi^2 g D^5} \left( Q_1^2 x - Q_1 q x^2  + \frac{q^2 x^3 }{3} \right) \Bigg|_{x=0}^{x=L}
+\label{poro9}
+\end{equation}
+
+en donde se obtiene:
+
+\begin{equation}
+\color{red}\boxed{\color{black} h_f = \frac{8 f_x}{\pi^2 g D^5} \left( Q_1^2 L - Q_1 q L^2  + \frac{q^2 L^3 }{3} \right) }
+\label{poro10}
+\end{equation}
+
+\item Factor de fricci\'on constante tramo a tramo\\
+Para utilizar este m\'etodo se supone que la tuber\'ia de longitud $L$ est\'a dividida en $n$ tramos de igual longitud $l=L/n$. Por lo tanto se calculan las p\'erdidas para cada tramo de la tuber\'ia suponiendo que $f_x$ es constante en el tramo, y luego se suman. Las p\'erdidas de energ\'ia $h_{f_i}$ para un tramo $i$ donde $i=1 \cdots n$ son:
+
+\begin{equation}
+\color{red}\boxed{\color{black} h_{f_i} = \frac{8 f_{x_i}}{\pi^2 g D^5} \left( Q_{1_i}^2 l - Q_{1_i} q l^2  + \frac{q^2 l^3 }{3} \right) }
+\label{poro11}
+\end{equation}
+
+donde $Q_{1_i}$ es el caudal transportado por el tramo $i$ e igual a $Q_{1_i} = Q_1 - ql(i-1)$. Note que $f_{x_i}$ es el promedio entre tramos:
+
+\begin{equation}
+f_{x_i} = \frac{f_i + f_{i+1}}{2}
+\label{poro12}
+\end{equation}
+
+Las p\'erdidas totales a lo largo de la tuber\'ia se calculan como:
+
+\begin{equation}
+h_f = \sum_{i=1}^{n} h_{f_i}
+\label{poro13}
+\end{equation}
+
+\end{enumerate}
+\end{itemize}
+
+El procedimiento para el calculo de la p\'erdida de energ\'ia en una tuber\'ia porosa de describe a continuaci\'on.
+\begin{enumerate}
+\item Calcular el caudal de entrada a la tuber\'ia  ($Q_1$) de longitud $L$ como:
+\begin{equation}
+Q_1 = q L
+\label{poro14}
+\end{equation}
+
+\item C\'alculo de la zona laminar. Debido a que la manguera o tuber\'ia va perdiendo caudal su velocidad disminuye y el flujo, en alg\'un punto, se convierte en laminar. Para calcular ese punto, se asume un n\'umero de Reynolds cr\'itico (donde cambia a laminar) igual a $Re_c=2000$. Dicho caudal, para el cual ocurre $Re_c$, se calcular como:
+
+\begin{equation}
+Q_c = \frac{Re_c \pi D \nu}{4}
+\label{poro15}
+\end{equation}
+
+la distancia desde el final de la tuber\'ia en donde el flujo cambia a laminar, se calcula como:
+
+\begin{equation}
+L_c = \frac{L_c Q_c}{Q_1}
+\label{poro16}
+\end{equation}
+
+Teniendo en cuenta que en los \'ultimos tramos de la tuber\'ia ($x < x_c$) el n\'umero de Reynolds tiende a cero,  el $f$ tiende a infinito. Por esto, es necesario dejar cierta longitud de la tuber\'ia en donde no se c\'alculan p\'erdidas. En estos ultimos tramos, las p\'erdidas son muy peque\~nas por lo tanto no influyen en el resultado final. Dicho valor puede ser el 0.3\% de $L$.
+
+\item Implementar cualquiera de los dos m\'etodos descritos: 1) factor de fricci\'on constante para la tuber\'ia y 2) factor de fricci\'on constante tramo a tramo.
+
+\end{enumerate}
+
+
+%%%%%%%
+\section{Sistemas de tuber\'ias en paralelo} 
+Las tuber\'ias en paralelo son un conjunto de dos tuber\'ias o mas las cuales se derivan de un nodo com\'un (nodo de entrada) y convergen hacia otro nodo (nodo de salida). Esto implica que, de acuerdo a la \emph{ley de conservaci\'on de la masa}, la suma de los caudales que viajan por cada una de las tuber\'ias debe ser igual aguas arriba del nodo de entrada y aguas abajo del nodo de salida; esto implica que el caudal de entrada y de salida de las tuber\'ias es le mismo. En casos pr\'acticos y cotidianos, los sistemas de tuber\'ias en paralelo est\'an limitados a m\'aximo 3 o 4 tuber\'ias, y son mas comunes los sistemas de dos tuber\'ias. En estos sistemas, cada tuberia puede tener longitudes, di\'ametros, accesorios y materiales diferentes.  
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/comp31.jpeg}
+\caption{Aumento de la capacidad de un acueducto veredal mediante la construcci\'on de una tercera tuber\'ia.}
+\label{comp3}
+\end{figure}
+
+
+\subsection{Ecuaciones para la soluci\'on de problemas}
+Teniendo en cuenta las tuber\'ias en paralelo de la figura~\ref{comp3}, se plantean las siguientes ecuaciones:
+% Fig 5.6 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/comp3.jpeg}
+\caption{Esquema tridimensional de dos tuber\'ias en paralelo y sus lineas de energ\'ia, con un nodo de entrada 1 y un nodo de salida 2. (tomado de \cite{saldarriaga}).} 
+\label{comp3}
+\end{figure}
+
+\subsubsection*{Conservaci\'on de la energ\'ia}
+
+\begin{equation}
+\Delta E = E1-E2 = H_T = h_{f_1}^1 + h_{m_1}^1 + h_{f_2}^1 + h_{m_2}^1 + h_{f_3}^1 + h_{m_3}^1 + h_{f_4}^1 + h_{m_4}^1 + h_{f_5}^1
+\label{para1}
+\end{equation}
+donde $H_T$ es la diferencia de energ\'ia entre el node de entrada (E1) y el nodo de salida (E2); la energ\'ia total disponible en el sistema, $h_{f_i}i^j$ son las p\'erdidas por fricci\'on en el tramo $i=1...5$ de la tuber\'ia $j=1$ y $h_{m_i}^j$ son las p\'erdidas menores (por v\'alvulas, uniones, etc) en el tramo $i=1...4$ de la tuber\'ia $j=1$.
+
+La ecuaci\'on~\ref{para1} puede expresarse de forma m\'as compacta como:
+\begin{equation}
+H_T = \sum_{i=1}^{n_j} h_{f_i}^j + \sum_{i=1}^{m_j} h_{m_i}^j
+\label{para2}
+\end{equation}
+donde $n_j$ es el n\'umero de tramos de la tuber\'ia $j=1$ y $m_j$ es el n\'umero de accesorios en la tuber\'ia $j=1$. Note que la ecuaci\'on~\ref{para2} aplica tambi\'en para la tuber\'ia $j=2$.
+
+De acuerdo con la \emph{ley de conservaci\'on de la energ\'ia}, esto implica que las p\'erdidas de energ\'ia en la direcc\'on del flujo a trav\'es de la tuber\'ia 1 y 2 es la misma. De acuerdo con esto, la ecuaci\'on~\ref{para2}, se escribe como:
+\begin{equation}
+H_T = \sum_{i=1}^{n_1} h_{f_i}^1 + \sum_{i=1}^{m_1} h_{m_i}^1 = \sum_{i=1}^{n_2} h_{f_i}^2 + \sum_{i=1}^{m_2} h_{m_i}^2
+\label{para3}
+\end{equation}
+
+\subsubsection*{Conservaci\'on de la masa}
+De acuerdo con la \emph{ley de conservaci\'on de la masa}, el caudal que entra al nodo de entrada ($Q_T$), debe ser igual a la suma de los caudales que se distribuyen en las tuber\'ias e igual al caudal en el nodo de salida. Para el esquema de la figura~\ref{comp3}, se tiene que:
+
+\begin{equation}
+Q_T = Q_1 + Q_2
+\label{para4}
+\end{equation}
+
+donde $Q_1$ es el caudal que transporta la tuber\'ia 1 y $Q_2$ es el caudal que transporta la tuber\'ia 2. En general para un numero $n$ de tuber\'ias en paralelo, se tiene:
+
+\begin{equation}
+Q_T = \sum_{i=1}^n Q_i
+\label{para5}
+\end{equation}
+
+\subsection{Comprobaci\'on de dise\~no} 
+Para este caso se conocen las caracter\'isticas f\'isicas de $n$ tuber\'ias, los accesorios en cada una de ellas, la energ\'ia disponible en el sistema y las propiedades del fluido circulante. Se desea entonces conocer los caudales individuales en cada tuber\'ia ($Q_i$). A continuaci\'on se presenta el procedimiento de c\'alculo: 
+\begin{enumerate}
+\item Leer: $\rho$, $\mu$ o $\nu$, $h_{b}$ (Cabeza de la bomba), $E1$ y $E2$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
+\item Para cada una de las $n$ tuber\'ias en paralelo, hacer la comprobaci\'on de dise\~no para tuber\'ias simples descrito en la secci\'on~\ref{tubeSimpleCompro}. Se obtendr\'an $n$ caudales $Q$ y $n$ velocidades $V$ para cada tuber\'ia. 
+\item El caudal total $Q_T$ se obtendra usando la ecuaci\'on~\ref{para5}. 
+\end{enumerate}
+
+\subsection{C\'alculo de la potencia requerida}\label{tubeParallPoten}
+A continuaci\'on se describe el proceso para solucionar este tipo de problemas que consiste en determinar la presi\'on en el nodo de entrada (1) o en el nodo de salida (2) de las tuber\'ias en paralelo. Con esto es posible calcular la potencia consumida por el flujo a trav\'es de las tuber\'ias en paralelo. 
+
+Uno de los problemas es que, a pesar de que el caudal total $Q_T$ es un dato dado en el problema, no se sabe como \'este se distribuye a trav\'es de las tuber\'ias. Para esto se ha encontrado la siguiente ecuaci\'on a partir de la ecuaci\'on de Darcy-Weisbach:
+
+\begin{equation}
+Q_1^k = Q_T \frac{d_1^{5/2} / \sqrt{l_1}}{\sum_{i=1}^n d_i^{5/2} / \sqrt{l_i}}
+\label{para6}
+\end{equation}
+
+en donde $l_1$ es la londitud de la tuber\'ia 1 y $d_1$ es el di\'ametro de la tuber\'ia 1. La ecuaci\'on~\ref{para6} sirve para inicializar el caudal $Q_1^k$ en la tuber\'ia 1. Con este caudal $Q_1^k$ es posible calcular la energ\'ia (presi\'on) en el node 1 o nodo 2 siguiendo el algoritmo de la secci\'on~\ref{tubeSimplePoten}. Una vez se tiene la energ\'ia disponible en el sistema ($E_1-E_2$), es posible calcular el caudal en cada una de las otras $n-1$ tuber\'ias siguiendo el algoritmo de la secci\'on~\ref{tubeSimpleCompro}. Sin embargo, es posible que la sumatoria de los $n$ caudales no se sea igual a $Q_T$, por lo que es necesario corregir la suposicion inicial de $Q_1$ como:
+
+\begin{equation}
+Q_1^{k+1}= Q_1^k \frac{Q_T}{Q_T^*}
+\label{para7}
+\end{equation}
+
+donde
+
+\begin{equation}
+Q_T^* = \sum_{i=1}^n Q_i^k 
+\label{para8}
+\end{equation}
+es el caudal total estimado para la iteraci\'on $k$. El proceso de iteracion termina cuando $Q_T = Q_T^*$.
+
+A continuaci\'on se describe el algoritmo para encontrar la presi\'on (energ\'ia) en el nodo de entrada o de salida al sistema y la potencia disipada. 
+
+\begin{enumerate}
+\item Leer: $\rho$, $\mu$ o $\nu$, $h_{b}$ (Cabeza de la bomba), $Q_T$ y $E1$ o $E2$. Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina). Esta lectura se debe hacer para las $n$ tuber\'ias del sistema.
+\item Inicializar el caudal transportado por la tuber\'ia 1 ($Q_1$) usando la ecuaci\'on~\ref{para6}.
+\item \label{la1} Con base en el caudal $Q_1$ determinar la energ\'ia en el nodo 1 ($E_1$) o en el nodo 2 ($E_2$) siguiendo el algoritmo de la secci\'on~\ref{tubeSimplePoten}.
+\item Una vez calculada la energ\'ia en el nodo 1 ($E_1$) o en el node 2 ($E_2$) para cada una de las $n-1$ tuber\'ias restantes, calcular el caudal $Q$ siguiendo el procedimiento descrito en la secci\'on~\ref{tubeSimpleCompro}.  
+\item Una vez calculado el caudal $Q$ en cada tuber\'ia, calcular el caudal total estimado $Q_T^*$ para la iteraci\'on $k$. Si $|Q_T - Q_T^*| \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$), ir a ~\ref{prf}. Si $|Q_T - Q_T^*| > \eta$, corregir $Q_1$ usando la ecuaci\'on~\ref{para7} e ir ~\ref{la1}.
+\item \label{prf} Imprimir $E1$ o $E2$ y $Q_i$ donde $i=1 \cdots n$. Con base en las p\'erdidas a lo largo de la tuber\'ia $i$, calcular la potencia disipada en el sistema.
+\end{enumerate}
+
+\subsection{Disen\~o de  tuber\'ias en paralelo}
+En la practica en ingenier\'ia no es com\'un dise\~nar sistemas de tuber\'ias en paralelo debido a su ineficiencia a nivel hidr\'aulico ya que el per\'imetro mojado de 2 o mas tuber\'ias es mayor que el per\'imetro mojado de una sola tuber\'ia. Este dise\~no solo se justifica si el di\'ametro de dise\~no es mayor al di\'ametro comercial disponible. De ser as\'i, cada tuber\'ia se dise\~na como una tuber\'ia simple para un caudal $Q_T/n$, donde $n$ es el n\'umero de tuber\'ias en paralelo. Sin embargo, lo que si es com\'un es la ampliaci\'on de un sistema conformado por una tuber\'ia simple ya existente debido a un incremento en la demanda, lo cual es com\'un en acueductos y sistemas de riego. Para esta ampliaci\'on se dise\~na y se construye una tuber\'ia paralela a la ya existen para la cual se conocen sus caracter\'isticas. Para este dise\~no se conoce el nuevo caudal total $Q_T$, la energ\'ia en el nodo de entrada al sistema y las caracter\'isticas de las tuber\'ias. Las inc\'ognitas son el di\'ametro de la nueva tuber\'ia y la energ\'ia en el nodo de salida del sistema. Note que la energ\'ia en el nodo final ser\'a diferente a la energ\'ia inicial para este nodo (antes de la ampliaci\'on) ya que la hidr\'aulica de la tuber\'ia existente se modifica tambi\'en.
+
+A continuaci\'on se presenta un algoritmo para el dise\~no de la nueva tuber\'ia (n\'umero 2), en donde la tuber\'ia 1 es existente.
+
+\begin{enumerate}
+\item Leer: $\rho$, $\mu$ o $\nu$, $h_b$ (Cabeza de la bomba), $Q_1$, $Q_T$, $E1$ (energ\'ia del nodo a la entrada) y $E2$ (energ\'ia del nodo a la salida. Esta energ\'ia cambia durante el proceso). Tambi\'en, para cada tuber\'ia $i$, leer: $\varepsilon_i$, $L_i$, $\sum K_i$, $h_{t_i}$ y $\eta_i$ (eficiencia de la turbina) donde $i=1 \cdots 2$. Leer el diametro $D$ de la tuber\'ia existente.
+\item Calcular el caudal por la tuber\'ia 2: $Q_2 = Q_T - Q_1$.
+\item Dise\~nar la tuber\'ia 2 como una tuber\'ia simple siguiendo el procedimiento descrito en la secci\'on~\ref{tubeSimpleDesign}. Teniendo en cuenta que, debido a que el di\'ametro comercial siempre deja pasar mas caudal, $Q_2$ es mayor al caudal deseado (caudal inicial), la energ\'ia en el nodo 2 aumenta y por lo tanto el caudal $Q_1$ cambia tambi\'en.
+\item De aqu\'i en adelante se vuelve un problema de c\'alculo de la potencia requerida para dos tuber\'ias en paralelo partiendo del numeral 2 en el procedimiento descrito en la secci\'on~\ref{tubeParallPoten}. 
+\end{enumerate}
+
+%%%%%%%%
+\section{Redes abiertas de tuber\'ias} 
+% Fig from leonardo albornoz tesis
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{./figs/opn0.png}
+\caption{Red de embalses de para el sumunistro de agua en Bogot\'a D.C.} 
+\label{opn0}
+\end{figure}
+
+
+En la practica, los sistemas de tuber\'ias suelen ser mas complejos que tuber\'ias simples, en serie o en paralelo, por lo que las tuber\'ias suelen estar conectadas unas con otras formando diferentes configuraciones. Las tuber\'ias ramificadas o \emph{redes abiertas de tuberi\'ias} suelen ser las tuber\'ias principales (l\'ineas madres o expresas) en sistemas de acueductos, sistemas de irrigaci\'on o sistemas de tratamiento de agua, que est\'an compuestas ademas por tanques de almacenamiento, desarenadores, plantas de tratamiento y obras de captaci\'on (ver~\ref{opn1}). En muchos casos estas redes abiertas est\'n conectadas a redes cerradas. 
+
+% Fig 6.1 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/opn1.jpeg}
+\caption{Red abierta compuesta por tuber\'ias, tanques de almacenamiento y nodos (tomado de \cite{saldarriaga}).} 
+\label{opn1}
+\end{figure}
+
+Los problemas que se estudiaran para redes cerradas son el problema de comprobaci\'on de dise\~no, el cual busca determinar los caudales en cada una de las tuber\'ias, y el de dise\~no de la red en donde se determina el di\'ametro de cada tuber\'ia. Note que el problema de c\'alculo de la potencia no es pertinente ya que la energ\'ia del sistema siempre es un dato dado que es determinado por la localizaci\'on topogr\'afica de la red o por la energ\'ia suministrada por un bomba en una tuber\'ia. 
+
+\subsection{Ecuaciones para la soluci\'on de problemas}
+Teniendo en cuenta la figura~\ref{opn2}, se plantean las siguientes leyes de conservaci\'on para la soluci\'on de problemas de redes abiertas.
+
+% Fig 6.4 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/opn2.jpeg}
+\caption{Red abierta conectando un tanque de suministro A, al cual llega un caudal total demandado, con los tanques de almacenamiento B,C y D, de los cuales se demandan caudales (tomado de \cite{saldarriaga}).} 
+\label{opn2}
+\end{figure}
+
+
+\subsubsection*{Conservaci\'on de la masa}
+En una red abierta es necesario conservar la masa a lo largo de toda la red. Se plantea entonces que en cada nodo se conserva la masa, teniendo en cuenta las posibles demandas desde los tanques de almacenamiento y desde los nodos. Analizando la red de la figura~\ref{opn2} se tiene que el tanque de distribuci\'on A conduce el caudal total demandado a trav\'es de la tuber\'ia madrea AU hacia el nodo U de donde se distribuye el caudal hacia los tanques B,C y D, de donde se derivan unas demandas. De acuerdo con esto, la ecuaci\'on de conservaci\'on de la masa en el nodo U es:
+
+\begin{equation}
+\sum_{i=1}^{n} Q_{iU} - Q_{L_U} = 0
+\label{opne1}
+\end{equation}
+
+donde $Q_{iU}$ es el caudal en la tuber\'ia $iU$, $Q_{L_U}$ es el caudal demandado en el nodo $U$ que puede ser cero, y $n$ es el n\'umero de tuber\'ias conectadas con el nodo $U$. 
+
+\subsubsection*{Conservaci\'on de la energ\'ia}
+De acuerdo con la figura~\ref{opn2}, la ecuacion de conservaci\'on de la energ\'ia entre un tanque $i = A,B,C,D$ y un nodo $U$, se expresa como:
+
+\begin{equation}
+| Z_i - Z_U | =Ht_{iU}= \left( f_{iU} \frac{L_{iU}}{D_{iU}} + \sum K_{iU} \right)\frac{V_{iU}^2}{2g}
+\label{opne2}
+\end{equation}
+
+donde $Ht_{iU}$ es la energ\'ia disponible entre $iU$, $Z_U$ es la cabeza piezom\'etrica en la uni\'on (siempre es desconocida), $Z_i$ es la cabeza piezom\'etrica en el tanque $i$, $V_{iU}$ es la velocidad de flujo en la tuber\'ia $iU$, $d_{iU}$ es el di\'ametro en la tuber\'ia $iU$, $L_{iU}$ es la longitud de la tuber\'ia $iU$, $f_{iU}$ es el factor de fricci\'on de Darcy en la tuber\'ia $iU$ y $\sum K_{iU}$ es el coeficiente de global de p\'erdidas menores en la tuber\'ia $iU$.
+
+La ecuaci\'on~\ref{opne2} se puede expresar en t\'erminos del caudal como:
+
+\begin{equation}
+| Z_i - Z_U | =Ht_{iU}= \left( f_{iU} \frac{L_{iU}}{2gD_{iU}} + \frac{\sum K_{iU}}{2g} \right)\frac{Q_{iU}^2}{A_{iU}^2}
+\label{opne3}
+\end{equation}
+
+
+\subsection{Comprobaci\'on de dise\~no} 
+En este caso se conocen las caracter\'isticas del fluido transportado, las caracter\'isticas de las tuber\'ias (di\'ametros, rugosidades y longitudes), las cotas de los tanques que integran el sistema y las posibles demandas de caudal en los nodos. Se desea conocer el caudal total demandado y las demandas de caudal en cada uno de los tanques $Q_{L_i}$. El proceso iterativo se basa en el proceso de comprobaci\'on de dise\~no para tuber\'ias simples aplicado a cada tuber\'ia del sistema. Sin embargo como las cabeza de energ\'ia ($Z_{U_j}$) en los nodos no son conocidas estas se deben ir corrigiendo en el proceso de iteraci\'on hasta cumplir (aproximadamente) con la ecuaci\'on~\ref{opne1} en cada nodo. A continuaci\'on se presenta un algoritmo para resolver este tipo de problemas:
+
+\begin{enumerate}
+\item Leer: $\rho$ y $\mu$ o $\nu$. Para cada tuber\'ia $i=1\cdots n$, leer: $\varepsilon_i$, $L_i$, $D_i$, $\sum K_i$, $h_{p_i}$ y $\eta_i$ (eficiencia de la bomba). Para cada embalse o tanque de almacenamiento $i$ leer la cota piezom\'etrica $Z_i$. Para cada nodo $j=1 \cdots m$, leer la demanda de caudal en el nodo $Q_{L_{U_j}}$.
+
+\item Estimar los valores iniciales de $Z_{U_j}$. Esta estimaci\''on se debe hacer cuidadosamente ya que el algoritmo puede converger hacia una soluci\'on errada (quedar atrapado en un minimo local de la funci\'on objetivo). En el caso en donde no existan bombas en las tuber\'ias los valores de $Z_{U_j}$ pueden asumirse por debajo del tanque principal y por encima de los tanques a los que se distribuye el flujo. En el caso de un tramo con un sistema de bombeo $Z_{U_j}$ puede asumirse por debajo del tanque al cual se esta bombeando. 
+
+\item Para cada tuber\'ia $i=1 \cdots n$, calcular el caudal siguiendo el algoritmo de comprobaci\'on de dise\~no para tuber\'ias simples descrito en la secci\'on~\ref{tubeSimpleCompro}.
+
+\item Para cada nodo $j = 1 \cdots m$ comprobar que $| \sum_{i=1}^{n} Q_{ij} - Q_{L_{U_j}} | \leq \eta$, donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$). Note que $Q_{ij}$ es positivo si entra al nodo y es negativo si sale del nodo. Si esta condici\'on no se cumple se debe corregir $Z_{U_j}$ de la siguiente manera:
+
+\begin{equation}
+Z_{U_j}^t = Z_{U_j}^{t+1} + \Delta Z_{U_j} 
+\label{opne4}
+\end{equation}
+
+donde $\Delta Z_{U_j}$ es la correci\'on que se debe calcular siguiendo la metodolog\'ian de R.J. Cornish (1940) como:
+
+\begin{equation}
+\Delta Z_{U_j} = \frac{2 \left( \sum_{i=1}^{n} Q_{ij} - Q_{L_{U_j}} \right ) }{\sum_{i=1}^{n} \frac{Q_{ij}}{Z_i - Z_{U_j}}} 
+\label{opne5}
+\end{equation}
+
+Note que en la medida que la condicio\'on $| \sum_{i=1}^{n} Q_{ij} - Q_{L_{U_j}} |$ se va acercando a cero, el valor de $\Delta Z_{U_j}$ tambi\'en se acerca a cero. El proceso terminar cuando $\sum_{j=1}^m | \Delta Z_{U_j} | \leq \eta $.
+
+\item Imprimir $Q_{ij}$, donde $i= 1 \cdots n$ y $j=1 \cdots m$. Tambi\'en es conveniente imprimir $Z_{U_j}$.
+
+\end{enumerate}
+
+\subsection{Disen\~o de  redes abiertas de tuber\'ias}
+En este caso se conocen las caracter\'isticas del fluido transportado, las caracter\'isticas de las tuber\'ias (rugosidades y longitudes), las cotas de los tanques que integran el sistema y las posibles demandas de caudal en los nodos. Se desea conocer el di\'ametro de cada tuber\'ia $D_i$. El proceso iterativo se base en el proceso de comprobaci\'on de dise\~no para tuber\'ias simples aplicado a cada tuber\'ia del sistema, asumiendo previamente los di\'ametros de cada tuber\'ia. Sin embargo como las cabeza de energ\'ia ($Z_{U_j}$) en los nodos no son conocidas estas se deben ir corrigiendo en el proceso de iteraci\'on hasta cumplir (aproximadamente) con la ecuaci\'on~\ref{opne1} en cada nodo. A continuaci\'on se presenta un algoritmo para resolver este tipo de problemas:
+
+\begin{enumerate}
+\item Leer: $\rho$ y $\mu$ o $\nu$. Para cada tuber\'ia $i=1\cdots n$, leer: $\varepsilon_i$, $L_i$, $\sum K_i$, $h_{p_i}$, $\eta_i$ (eficiencia de la bomba) y $Q_i$. Para cada embalse o tanque de almacenamiento $i$ leer la cota piezom\'etrica $Z_i$. Para cada nodo $j=1 \cdots m$, leer la demanda de caudal en el nodo $Q_{L_{U_j}}$.
+
+\item Estimar los valores iniciales de $Z_{U_j}$. Esta estimaci\''on se debe hacer cuidadosamente ya que el algoritmo puede converger hacia una soluci\'on errada (quedar atrapado en un m\'inimo local de la funci\'on objetivo). En el caso en donde no existan bombas en las tuber\'ias los valores de $Z_{U_j}$ pueden asumirse por debajo del tanque principal y por encima de los tanques a los que se distribuye el flujo. En el caso de un tramo con un sistema de bombeo $Z_{U_j}$ puede asumirse por debajo del tanque al cual se esta bombeando. 
+
+\item \label{diseOp} Disenar cada tuber\'ia $i=1 \cdots n$  de la red abierta siguiento el algoritmo de dise\~no para tuberias simples descrito en la secci\'on~\ref{tubeSimpleDesign}.
+
+\item Para cada nodo $j = 1 \cdots m$ y con base en los caudales ($Q_{ij}$) calculados (generalmetne diferentes a los leidos en el paso 1) para cada tuber\'ia en el paso anterior, determinar la correcci\'on de cabeza de energ\'ia para cada nodo con base en la ecuaci\'on~\ref{opne5}. 
+
+\item Verificar que la condici\'on $\sum_{j=1}^m | \Delta Z_{U_j} | \leq \eta $ donde donde $\eta$ es un error  (e.g. $\eta$ = 1x10$^{-6}$). Note que $| \Delta Z_{U_j} = Z_{U_j}^t - Z_{U_j}^{t+1} |$. Si la condici\'on anterior se cumple ir a ~\ref{imprD}. Si la condici\'on no se cumple ir a ~\ref{diseOp}.
+
+\item \label{imprD} Imprimir $D_i$, donde $i= 1 \cdots n$. 
+\end{enumerate}
+
+%%%%%%%%
+\section{Redes cerradas}
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/cpn0.jpeg}
+\caption{Red cerrada del laboratorio de hidr\'aulica.}
+\label{cpn0}
+\end{figure}
+
+% Fig 6.2 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/cpn2.jpeg}
+\caption{Red cerrada de tuber\'ias de acuerdo con la norma Colombiana (Insfopal) (tomado de \cite{saldarriaga}).} 
+\label{cpn2}
+\end{figure}
+
+
+
+Las redes cerradas son tambi\'en conocidas como  \emph{redes de distribuci\'on} (en sistemas de abastecimiento de agua). Estas redes se caracterizan por tener al menos un circuito cerrado garatizando que cualquier zona de la red sea alcanzada por una tuber\'ia, lo cual incrementa la confiabilidad del abastecimiento. Al igual que en los casos de sistemas de tuber\'ias ya vistos, las ecuaciones para el an\'alisis de redes cerradas se basan en las ecuaciones de conservaci\'on de la energ\'ia y de la masa, as\'i como de las ecuaciones para el calculo de las p\'erdidas.
+Se presentan aqu\'i los diferentes m\'etodos de an\'alisis para la comprobaci\'on de dise\~no, en donde se calculan los caudales en las tuber\'ias y las presiones en los nodos de las redes. Los m\'etodos se presentan en orden cronol\'ogico, en donde los m\'etodos m\'as antiguos son menos eficientes desde el punto de vista computacional.  
+
+\subsection{Principios fundamentales del an\'alisis de redes cerradas}
+
+\subsubsection*{Ecuaciones de conservaci\'on en los nodos}
+\textbf{Conservaci\'on de la masa}\\
+Si se considera la red cerrada de la figura~\ref{cpn1} en donde $Q_{D_1}$, $Q_{D_2}$, $Q_{D_3}$, $\cdots$, $Q_{D_Nu}$ son los caudales demandados en los nodos y $Q_{e_1}$,  $Q_{e_2}$, $\cdots$, $Q_{e_m}$ son los caudales que alimentan la red, la ecuacion de continuidad se puede escribir como:
+
+% Fig 7.1 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/cpn1.jpeg}
+\caption{Red cerrada de tuber\'ias en donde se indican los caudales demandados y los caudales que la alimentan (tomado de \cite{saldarriaga}).} 
+\label{cpn1}
+\end{figure}
+
+\begin{equation}
+\sum_{i=1}^{m} Q_{e} =  \sum_{i=1}^{Nu} Q_{D}
+\label{cpne1}
+\end{equation}
+
+donde $m$ es el n\'umero de nodos con entrada de caudales a la red y $Nu$ es el n\'umero de nodos con demandas. La ecuaci\'on de continuidad para cada nodo, se puede expresar como:
+
+\begin{equation}
+\sum_{j=1}^{NT_i} Q_{ij} - Q_{Di} = 0
+\label{cpne2}
+\end{equation}
+
+donde $NT_i$ es el n\'umero de tubos que llegan al nodo $i$ y $Q_{ij}$ es el caudal que pasa por la tuber\'ia $ij$ hacia el nodo $i$ desde el nodo $j$. $Q_{ij}$ es positivo si entra a $i$ y negativo si sale de este. \\
+
+\textbf{Conservaci\'on de la energ\'ia}\\
+
+Para cada tramo $ij$, se puede expresar la ecuaci\'on de conservaci\'on de la energ\'ia como:
+
+\begin{equation}
+H_j - H_i = \sum K_{m_{ij}} \frac{V_{ij}^2}{2g} + h_{f_{ij}}
+\label{cpne3}
+\end{equation}
+
+En t\'erminos de caudal, la ecuaci\'on~\ref{cpne3} se expresa como:
+
+\begin{equation}
+H_j - H_i = \frac{Q_{ij}^2}{2gA_{ij}^2}\left( \sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} \right)
+\label{cpne4}
+\end{equation}
+
+despejando $Q_{ij}$ de la ecuaci\'on~\ref{cpne4}, se tiene:
+
+\begin{equation}
+Q_{ij} = \left(\frac{H_j - H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right)^{\frac{1}{2}} \sqrt{2g} A_{ij}
+\label{cpne5}
+\end{equation}
+
+Con el fin de tener en cuenta el signo de los caudales, la ecuaci\'on anterior se expresa como 
+
+\begin{equation}
+Q_{ij} = \left(\frac{H_j - H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right) |H_j - H_i|^{-\frac{1}{2}} \sqrt{2g} A_{ij}
+\label{cpne6}
+\end{equation}
+
+Reemplazando la ecuaci\'on~\ref{cpne5} en la ecuaci\'on~\ref{cpne2}, se tiene:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \sum_{j=1}^{NT_i} \left(\frac{H_j - H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right)^{\frac{1}{2}} \sqrt{2g} A_{ij} - Q_{Di} }
+\label{cpne7}
+\end{equation}
+
+Las ecuaciones~\ref{cpne7} se conocen como las \emph{ecuaciones de cabeza}. Como generalmente es conoce una cabeza de energ\'ia en uno de los nodos, se tienen $Nu-1$ ecuaciones de cabeza en la red, donde $Nu$ es el numero de nodos de la red. 
+
+\subsubsection*{Ecuaciones de conservaci\'on en los circuitos}
+
+Para los circuitos que conforman la red, se deben cumplir las leyes de conservaci\'on.\\ 
+\textbf{Conservaci\'on de la masa}\\
+Para cada nodo que conforma el circuito se debe cumplir la ecuaci\'on~\ref{cpne2}.
+
+\noindent\textbf{Conservaci\'on de la energ\'ia}\\
+Para cada circuito, las p\'erdidas alrededor del circuito deben ser iguales a cero, es decir:
+
+\begin{equation}
+\sum_{j=1}^{NT'_i} h_{f_{ij}} + \sum_{j=1}^{NT'_i} h_{m_{ij}} =0
+\label{cpne8}
+\end{equation}
+
+donde $NT'_i$ es el n\'umero de tuber\'ias en el circuito $i$. La ecuaci\'on anterior se pude expresar como:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \sum_{j=1}^{NT'_i} \frac{Q_{ij}^2}{2g A_{ij}^2} \left( \sum K_{ij} + f_{ij}\frac{L_{ij}}{D_{ij}} \right)}
+\label{cpne9}
+\end{equation}
+
+Con el fin de tener en cuenta los signos de los caudales en las tuber\'ias, la ecuaci\'on~\ref{cpne9} se convierte en: 
+\begin{equation}
+\sum_{j=1}^{NT'_i} \frac{Q_{ij}|Q_{ij}|}{2g A_{ij}^2} \left( \sum K_{ij} + f_{ij}\frac{L_{ij}}{D_{ij}} \right)
+\label{cpne10}
+\end{equation}
+
+
+
+Las ecuaciones~\ref{cpne9} son conocidas como las \emph{ecuaciones de caudal}. Se tienen entonces $NC$ ecuaciones de caudal, donde $NC$ es el numero de circuitos en la red. Note que pueden existir circuitos que contienen otros y en todos ellos se deben cumplir las ecuaciones de caudal. Sin embargo el an\'alisis se hace para circuitos independientes.
+
+En total se tienen entonce $NC+(NU-1)$ ecuaciones no lineales las cuales sirven para encontrar los caudales en las tuber\'ias y las cabezas de energ\'ia en los $NU-1$ nodos de la red dadas las caracter\'isticas de las tuber\'ias y de fluido circulante. Esto quiere decir que el problema se convierte entonce en una comprobaci\'on de dise\~no m\'as que en un dise\~no de la red. Es posible para diferentes combinaciones de di\'ametros y mediante m\'etodos de optimizaci\'on de los costos de la red obtener los di\'ametros en la red.
+
+\subsection{M\'etodo de Hardy-Cross con correcci\'on de caudales}
+Este m\'etodo desarrolado por H. Cross en 1936, resuelve las ecuaciones~\ref{cpne7} y ~\ref{cpne9} para una red cerrada de tuber\'ias dadas las caracter\'isticas de las tuber\'ias y del fluido. Este m\'etodo corrige en cada iteraci\'on los caudales en las tuber\'ias. Si se supone un error $\Delta Q_i$ en el circuito $i$, las perdidas para un tubo se expresan como:
+
+\begin{equation}
+h_{f_{ij}} + h_{m_{ij}} = \left( f_{ij} \frac{L_{ij}}{D_{ij}}+ \sum K_{m_{ij}} \right) \frac{(Q_{ij}+\Delta Q_i)^2}{2gA_{ij}^2}
+\label{cpne11}
+\end{equation}
+
+Si la cabeza de energ\'ia en la tuber\'ia $ij$ se define como $h_{ij}=h_{f_{ij}} + h_{m_{ij}}$, la ecuaci\'on~\ref{cpne11} se expresa como:
+
+\begin{equation}
+h_{ij} = \left( f_{ij} \frac{L_{ij}}{D_{ij}} + \sum K_{m_{ij}} \right) \frac{(Q_{ij}^2 + 2Q_{ij}\Delta Q_i + \Delta Q_i^2)}{2gA_{ij}^2}
+\label{cpne12}
+\end{equation}
+
+Despreciando el t\'ermino $\Delta Q_{ij}^2$ en la ecuaci\'on~\ref{cpne12} ya que es peque\~no en relaci\'on con los otros dos t\'erminos, se tiene:
+
+\begin{equation}
+h_{ij} = \left( f_{ij} \frac{L_{ij}}{D_{ij}}+ \sum K_{m_{ij}} \right) \frac{(Q_{ij}^2 + 2Q_{ij}\Delta Q_i)}{2gA_{ij}^2}
+\label{cpne13}
+\end{equation}
+
+Para el numero de tubos en el circuito $i$ $NT'_i$, se tiene:
+
+\begin{equation}
+\sum_{j=1}^{NT'_i} \frac{Q_{ij}^2}{2g A_{ij}^2} \left( \sum K_{ij} + f_{ij}\frac{L_{ij}}{D_{ij}} \right) + 2\Delta Q_i \sum_{j=1}^{NT'_i}\frac{Q_{ij}}{2g A_{ij}^2} \left( \sum K_{ij} + f_{ij}\frac{L_{ij}}{D_{ij}} \right)
+\label{cpne14}
+\end{equation}
+
+Despejando $\Delta Q_i$ y simplificando la ecuaci\'on~\ref{cpne14}, tenemos:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \Delta Q_i = - \frac{\sum (h_{f_{ij}}+ h_{m_{ij}})}{2\sum \left(\frac{h_{f_{ij}}+ h_{m_{ij}}}{Q_{ij}} \right)} }
+\label{cpne15}
+\end{equation}
+
+
+\subsubsection*{Comprobaci\'on de dise\~no y dise\~no}
+Pasos para la comprobaci\'on de dise\~no y para el dise\~no usando el m\'etodo de Hardy-Cross con correci\'on de caudales.
+\begin{enumerate}
+\item Definici\'on de la topolog\'ia de la red. Los circuitos est\'an conformados por tuber\'ias y la conecci\'on de las tuber\'ias en los circuitos es positiva siguiendo las manecillas del reloj y negativo en sentido contrario. Todos los tubos deben quedar incluidos en almenos un circuito. Definir los nodos con cabeza conocida. 
+\item Si existe m\'as de un nodo con cabeza conocida es necesario conectarlos a trav\'es de una tuber\'ia imaginaria formando un circuito que los una. En estas tuber\'ias imaginarias se deben suponer sus caracter\'isticas con el fin de calcular el caudal hipot\'etico que circular\'ia por ellas. Sin embargo en las correcciones de caudal, los tubos imaginarios no deben ser incluidos.
+\item Se suponen unos caudales iniciales en cada una de las tuber\'ias de la red. Recuerde que los caudales que van en el sentido de las manecillas del reloj son positivos, de lo contrario son negativos. Recuerde ademas que los caudales que entran a un nodo son positivos y los que salen son negativos.
+\item Para cada circuito, calcular las p\'erdidas a lo largo de cada tuber\'ia utilizando la ecuaci\'on~\ref{cpne9}.
+\item Se calcula la sumatoria de las p\'erdidas a lo largo del circuito, teniendo en cuenta que los flujos en sentido de las manecillas del reloj arrojan perdidas positivas y los flujos en sentido contrario dan p\'erdidas negativas. Si la sumatoria es diferente de cero, se procede a calcular la correcci\'on de caudal para las tuber\'ias del circuito con la ecuaci\'on~\ref{cpne15}. Note que al balance de perdidas se deben restar las cabezas de bombas que existiesen en alguna tuber\'ia del circuito. 
+\item Los pasos 4 y 5 se repiten para el n\'umero de circuitos. Note que hay tubos comunes en circuitos lo que implica que el caudal por ellos debe estar corregido para el siguiente circuito en la iteraci\'on. 
+\item Los pasos 4,5 y 6 se repiten hasta que las ecuaciones de cabeza (ecuaci\'on~\ref{cpne7}) en los nodos que conforman el circuito se cumplan, es decir, cuando su valor sea muy cercano a 0.  
+\end{enumerate}
+
+\subsection{M\'etodo de Hardy-Cross con correcci\'on de cabezas}
+Este m\'etodo se utiliza para resolver las ecuaciones de cabeza (ecuaci\'on~\ref{cpne7}) para los nodos de la red. Las ecuaciones del m\'etodo son las ecuaciones~\ref{cpne5}. Por lo tanto en lugar de suponer caudales en las tuber\'ias, se supone la cabeza en cada uno de los ($Nu-1$) nodos de la red. Note que la cabeza en al menos uno de los nodos debe ser conocida. Luego, se ajustan las cabezas en cada uno de los nodos y el proceso de ajuste se repite hasta que la ecuaci\'on de continuidad en los nodos (ecuaci\'on~\ref{cpne2}) se cumpla. 
+
+Si se considera que la cabeza $H_i$ en un nodo $i$ esta sobrestimada o subestimada, el factor de ajuste de cabeza en un nodo $i$ es $\Delta H_i$, la ecuaci\'on~\ref{cpne5} se convierte en:
+
+\begin{equation}
+Q_{ij} = \left(\frac{ (H_j - H_i)- \Delta H_i }{\sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} } \right)^{\frac{1}{2}} \sqrt{2g} A_{ij}
+\label{cpne16}
+\end{equation}
+
+Analizando el termino $\left( (H_j - H_i)- \Delta H_i \right)^{1/2} $ y utilizando el teorema del binomio, la ecuaci\'on~\ref{cpne16} se expresa como:
+
+\begin{equation}
+Q_{ij} = \frac{\sqrt{2g} A_{ij} }{\left( \sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} \right)^{\frac{1}{2}}} \left((H_j - H_i)^{1/2} -\frac{1}{2} (H_j - H_i)^{-1/2}\Delta H_i \right)  
+\label{cpne17}
+\end{equation}
+
+Teniendo en cuenta la ecuaci\'on~\ref{cpne5} y reemplazando la ecuaci\'on~\ref{cpne17} en la ecuaci\'on de continuidad para un nodo $i$ (ecuaci\'on~\ref{cpne2}), se tiene que:
+
+\begin{equation}
+\sum_{j=1}^{NT_i} Q_{ij} - Q_{Di} -\frac{\Delta H_i}{2} \sum_{j=1}^{NT_i} \frac{Q_{ij}}{H_j - H_i}= 0
+\label{cpne18}
+\end{equation}
+
+Despejando el factor de correcci\'on de cabezas ($\Delta H_i$) para el nodo $i$, se tiene que:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \Delta H_i = \frac{2(\sum Q_{ij}-Q_{Di})}{\sum \frac{Q_{ij}}{H_j - H_i }} }
+\label{cpne19}
+\end{equation}
+
+Note que en un nodo $i$, en la sumatoria de $Q_{ij}$ se debe incluir la entrada (posible) de caudal externo $Q_{e}$. Cuando se asumen las primeras cabezas en todo los nodos se calcula $Q_{ij}$ (utilizando la ecuaci\'on~\ref{cpne5}) y a su vez se corrige  la cabeza de tal forma que los pr\'oximos caudales se calculan con cabezas corregidas. La cabeza para la iteraci\'on siguiente en el nodo $i$ se calcula como:
+
+\begin{equation}
+H_i^{t+1} = H_i^{t}+\Delta H_i
+\label{cpne20}
+\end{equation}
+Si en alguna de las tuber\'ias de la red se tiene una bomba rotodinamica, la cabeza de la bomba expresada, por ejemplo, de la siguiente manera:
+
+\begin{equation}
+H_B = AQ_{ij}^2 + BQ_{ij} + C
+\label{cpne21}
+\end{equation}
+
+afecta el calculo del caudal. Teniendo en cuenta esta adici\'on de energ\'ia $H_B$, la ecuaci\'on~\ref{cpne4}, queda expresada como:
+
+\begin{equation}
+H_B = AQ_{ij}^2 + BQ_{ij} + C
+H_j - H_i = \frac{Q_{ij}^2}{2gA_{ij}^2}\left( \sum K_{m_{ij}}  + f_{ij}\frac{L_{ij}}{D_{ij}} \right) - (AQ_{ij}^2 + BQ_{ij} + C)
+\label{cpne22}
+\end{equation}
+
+Teniendo en cuenta que la ecuaci\'on~\ref{cpne22} tiene la forma de una polin\'omio de grado 2, $aQ_{ij}^2 + bQ_{ij} + c = 0$,  la soluci\'on es encontrar las ra\'ices reales del polin\'omio.
+
+\subsubsection*{Comprobaci\'on de dise\~no y dise\~no}
+Pasos para la comprobaci\'on de dise\~no y para el dise\~no usando el m\'etodo de Hardy-Cross con correci\'on de cabezas.
+\begin{enumerate}
+\item Definici\'on de la topolog\'ia de la red. Los circuitos est\'an conformados por tuber\'ias y la conecci\'on de las tuber\'ias en los circuitos es positiva siguiendo las manecillas del reloj y negativo en sentido contrario. Todos los tubos deben quedar incluidos en al menos un circuito. Definir los nodos con cabeza conocida. 
+\item Suponer la cabeza de energ\'ia en cada uno de los nodos de la red. Note que al menos un nodo es de cabeza conocida y constante en el tiempo. Entre mejor la estimaci\'on de cabezas iniciales, m\'as r\'apido converger\'a el m\'etodo.
+\item Calcular el caudal en cada una de las tuber\'ias utilizando la ecuaci\'on~\ref{cpne5}.
+\item Utilizando la ecuaci\'on~\ref{cpne2}, comprobar la conservaci\'on de la masa en el nodo $i$. Si esta ecuaci\'on no se cumple ($> \eta$ = 1x10$^{-6}$), se debe corregir la cabeza del nodo utilizando la ecuaci\'on~\ref{cpne19}.
+\item Se repiten los pasos 3 y 4 para cada nodo.
+\item El algoritmo se detendr\'a una vez la ecuaci\'on~\ref{cpne2} se cumpla (con un margen de error muy peque\~no) en todos los nodos de la red. 
+\end{enumerate}
+
+
+\subsection{Comparaci\'on de los m\'etodos de Hardy-Cross}
+\begin{itemize}
+\item El m\'etodo de H-C con correcci\'on de caudale converge mas r\'apido ya que la correcci\'on de caudales en todas las tuber\'ias de circuito se hace de manera simult\'anea en cada iteraci\'on, a diferencia del m\'etodo de correci\'on de cabezas en donde la correci\'on se hace nodo por nodo.
+\item El m\'etodo de H-C con correci\'on de cabezas tiene la ventaja de que inicializar la energ\'ia en los nodos es m\'as sensillo, por lo tanto el paso previo al proceso iterativo es m\'as r\'apido. Esto contrasta con la suposici\'on de caudales iniciales en la red, lo cual es m\'as lento ya que es necesario que se cumpla la conservaci\'on de la masa en cada nodo. 
+\item El dise\~no de redes de tuber\'ias cerradas se hace mediante prueba y error. Esto quiere decir que se asumen diferentes combinaciones de di\'ametros en la red hasta llegar al dise\~no m\'as adecuado (\'optimo) para la cual hay que correr la red tantas veces como combinaciones de di\'ametros en la red tengamos. Es por esto que el m\'etodo de H-C con correci\'on de cabezas, teniendo en cuenta la rapidez para calcular las cabezas iniciales en los nodos, es m\'as apropiado en general.  
+\end{itemize}
+
+\subsection{M\'etodo de an\'alisis lineal}
+Este m\'etodo fue desarrollado por D.J Wood y C.O. Charles entre 1970 y 1972. Se basa en la linearizaci\'on de las ecuaciones de conservaci\'on de la energ\'ia de cada una de las tuber\'ias de la red. Este conjunto de ecuaciones linealizadas junto con las ecuaciones lineales de coservaci\'on de la masa en los nodos de la red, forman un sistema de ecuaciones lineales que se resuelve a traves del algebra lineal. El problema consiste en formar la matriz que contiene los t\'erminos de las ecuaciones e invertirla para solucionar el sistema de ecuaciones que son los caudales por cada tuber\'ia. Se ha demostrado  que este m\'etodo converge m\'as r\'apido que los m\'etodos ya explicados. 
+
+\subsubsection*{Ecuaciones usadas en el m\'etodo}
+\begin{enumerate}
+\item \textbf{Conservaci\'on de la masa en el nodo:} Para cada nodo de la red, se debe cumplir la ecuaci\'on de continuidad:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \sum_{j=1}^{NT_i} Q_{ij} - Q_{Di}= 0}
+\label{cpne23}
+\end{equation}
+Note que los caudales entrantes a la red ($Q_{ei}$) en un nodo $i$ deben tenerse encuenta en la ecuaci\'on~\ref{cpne23}. Recuerde que los caudales que entran al nodo son positivos y que los que salen son negativos. Si $Nu$ es el n\'umero de nodos habr\'a $Nu$ ecuaciones~\ref{cpne23} y una redundande.
+
+\item \textbf{Conservaci\'on de la energ\'ia en el circuito:} Para cada uno de los circuitos de la red se debe cumplir la ecuaci\'on de la energ\'ia:
+
+\begin{equation}
+\sum_{j=1}^{NT_i} h_{f_{ij}} + h_{m_{ij}}= 0
+\label{cpne24}
+\end{equation}
+
+donde $NT_i$ es el numero de tubos conectados en el circuito $i$. Si el numero de circuitos es $NC$, se tendr\'an $NC$ ecuaciones~\ref{cpne24}. La ecuaci\'on~\ref{cpne24} se puede expresar como:
+
+\begin{equation}
+\sum_{j=1}^{NT_i} \frac{Q_{ij}}{2gA_{ij}^2} \left(\sum K_{m_{ij}} + f_{ij}\frac{L_{ij}}{D_{ij}}  \right)= 0
+\label{cpne25}
+\end{equation}
+
+\end{enumerate}
+Note que la ecuaci\'on~\ref{cpne25} es una ecuaci\'on no lineal. Para la soluci\'on de las $NC$ ecuaciones no lineales, las ecuaciones~\ref{cpne25}, se puede expresar como:
+
+\begin{equation}
+\sum_{j=1}^{NT_i} k_{ij}Q_{ij}^2 = 0
+\label{cpne26}
+\end{equation}
+
+donde $k_{ij} = \frac{K_{m_{ij}} + f_{ij}\frac{L_{ij}}{D_{ij}}}{2gA_{ij}^2}$.
+
+Para resolver el sistema de ecuaciones~\ref{cpne23} y ~\ref{cpne26}, el m\'etodo de teoria lineal propone que para un tramo $ij$:
+
+\begin{equation}
+h_{f_{ij}}+h_{m_{ij}}= k'_{ij}Q_{ij}
+\label{cpne27}
+\end{equation}
+
+donde $k'{ij} = k_{ij}Q_{0_{ij}}$. El caudal $Q_{0_{ij}}$ es el caudal estimado para la primera iteraci\'on, o el caudal corregido en la iteraci\'on previa para las dem\'as iteraciones. Al reemplazar la ecuaci\'on~\ref{cpne27} en la ecuaci\'on~\ref{cpne26}, se tiene:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \sum_{j=1}^{NT_i} k'_{ij}Q_{ij}^2 = 0}
+\label{cpne28}
+\end{equation}
+
+En el caso de existir una bomba en una de las tuber\'ias del circuito, la cual sumistra una cabeza de energ\'ia $H_B$, la ecuaci\'on~\ref{cpne28} queda:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \sum_{j=1}^{NT_i} k'_{ij}Q_{ij}^2 = H_B }
+\label{cpne29}
+\end{equation}
+
+El numero total de ecuaciones a resolver es $NT=(NU-1) + NC$; $NU-1$ ecuaciones~\ref{cpne23} y $NC$ ecuaciones~\ref{cpne28}. En $NT$ coincide con el n\'umero de tuber\'ias en la red y lo que se desea es encontrar $Q_{ij}$ para cada tuber\'ia. 
+
+Para utilizar el m\'etodo, es necesario estimar caudales iniciales en las tuber\'ias ($Q_{0_{ij}}$). Una de las ventajas del m\'etodo es que al suponer estos caudales iniciales no es necesario que se conserve la masa en los nodos; los caudales pueden ser los mismos en todas las tuber\'ias. Este m\'etodo propone que el caudal en la iteraci\'on siguiente es igual a:
+
+\begin{equation}
+\color{red}\boxed{\color{black} Q_{0_{ij}}^{t+1} = \frac{Q_{0_{ij}}^{t} + Q_{ij}^t}{2} }
+\label{cpne30}
+\end{equation}
+
+Las $NT$ ecuaciones se pueden expresar matricialmente, y el metodo consiste en invertir la matrix $NT x NT$ para determinar los caudales $Q_{ij}$. Si se tiene la red de la figura~\ref{cpnf}, se tiene las siguientes ecuaciones que forman el sistema de ecuaciones:
+
+% Fig 7.11 from Salda 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./figs/cpnf.jpeg}
+\caption{Red cerrada que ilustra el uso del m\'etodo de programaci\'on lineal (tomado de \cite{saldarriaga}).} 
+\label{cpnf}
+\end{figure}
+
+
+\begin{itemize}
+\item \textbf{Ecuaciones de continuidad en los nodos:} Las siguientes ecuaciones se deducen teniendo en cuenta que los caudales entrantes al nodo son positivos y los caudales salientes son negativos.
+\begin{equation}
+\begin{aligned}
+-Q_{12}+Q_{16} &= -Q_E \\
+Q_{12}-Q_{23}-Q_{25} &= Q_{D2} \\
+Q_{23}-Q_{34} &= Q_{D3}\\
+Q_{34}-Q_{45} &= Q_{D4} \\
+Q_{25}+Q_{45}-Q_{56} &= Q_{D5}\\
+Q_{56}-Q_{61}&=Q_{D6} && \text{Redundante}
+\end{aligned}
+\label{cpne31}
+\end{equation}
+
+
+\item \textbf{Ecuaciones de conservaci\'on de la energ\'ia en los circuitos:} Las siguientes ecuaciones se deducen teniendo en cuenta que las p\'erdidas de energ\'ia en el circuito que siguen las manecillas del reloj son positivas mientras que las p\'erdidas en sentido contrario son negativas.
+\begin{equation}
+\begin{aligned}
+k'_{12} Q_{12} + k'_{25} Q_{25} + k'_{56} Q_{56} + k'_{16} Q_{16} &= 0 \\
+k'_{23} Q_{23} + k'_{34} Q_{34} + k'_{45} Q_{45} - k'_{25} Q_{25} &= 0 \\
+\end{aligned}
+\label{cpne32}
+\end{equation}
+
+Ordenando las ecuaciones~\ref{cpne31} y ~\ref{cpne32} em forma matricial se tiene:
+\begin{equation}
+\begin{bmatrix}
+-1 & 0 & 0 & 0 & 0 & 0 & 1 \\
+1 & -1 & 0 & 0 & -1 & 0 & 0 \\
+0 & 1 & -1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & -1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 1 & -1 & 0 \\
+k'_{12} & 0 & 0 & 0 & k'_{25} & k'_{56} & k'_{61} \\
+0 & k'_{23} &  k'_{34} & k'_{45} & -k'_{25} & 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+Q_{12} \\Q_{23} \\Q_{34} \\Q_{45} \\Q_{25} \\Q_{56} \\Q_{61}
+\end{bmatrix}
+=
+\begin{bmatrix}
+-Q_{E} \\ Q_{D2} \\Q_{D3} \\Q_{D4} \\Q_{D5} \\ 0 \\ 0
+\end{bmatrix}
+\label{cpne33}
+\end{equation}
+
+\end{itemize}
+
+La ecuaci\'on~\ref{cpne33} en la forma compacta, se expresa como:
+
+\begin{equation}
+\mathbf{A}\cdot \mathbf{B} = \mathbf{C}
+\label{cpne34}
+\end{equation}
+
+La incognita es el vector $\mathbf{B}$, el cual contiene los caudales de cada tuber\'ia. La soluci\'on del sistema es:
+
+\begin{equation}
+\mathbf{B} = \mathbf{A}^{-1} \cdot \mathbf{C}
+\label{cpne35}
+\end{equation}
+Note que los valores de $k'{ij}$ se calculan en funci\'on de $Q_{0_{ij}}$ para la primera iteraci\'on. Para las iteraciones siguientes $Q_{0_{ij}}$ es calculado con la ecuaci\'on~\ref{cpne30}.
+
+El algoritmo para solucionar la ecuaci\'on~\ref{cpne34} utilizando el m\'etodo de programaci\'on lineal es el siguiente:
+
+\begin{enumerate}
+\item Se suponen todos los caudales en cada una de las tuber\'ias asi como la direcci\'on del caudal (siguiendo las manecillas del reloj o en sentido contrario). No es necesario cumplir con ecuaci\'on de continuidad en los nodos.
+\item Con estos caudales se calculan los valores de $k'_{ij}$.
+\item Se plantean las ecuaciones lineales de continuidad (ecuaci\'on~\ref{cpne23}) y de conservaci\'on de energ\'ia (ecuaci\'on~\ref{cpne28}).
+\item Se construye la matriz $\mathbf{A}$ de la ecuaci\'on~\ref{cpne34}.
+\item Se encuentran los caudales $Q_{ij}$ al solucionar la ecuaci\'on~\ref{cpne35}.
+\item Utilizando la ecuaci\'on~\ref{cpne30}, se corrigen los caudales $Q_{0_{ij}}$.
+\item Se calculan de nuevo los valores de $k'_{ij}$ para los caudales corregidos.
+\item Se repiten los pasos 3 al 7 hasta que los caudales $Q_{ij}$ cambien muy poco entre dos iteraciones sucesivas. 
+\end{enumerate}
+
+%%%%%%%%
+
+
+% REFERENCES
+\bibliographystyle{plain} % We choose the "plain" reference style
+\bibliography{refs} % Entries are in the refs.bib file
+
+
+
+\end{document}
