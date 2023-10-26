@@ -313,7 +313,7 @@ En la practica, estas curvas caracter\'isticas son construidas por el fabricante
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{./figs/bom7.jpeg}
-\caption{Curva caracteristica para D constante (tomado de \cite{cengel2013ebook}).} 
+\caption{Curva caracter\'istica para $D$ (di\'ametro externo del impulsor) constante (tomado de \cite{agudelo2011mecanica}).} 
 \label{bom7}
 \end{figure}
 
@@ -322,12 +322,170 @@ En la practica, estas curvas caracter\'isticas son construidas por el fabricante
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{./figs/bom6.jpeg}
-\caption{Curva caracteristica para $\omega$ constante (tomado de \cite{cengel2013ebook}).} 
+\caption{Curva caracter\'istica para $\omega$ constante (tomado de \cite{agudelo2011mecanica}).} 
 \label{bom6}
 \end{figure}
 
+%%%%%%%
+\section{Analisis dimensional en bombas centrifugas}
+En la secci\'on anterior se coment\'o que los fabricantes de bombas poseen cartillas en donde se incluyen los diferentes tipos de curvas caracter\'isticas de las bombas que fabrican (ver figuras~\ref{bom6} y ~\ref{bom7}). Estas curvas se utilizan  para escoger la mejor opci\'on de acuerdo con las necesidades del usuario. Para la construcci\'on de estas curvas caracter\'isticas se construyen modelos en el laboratorio que sean geom\'etricamente similares al prototipo, en particular el impulsor.
+
+En el an\'alisis de bombas centrifugas, las variables que intervienen son las siguientes: carga o cabeza \'util $h_m$ [$L$], caudal $Q$ [$L^3 T^{-1}$], velocidad de rotaci\'on en rpm $\omega$ [$T^{-1}$], di\'ametro del impulsor $D_i$ [$L$], viscosidad cinem\'atica $\nu$ [$L^2 T^{-1}$], aceleraci\'on de la gravedad $g$ [$L T^{-2}$]. En total se tienen 6 variables y 2 dimensiones ($L$ y $T$), lo cual quiere decir que el n\'umero de par\'ametros adimencionales que se pueden formar a partir de las variables es 4 (6-2=4). Se deben definir dos  (debido a que son dos dimensiones involucradas) variables repetitivas, las cuales deben ser independientes entre si; estas varibles son $\omega$ y $D_i$. Haciendo an\'alisis dimensional para la funci\'on $f(h_m, Q, \omega, D_i, g, \nu)$, se tienen los siguientes parametros:
+
+\begin{equation}
+\Pi_1 = \frac{h_m}{D_i} \quad  \Pi_2 = \frac{Q}{\omega D_i^3} \quad \Pi_3 = \frac{g}{\omega^2 D_i} \quad \Pi_4 = \frac{\omega D_i^2}{\nu}
+\label{boma1}
+\end{equation}
+
+Como la intenci\'on del analisis dimensional es tener una funci\'on $h_m = f(Q)$ (curva caracter\'istica), se tiene:
+
+\begin{equation}
+\Pi_1 =f\left(\Pi_2, \Pi_3, \Pi_4 \right) 
+\label{boma2}
+\end{equation}
+
+Reemplanzando en la ecuaci\'on~\ref{boma2}, tenemos:
+
+\begin{equation}
+\frac{h_m}{D_i} = f\left( \frac{Q}{\omega D_i^3}, \frac{g}{\omega^2 D_i} , \frac{\omega D_i^2}{\nu} \right)
+\label{boma3}
+\end{equation}
+
+Teniendo en cuenta que se debe satisfacer una similitud geom\'etrica entre el modelo y el prototipo, se hace imposible tener el mismo n\'umero de Reynolds (parametro $\Pi_4$) en el modelo y en el prototipo, lo cual hace necesario despreciar los efectos de la viscosidad. Por otro lado, gracias a la experimentaci\'on se ha demostrado que $\Pi_1 = f(\Pi_3^{-1})$. De acuerdo con esto:
+
+\begin{equation}
+\frac{h_m}{D_i} = \frac{\omega^2 D_i}{g} f\left( \frac{Q}{\omega D_i^3}   \right)
+\label{boma4}
+\end{equation}
+
+Agrupando en la ecuaci\'on~\ref{boma4}, se tiene:
+
+\begin{equation}
+\frac{g h_m}{\omega^2 D_i^2} = f\left( \frac{Q}{\omega D_i^3}   \right)
+\label{boma5}
+\end{equation}
+
+En el lado izquierdo de la ecuaci\'on~\ref{bom5} se forma otro  par\'ametro adimensional($\Pi_5$), por lo que la ecuaci\'on se puede expresar como $\Pi_5 = f(\Pi_2)$. En la ecuaci\'on~\ref{boma5} $\Pi_2$ se denomina el \emph{par\'ametro de caudal} y el $\Pi_5$ es le \emph{par\'ametro de carga o cabeza}. La ecuaci\'on~\ref{boma4} es la  \emph{curva caracter\'istica adimensional} de la bomba y es la misma para una \emph{serie hom\'olaga} de bombas. Dicha serie homologa implica una similaridad geom\'etrica entre bombas, es decir, que sus  diagramas vectoriales en el impulsor sean semejantes y que sus eficiencias sean las mismas. Del an\'alisis dimensional, es posible formar un un tercer par\'ametro adimensional como el producto entre $\Pi_5$ y $\Pi_2$, dicho p\'arametro adimensional ($\Pi_6$) es conocido como el \emph{par\'ametro de potencia}:
+
+\begin{equation}
+\Pi_6 = \frac{P_m}{\rho \omega^3 D_i^5}
+\label{boma6}
+\end{equation}
+
+En una serie homologa, los par\'ametros $\Pi_5$, $\Pi_2$ y $\Pi_6$ son constantes en cada bomba de la serie. 
+
+\subsection{Aplicaci\'on de los par\'ametros adimensionales}
+\subsubsection*{Operaci\'on de la misma bomba a velocidad ($\omega$) variable}
+En este caso se estudia el comportamiento de la bomba con una velocidad angular variable pero con el mismo impulsor ($D_i$ constante). Como $D_i$ es constante, los parametros adimensionales quedan expresados como:
+
+\begin{equation}
+\frac{Q}{\omega} = \text{const} \quad \frac{h_m}{\omega^2}= \text{const}  \quad \frac{P_m}{\omega^3}= \text{const} 
+\label{boma7}
+\end{equation}
+
+De las relaciones anteriores, se tiene que $h_m \propto Q^2$, ecuaci\'on que representa una par\'abola en donde todos sus puntos indican igual similitud (la misma eficiencia). Si se tiene la idea de que se ha obtenido una curva caracter\'istica ($h_m$ vs$Q$) del modelo de una bomba dentro de una serie homologa para una velocidad angular $\omega_A$, a partir de esta curva es posible obtener la curva de la misma bomba pero operando a una velocidad angular $\omega_B$ bajo condiciones din\'amicas de flujo similares (ver figura~\ref{bom8}). Aplicando las leyes de similitud para puntos sobre una misma curva de isoeficiencia, por ejemplo los puntos 1 y 2, para la curva $\omega_A$ y para la curva $\omega_B$ respectivamente, en donde se conocen $h_{m_1}$, $Q_1$ y $\nu_1 = \nu_2$, se pueden encontrar los valores de $Q_2$ y $h_{m_2}$ de la siguiente manera:
+
+% Duarte f7.15
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom8.jpeg}
+\caption{Obtenci\'on de curvas caracter\'isticas usando an\'alisis dimensional para un $D_i$ (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom8}
+\end{figure}
 
 
+\begin{equation}
+\Pi_{2_1} = \Pi_{2_2} \quad \left( \frac{Q}{\omega D_i^3} \right)_{2_1} = \left( \frac{Q}{\omega D_i^3} \right)_{2_2} \quad Q_2 = Q_1 \frac{\omega_B}{\omega_A}
+\label{boma8}
+\end{equation}
+
+\begin{equation}
+\Pi_{5_1} = \Pi_{5_2} \quad \left( \frac{h_m}{\omega^2 D_i^2} \right)_{5_1} = \left( \frac{h_m}{\omega^2 D_i^2} \right)_{5_1} \quad h_{m_2} = h_{m_1} \left(\frac{\omega_B}{\omega_A}\right)^2
+\label{boma9}
+\end{equation}
+
+
+Analizando la figura~\ref{bom8}, cuando $\omega_A < \omega_B$, el punto 2 (de la nueva curva caracter\'istica) se ubicar\'a arriba y a la derecha del punto 1. Si $\omega_A > \omega_B$, el punto 2 se ubicar\'a abajo y a la izquierda del punto 1. Si se desea obtener otro punto, por ejemplo el punto 4, sobre la nueva curva caracter\'istica para $\omega_B$, se escoge el punto 3 en la curva de $\omega_A$ y se aplica el procedimiento descrito en las ecuaciones~\ref{boma8} y ~\ref{boma9} para encontrar $Q_4$ y $h_{m_4}$. De la misma manera se pueden escoger otros puntos sobre la curva de $\omega_A$ para ir encontrado la curva de $\omega_B$. De igual manera, se pueden encontrar las curvas caracter\'isticas para otros valores de $\omega$.
+
+
+\subsubsection*{Operaci\'on de la misma bomba con diferentes impulsores ($D_i$)}
+Si se opera la misma bomba con la misma velocidad $\omega$ pero con diferentes tama\~nos ($D_i$) de los impulsores, es posible obtener las curvas caracter\'isticas para diferentes valores de $D_i$. Sin embargo, debido a que el impulsor cambia, la similitud geom\'etrica no se cumple. Gracias a la experiencia se ha podido establecer que para $\omega$ constante:
+
+\begin{equation}
+\frac{Q}{D_i} = \text{const} \quad \frac{h_m}{D_i^2}= \text{const}  \quad \frac{P_m}{D_i^3}= \text{const} 
+\label{boma7}
+\end{equation}
+
+De la anterior ecuaci\'on se tiene que $Q \propto D_i$ y $h_m \propto D_i^2$, por lo tanto $h_m \propto Q^2$. Esta \'ultima relaci\'on representa una par\'abola donde todos los puntos tienen igual similitud (la misma eficiencia). Si se obtiene una curva caracter\'istica de $h_m$ vs $Q$ para un di\'ametro del impulsor $D_{i_A}$ con una velocidad $\omega$ gracias al trabajo experimental, es posible obtener una familia de curvas caracter\'isticas para la misma bomba pero con diferentes valores de $D_i$ a una velocidad constante $\omega$. De acuerdo con la figura~\ref{bom9}, si se conoce la curva para $D_{i_A}$ y se desea conoce la curva para $D_{i_B}$, se toma el punto 1 (sobre la curva para $D_{i_A}$) donde se conoce $h_{m_1}$, $Q_1$ y $\nu_1 = \nu_2$, y se toma el punto 2 (sobre la curva para $D_{i_B}$) y se calcula $Q_2$ y $h_{m_2}$ como:
+
+% Duarte f7.16
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom9.jpeg}
+\caption{Obtenci\'on de curvas caracter\'isticas usando an\'alisis dimensional para un $\omega$ (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom9}
+\end{figure}
+
+
+\begin{equation}
+\Pi_{2_1} = \Pi_{2_2} \quad \left( \frac{Q}{D_i} \right)_{2_1} = \left( \frac{Q}{D_i} \right)_{2_2} \quad Q_2 = Q_1 \frac{D_{i_B}}{D_{i_A}}
+\label{boma10}
+\end{equation}
+
+\begin{equation}
+\Pi_{5_1} = \Pi_{5_2} \quad \left( \frac{h_m}{D_i^2} \right)_{5_1} = \left( \frac{h_m}{D_i^2} \right)_{5_1} \quad h_{m_2} = h_{m_1} \left(\frac{D_{i_B}}{D_{i_A}}\right)^2
+\label{boma11}
+\end{equation}
+ 
+Observando la figura~\ref{bom9}, cuando $D_{i_A} < D_{i_B}$, el punto 2 se encuentrar\'a arriba y a la derecha del punto 1, mientras que cuando $D_{i_A} > D_{i_B}$ el punto 2 se encontrara abajo y a la izquierda del punto 1. Otros valores de $h_m$ y $Q$ para otros puntos sobre la curva para $D_{i_B}$ se obtendr\'an utilizando las ecuaciones~\ref{boma10} y ~\ref{boma11}. 
+
+\subsection{Velocidad espec\'ifica}
+La velocidad espec\'ifica ($n_s$) de una unidad (bomba) perteneciente a una serie homologa es una cantidad muy usada en la selecci\'on y dise\~no preliminar de una bomba. La velocidad espec\'ifica se define como la velocidad de alg\'un integrante de la serie que tiene un tama\~no que trabaja a descarga (caudal) y carga unitarias. Para una serie homologa se debe cumplir:
+\begin{enumerate} 
+\item $ \frac{Q}{\omega D_i^3} = \text{const} \quad \text{por lo que} \quad D_i \propto \left( \frac{Q}{\omega} \right)^{1/3} $
+\item $ \frac{g h_m}{\omega^2 D_i^3} = \text{const} \quad \text{por lo que} \quad D \propto \left( \frac{\sqrt{g h_m}}{\omega} \right) $
+\end{enumerate} 
+
+De acuerdo con las expresiones anteriores, se puede definir una relaci\'on de mayor importancia entre $Q$ y $h_m$:
+
+\begin{equation}
+\left( \frac{Q}{\omega} \right)^{1/3} \propto \frac{\sqrt{g h_m}}{\omega} \quad \text{por lo que} \quad \frac{Q^{1/3} \omega}{\omega^{1/3} \sqrt{g h_m}} = \text{const}
+\label{boma12}
+\end{equation}
+
+Elevando el numerador y el denominador de la ecuaci\'on~\ref{boma12} a la $3/2$, se tiene:
+
+\begin{equation}
+ \frac{\sqrt{Q} \omega}{ h_m^{3/4}} = \text{const}
+\label{boma13}
+\end{equation}
+
+Con base en la ecuaci\'on~\ref{boma13}, la velocidad espec\'ifica de una serie de bombas homologas se define como la velocidad de una de ellas, con cierto tama\~no, tal que suministre un caudal unitario contra una carga unitaria, es decir:
+
+\begin{equation}
+n_s= \frac{\sqrt{Q^*} \omega}{ h_m^{*3/4}}
+\label{boma14}
+\end{equation}
+
+donde $Q^*$ y $h_m^*$ representan el caudal y la carga para una eficiencia m\'axima del sistema. $n_s$ se puede interpretar como la velocidad para la cual modelos geomi\'etricamente similares a prototipos de las diferentes clases de bombas operar\'ian para mover un caudal unitario (e.g. 1 gpm) cuando se genera una cabeza unitaria (e.g. 1 pie). Note que las unidades de $n_s$ no son las unidades de velocidad y si se divide la ecuaci\'on~\ref{boma14} por $g^{3/4}$, $n_s$ se convierte en un par\'ametro adimensional.
+
+De acuerdo con los valores $n_s$, las bombas rotodin\'amicas se pueden clasificar como: \emph{bombas de flujo radial}, \emph{bombas de flujo mixto} y \emph{bombas de flujo axial}.  La figura~\ref{bom10} muestra los rangos de $n_s$ para cada tipo de bomba en sistema internacional y en sistema ingles.
+
+% Duarte T7.2
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom10.jpeg}
+\caption{Valores de referencia de la velocidad relativa en sistema internacional y sistema ingles (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom10}
+\end{figure}
+
+
+Analizando los valores de $n_s$ en la figura~\ref{boma10} y la ecuaci\'on~\ref{boma14} se puede deducir  que las bombas radiales, por tener el rango menor para $n_s$, son \'utiles para proyectos que requieren grandes cargas y caudales peque\~nos. En contraste, las bombas de flujo axial son recomendables para proyectos con baja carga pero con altos caudales.  
+
+Generalmente, las bombas con un solo impulsor, pueden utilizarse para una carga m\'axima de $h_m = 60$ m. Para mayores valores de $h_m$ es necesario utilizar \emph{bombas de pasos m\'ultiples} las cuales tienen varios impulsores acoplados a una misma flecha. En el caso de requerirse el bombeo de grandes caudales con baja carga, es necesario utilizar bombas de flujo axial o flujo mixto con \emph{doble succi\'on} en donde cada tuber\'ia de succi\'on esta conectada con un impulsor. 
+
+%%%%%%%
+\section{Estaciones de bombeo}
 
 
 
