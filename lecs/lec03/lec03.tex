@@ -467,7 +467,7 @@ Con base en la ecuaci\'on~\ref{boma13}, la velocidad espec\'ifica de una serie d
 \label{boma14}
 \end{equation}
 
-donde $Q^*$ y $h_m^*$ representan el caudal y la carga para una eficiencia m\'axima del sistema (ver figura~\ref{bom11}). $n_s$ se puede interpretar como la velocidad para la cual modelos geomi\'etricamente similares a prototipos de las diferentes clases de bombas operar\'ian para mover un caudal unitario (e.g. 1 gpm) cuando se genera una cabeza unitaria (e.g. 1 pie). Note que las unidades de $n_s$ no son las unidades de velocidad y si se divide la ecuaci\'on~\ref{boma14} por $g^{3/4}$, $n_s$ se convierte en un par\'ametro adimensional.
+donde $Q^*$ y $h_m^*$ representan el caudal y la carga para una eficiencia m\'axima del sistema (ver figura~\ref{bom11}). $n_s$ se puede interpretar como la velocidad para la cual modelos geom\'etricamente similares a prototipos de las diferentes clases de bombas operar\'ian para mover un caudal unitario (e.g. 1 gpm) cuando se genera una cabeza unitaria (e.g. 1 pie). Note que las unidades de $n_s$ no son las unidades de velocidad y si se divide la ecuaci\'on~\ref{boma14} por $g^{3/4}$, $n_s$ se convierte en un par\'ametro adimensional.
 
 % Duarte F7.24
 \begin{figure}[h]
@@ -524,7 +524,7 @@ donde $H_1$ es la energ\'ia en la succi\'on, $H_2$ es la energ\'ia en la descarg
 
 \begin{equation}
 h_m = h_T + (C+K)Q^2 = h_T +A Q^2
-\label{boma15}
+\label{boma16}
 \end{equation}
 
 donde $A$ es una constante igual a $A = f\frac{L}/{A^2 D 2 g} + \frac{1}{2g A^2}\sum K$. Note que la ecuac\'on establece una relaci\'on de la carga de la bomba, $h_m$, como una funci\'on de la carga est\'atica, $h_T$, y del caudal. Esta ecuaci\'on se denomina la \emph{curva de la estaci\'on} o la \emph{curva del sistema} y representa la energ\'ia por unidad de peso que requiere el sistema. 
@@ -566,6 +566,187 @@ El punto de operaci\'on puede cambiar debido a lo siguiente (ver figura~\ref{bom
 \caption{Ejemplos de variaci\'on del punto de operaci\'on (tomado de \cite{agudelo2011mecanica}).} 
 \label{bom15}
 \end{figure}
+
+\subsection{Cavitaci\'on en bombas centrifugas}
+La cavitaci\'on es un fen\'omeno en el cual la presi\'on est\'atica del liquido se reduce por debajo de la presi\'on de vapor del liquido (presi\'on a la cual el l\'iquido se evapora) llevando a la formaci\'on de burbujas dentro del liquido en la superficie de contacto, las cuales al desplazarse a zonas de mayor presi\'on dentro del l\'iquido explotan causando la erosi\'on de la superficie de contacto.
+
+Para el caso de bombas centrifugas, la zona en donde es posible el desarrollo de cavitaci\'on es en la zona de acople de la tuber\'ia de succi\'on y la entrada a la bomba (ver figura~\ref{bom17}). En la zona entre la brida de la tuber\'ia de succi\'on y la carcasa de la bomba, debido a la reducci\'on gradual del di\'ametro, las velocidades del flujo aumentan y como consecuencia las presiones disminuyen considerablemente llegando al punto mas bajo de presi\'on cuando el flujo entra a la carcaza. Justo en la entrada de la carcasa, si las presiones del flujo est\'an por debajo de la presi\'on de vapor del fluido, se forman cavidades de aire que viajan a trav\'es de los alabes del impulsor a zonas de mayor presi\'on (baja velocidad) (ver figura~\ref{bom16})  causando el rompimiento de estas cavidades y la erosi\'on de los alabes (ver figura~\ref{bom16a}). Esto genera entonces una reducci\'on en la eficiencia de la bomba y problemas en la operaci\'on del sistema.
+
+% Duarte F8.6
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom17.jpeg}
+\caption{Cavitaci\'on en bombas centrifugas (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom17}
+\end{figure}
+
+% Inter
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom16.jpg}
+\caption{Formaci\'on de cavidades de aire y explosi\'on de las mismas.} 
+\label{bom16}
+\end{figure}
+
+% Inter
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom16a.JPG}
+\caption{Da\~nos en el impulsor de una bomba centrifuga.} 
+\label{bom16a}
+\end{figure}
+
+\subsubsection*{An\'alisis de la succi\'on}
+Considerando los sistemas de succi\'on de los esquemas mostrados en la figura~\ref{bom18} y aplicando la ecuaci\'on de Bernoulli entre la superficie libre en el tanque de succi\'on y la brida de succi\'on (BS) tomando como referencia el plano de bombeo, la presi\'on en esta brida queda defina como:
+
+% Duarte F8.8
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom18.jpeg}
+\caption{Sistemas de succi\'on en bombas centrifugas (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom18}
+\end{figure}
+
+\begin{equation}
+\frac{P_{atm}}{\gamma} \pm h_S = \frac{P_{BS}}{\gamma} + \frac{V_{BS}^2}{2g} + \sum \left(h_f + h_e \right)
+\label{boma17}
+\end{equation}
+
+despejando $\frac{P_{BS}}{\gamma}$ y dejando el termino de perdidas como una funci\'on de $Q$, se tiene:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \frac{P_{BS}}{\gamma} = \frac{P_{atm}}{\gamma} \pm h_S - \frac{V_{BS}^2}{2g} - C_S Q^2 }
+\label{boma18}
+\end{equation}
+
+donde $C_S$ se puede entender como un coeficiente de perdidas en la succi\'on. Analizando la ecuaci\'on~\ref{boma18}, la presi\'on en la brida de succi\'on ($P_{BS}$) disminuye si:
+\begin{itemize}
+\item las perdidas de energ\'ia aumentan debido a un aumento del caudal, a una gran longitud de la tuber\'ia de succi\'on, numero considerable de accesorios, tuber\'ias con material muy rugoso, tuber\'ia de succi\'on dise\~nada con diametro pequeno.
+\item de acuerdo con la posici\'on del tanque de succi\'on, si aumenta o disminuye la altura est\'atica de la succi\'on.
+\item si se disminuye la presi\'on atmosf\'erica  local, por ejemplo, cuando el proyecto se desarrolla en lugares elevados con respecto al nivel del mar. 
+\item si aumenta la presi\'on de vapor del fluido lo cual implica que la probabilidad de que ocurra cavitaci\'on aumente. 
+\item si el impulsor rota a una velocidad mayor a la recomendada por el fabricante. Esto implica que las cavidades viajen y exploten m\'as r\'apidamente en este.  
+\end{itemize}
+
+Para evitar que se presente cavitaci\'on por las razones antes mencionadas, es necesario determinar una cabeza neta m\'inima.
+
+\subsubsection*{Cabeza neta de succi\'on positiva disponible ($NPSH_D$)}
+La cabeza neta de succi\'on positiva disponible ($NPSH_D$) se define como la energ\'ia absoluta en la brida de succi\'on con respecto al plano de bombeo menos la cabeza de presi\'o de vapor del fluido que circula por el sistema. De acuerdo con lo anterior y con base en la ecuaci\'on~\ref{boma17} se puede decir que la energ\'ia absoluta en la brida de succi\'on ($h_{sa}$), se puede expresar como:
+
+\begin{equation}
+h_{sa} = \frac{P_{atm}}{\gamma} \pm h_S - C_S Q^2 = \frac{P_{BS}}{\gamma} + \frac{V_{BS}^2}{2g} 
+\label{boma19}
+\end{equation}
+
+Si a $h_{sa}$ le restamos la cabeza de presi\'on de vapor del liquido del sistema, se tiene que $NPSH_D$:
+
+\begin{equation}
+\color{red}\boxed{\color{black} NPSH_D = h_{sa} -\frac{P_v}{\gamma} = \frac{P_{atm}}{\gamma} \pm h_S - C_S Q^2 -\frac{P_v}{\gamma} = \frac{P_{BS}}{\gamma} + \frac{V_{BS}^2}{2g} -\frac{P_v}{\gamma}}
+\label{boma19}
+\end{equation}
+
+
+\subsubsection*{$NPSH$ requerido}
+La cabeza neta de succi\'on positiva requerida  $NPSH_R$ se determina mediante ensayos de laboratorio en donde en una bomba centrifuga para una velocidad $\omega$ y caudal constante se varia la $NPSH_D$ y se determina los valores de la carga o altura neta $h_m$. Se supone que $h_m$ es constante para cualquier valor de $NPSH_D$, sin embargo, esto no es as\'i por lo cual al graficar los datos de $NPSH_D$ vs $h_m$ se observa una ca\'ida de $h_m$ cuando $NPSH_D$ disminuye (ver figura~\ref{bom19}). De acuerdo con esto, $NPSH_R$ es igual a $NPSH_D$ para el cual el valor de $h_m$ disminuye en un 3\%, lo que indica que a partir de este valor inicia la cavitaci\'on
+
+% Duarte F8.10
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom19.jpeg}
+\caption{Determinaci\'on de $NPSH_R$ (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom19}
+\end{figure}
+
+Si se varia el caudal en la bomba, se puede obtener una curva de $NPSH_R$ vs $Q$ como la que se muestra en la figura~\ref{bom20}. Dicha curva muestra un aumento de $NPSH_R$ con el aumento de $Q$ lo cual se da porque al aumentar $Q$ disminuye $h_m$ y la ca\'ida de $h_m$ se anticipa resultando en mayores valores de $NPSH_R$.  
+
+% Duarte F8.11
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom20.jpeg}
+\caption{Curva de $NPSH_R$ vs $Q$ (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom20}
+\end{figure}
+
+Al analizar la ecuaci\'on~\ref{boma19}, se observa que $NPSH_D$ disminuye con el aumento del caudal $Q$ mientras que, de acuerdo con la figura~\ref{bom20}, $NPSH_R$ aumenta con el aumento de $Q$. La figura~\ref{bom21}  muestra la variaci\'on de $NPSH_D$ y de $NPSH_R$ como una funci\'on del caudal, y se observa que el punto de corte de las dos curvas (P) define la ocurrencia incipiente de cavitaci\'on. Por lo tanto, para el dise\~no del sistema de succi\'on es necesario que $NPSH_D > NPSH_R$. Gracias a la practica, se recomienda que $NPSH_D > 1.35 NPSH_R$
+
+% Duarte F8.12
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom21.jpeg}
+\caption{Condici\'on para evitar la cavitaci\'on (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom21}
+\end{figure}
+
+\subsubsection*{Par\'ametro de cavitaci\'on}
+De acuerdo con el an\'alisis dimensional de sistemas de bombeo para un di\'ametro $D_i$ constante, tenemos que los parametros adimensionales son:
+
+\begin{equation}
+\Pi_1 = \frac{Q}{\omega D_i^3} = \frac{Q}{\omega} \quad Q \propto \omega  \quad \quad \Pi_2 = \frac{g h_m}{\omega^2 D_i^2} = \frac{h_m}{\omega^2} \quad h_m \propto \omega^2
+\label{boma20}
+\end{equation}
+
+Analizando la relaci\'on de $NPSH_R$ vs $Q$ se puede decir que $NPSH_R \propto Q^2$ y de acuerdo con las relaciones de la ecuaci\'on~\ref{boma20}, tenemos que $NPSH_R \propto h_m$. Por lo tanto, se puede crear un par\'ametro adimensional, conocido como el \emph{parametro de cavitaci\'on} ($\sigma$) igual a:
+
+\begin{equation}
+\color{red}\boxed{\color{black} \sigma = \frac{NPSH_R}{h_m} }
+\label{boma21}
+\end{equation}
+
+
+\subsubsection*{Velocidad espec\'ifica de succi\'on}
+En la modelaci\'on f\'isica en hidr\'aulica, es frecuente utilizar un par\'ametro conocido como la \emph{velocidad espec\'ifica de succi\'on} ($S_S$). Si se reemplaza $h_m$ en la ecuaci\'on~\ref{boma14} de la velocidad espec\'ifica por $NPSH_R$, se tiene:
+
+\begin{equation}
+S_S = \frac{\omega \sqrt{Q}}{NPSH_R^{3/4}}
+\label{boma22}
+\end{equation}
+
+Utilizando la ecuaci\'on~\ref{boma22} y la ecuaci\'on~\ref{boma14}, se tiene que el siguiente par\'ametro (\emph{p\'arametro de Thomas}):
+
+\begin{equation}
+\sigma_C = \frac{NPSH_R}{h_m} = \left(\frac{n_S}{S_S} \right)^{4/3}
+\label{boma23}
+\end{equation}
+
+La ecuaci\'on anterior indica que para un valor dado de $n_S$, valores bajos de $S_S$ indican que la bomba tiene un margen de seguridad m\'as alto. Ademas cuando bombas de una misma serie homologa operan bajo condiciones de cavitaci\'on, valores iguales de $S_S$ indican un grado de cavitaci\'on  semejante. Se ha podido demostrar que para bombas de succi\'on simple, $\sigma_C$ se convierte en:
+
+\begin{equation}
+\sigma_C =  \frac{\phi n_S^{4/3}}{10^6} 
+\label{boma24}
+\end{equation}
+
+en donde $\phi = 1210$ para sistema internacional ($Q$ en $m^3/s$ y $h_m$ $m$). Para bombas de succi\'on doble, se tiene:
+
+\begin{equation}
+\sigma_C =  \frac{4 n_S^{4/3}}{10^6} 
+\label{boma25}
+\end{equation}
+
+la cual es valida para sistema ingles de unidades ($Q$ in $gpm$ y $h_m$ en $pies$).
+
+\subsection{Sistemas con bombas en serie}
+Los sistemas de bombas en serie se utilizan en sistemas de tuber\'ias cuando la carga est\'atica a vencer es muy alta tal que se requiere mas de una bomba para suministrar esta energ\'ia. Para esto, se disponen bombas una detr\'as de otra, en donde para las bombas siguientes a la primera, la tuber\'ia de succi\'on de la bomba siguiente es la tuber\'ia de descarga de la bomba inmediatamente anterior (ver figura~\ref{bom22}). Por lo tanto, la carga total suministrada por las bombas para un caudal dado, es la suma de las cargas suministradas por las bombas.
+
+% Duarte F8.17
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom22.jpeg}
+\caption{Sistema de bombas en serie (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom22}
+\end{figure}
+
+Si se supone que se tiene un sistema de dos  bombas (a y b) centrifugas en serie, el punto de operaci\'on de un sistema de bombas en serie se define mediante las curvas caracter\'isticas de las bombas individuales y la combinaci\'on de ambas (ver figura~\ref{bom23}). Para un caudal $Q_i$ que transporta el sistema, los valores de la carga para la bomba a y b son $h_{m_a}$ y $h_{m_b}$, respectivamente, mientras que la carga que suministran ambas bombas para $Q_i$ es la suma aritm\'etica $h_{m_a}+h_{m_b}$. La curva caracter\'istica del sistema de dos bombas en serie se puede obtener mediante la suma de las $h_m$ para diferentes caudales. De acuerdo con esto, el punto de operaci\'on del sistema (punto T) es entonces el corte de la curva del sistema  o curva de la estaci\'on (curva E) con la curva caracter\'istica del sistema en serie.  
+
+% Duarte F8.18
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom23.jpeg}
+\caption{Punto de operaci\'on de un sistema con dos bombas en serie (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom23}
+\end{figure}
+
+
+Note que en la figura~\ref{bom23}, el punto de operaci\'on o de trabajo T corresponde a una mayor carga que las proporcionadas por cada una de las bombas, pero dicha carga es menor que la suma de las cargas (e.g. $h_{m_a}+ h_{m_b}$). La eficiencia de cada bomba queda definida por el caudal que suministra cada bomba. 
 
 
 
