@@ -500,7 +500,7 @@ Una bomba se coloca en un sistema de tuber\'ias con el fin de a\~nadir energ\'ia
 % Duarte F8.1
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{./figs/bom12.jpeg}
+\includegraphics[width=12cm]{./figs/bom18.jpeg}
 \caption{Estaciones de bombeo (tomado de \cite{agudelo2011mecanica}).} 
 \label{bom12}
 \end{figure}
@@ -516,18 +516,18 @@ Una bomba se coloca en un sistema de tuber\'ias con el fin de a\~nadir energ\'ia
 Si se aplica la ecuaci\'on de Bernoulli entre el tanque de succi\'on y el tanque de descarga (ver figura~\ref{bom12}), se tiene:
 
 \begin{equation}
-H_1 + h_m = H_2 + \sum h_f y \sum h_e 
+H_1 + h_m = H_2 + \sum h_f + \sum h_e 
 \label{boma15}
 \end{equation}
 
-donde $H_1$ es la energ\'ia en la succi\'on, $H_2$ es la energ\'ia en la descarga, $h_m$ es la carga de la bomba, y la sumatoria de $h_f$ y $h_e$ son las perdidas por fricci\'on y por accesorios a lo largo de la tuber\'ia. Si decimos que $h_T = H_2-H_1$ y que las perdidas se pueden expresar en funci\'on del diametro, la ecuaci\'on~\ref{boma15} se convierte en:
+donde $H_1$ es la energ\'ia en la succi\'on, $H_2$ es la energ\'ia en la descarga, $h_m$ es la carga de la bomba, y la sumatoria de $h_f$ y $h_e$ son las perdidas por fricci\'on y por accesorios a lo largo de la tuber\'ia. Si decimos que $h_T = H_2-H_1$ y que las perdidas se pueden expresar en funci\'on del caudal, la ecuaci\'on~\ref{boma15} se convierte en:
 
 \begin{equation}
 h_m = h_T + (C+K)Q^2 = h_T +A Q^2
 \label{boma16}
 \end{equation}
 
-donde $A$ es una constante igual a $A = f\frac{L}/{A^2 D 2 g} + \frac{1}{2g A^2}\sum K$. Note que la ecuac\'on establece una relaci\'on de la carga de la bomba, $h_m$, como una funci\'on de la carga est\'atica, $h_T$, y del caudal. Esta ecuaci\'on se denomina la \emph{curva de la estaci\'on} o la \emph{curva del sistema} y representa la energ\'ia por unidad de peso que requiere el sistema. 
+donde $A$ es una constante igual a $A = \frac{fL}/{D A^2 2 g} + \frac{1}{2g A^2}\sum K$. Note que la ecuaci\'on establece una relaci\'on de la carga de la bomba, $h_m$, como una funci\'on de la carga est\'atica, $h_T$, y del caudal. Esta ecuaci\'on se denomina la \emph{curva de la estaci\'on} o la \emph{curva del sistema} y representa la energ\'ia por unidad de peso que requiere el sistema. 
 
 Analizando la figura~\ref{bom13} se observa que la curva del sistema no inicia en el origen del sistema de coordenadas, por lo que para un caudal $Q=0$ el sistema exige una energ\'ia igual a $h_T$. La forma de la curva depende de las perdidas a lo largo del sistema. 
 
@@ -539,7 +539,7 @@ Analizando la figura~\ref{bom13} se observa que la curva del sistema no inicia e
 \label{bom13}
 \end{figure}
 
-Dibujando la curva del sistema en el grafico de curva caracteristica de una bomba para una velocidad $\omega$ constante y diferentes impulsores (diferentes valores de $D_i$), la intersecci\'on de la curva del sistema con las curvas caracter\'istica genera un \emph{punto de operaci\'on} para cada impulsor ($T_1$, $T_2$, $T_3$) (ver figura~\ref{bom14}).
+Dibujando la curva del sistema en el gr\'afico de curva caracter\'istica de una bomba para una velocidad $\omega$ constante y diferentes impulsores (diferentes valores de $D_i$), la intersecci\'on de la curva del sistema con las curvas caracter\'isticas genera un \emph{punto de operaci\'on} para cada impulsor ($T_1$, $T_2$, $T_3$) (ver figura~\ref{bom14}).
 
 % Duarte F8.3
 \begin{figure}[h]
@@ -549,13 +549,13 @@ Dibujando la curva del sistema en el grafico de curva caracteristica de una bomb
 \label{bom14}
 \end{figure}
 
-De la misma manera, si se dibuja la curva del sistema en el gr\'afico de curva caracteristica de la bomba para un impulsor fijo y varios valores de $\omega$, la intersecci\'on de dichas curvas determina los puntos de  operaci\''on para diferentes valores de  $\omega$. La idea es determinar un impulsor y una velocidad de rotaci\'on que permitan proporcionar un caudal y una cabeza de energ\'ia bajo unas condiciones de alta eficiencia. Si por ejemplo el sistema requiere suministrar un  $Q_2$ y una $h_{m_2}$, el impulsor seleccionado ser\'ia $D_{i_2}$ con una velocidad de rotaci\'on $\omega$. El punto $T_2$ seria el \emph{punto de operaci\'on} o \emph{punto de trabajo} del sistema en el cual la bomba debe operar en lo posible (ver figura~\ref{bom14}). 
+De la misma manera, si se dibuja la curva del sistema en el gr\'afico de curva caracter\'istica de la bomba para un impulsor fijo y varios valores de $\omega$, la intersecci\'on de dichas curvas determina los puntos de  operaci\'on para diferentes valores de  $\omega$. La idea es determinar un impulsor y una velocidad de rotaci\'on que permitan proporcionar un caudal y una cabeza de energ\'ia bajo unas condiciones de alta eficiencia. Si por ejemplo el sistema requiere suministrar un  $Q_2$ y una $h_{m_2}$, el impulsor seleccionado ser\'ia $D_{i_2}$ con una velocidad de rotaci\'on $\omega$. El punto $T_2$ seria el \emph{punto de operaci\'on} o \emph{punto de trabajo} del sistema en el cual la bomba debe operar en lo posible (ver figura~\ref{bom14}). 
 
 El punto de operaci\'on puede cambiar debido a lo siguiente (ver figura~\ref{bom15}):
 \begin{itemize}
-\item Variaci\'on del di\'ametro del impulsor ($D_i$) para una velocidad constante $\omega$. Si se reemplaza el impulsor por otro diferente el punto de operaci\'on ser\'a otro.
+\item Variaci\'on del di\'ametro del impulsor ($D_i$) para una velocidad constante $\omega$. Si se reemplaza el impulsor por otro diferente, el punto de operaci\'on ser\'a otro.
 \item Variaci\'on de la velocidad de rotaci\'on ($\omega$) para un impulsor fijo. Si $\omega$ aumenta o disminuye, el punto de operaci\'on cambiar\'a. 
-\item Por variaci\'on de las perdida de energi\'ia en el sistema. Si se cambia la tuber\'ia y se colocan mas accesorios esto implica cambios en la perdida de energ\'ia y por tando en la curva del sistema. Por lo tanto el punto de operaci\'on cambiara. 
+\item Por variaci\'on de las perdida de energ\'ia en el sistema. Si se cambia la tuber\'ia y se colocan m\'as accesorios esto implica cambios en la perdida de energ\'ia y por tando en la curva del sistema. Por lo tanto el punto de operaci\'on cambiar\'a. 
 \item Por envejecimiento de la bomba, tuber\'ias y accesorios. Con el paso del tiempo la rugosidad de las tuber\'ias aumenta as\'i como los coeficientes de perdidas de los accesorios. La bomba sufre cambios en su eficiencia y en su capacidad.  
 \end{itemize}
 
@@ -597,12 +597,12 @@ Para el caso de bombas centrifugas, la zona en donde es posible el desarrollo de
 \end{figure}
 
 \subsubsection*{An\'alisis de la succi\'on}
-Considerando los sistemas de succi\'on de los esquemas mostrados en la figura~\ref{bom18} y aplicando la ecuaci\'on de Bernoulli entre la superficie libre en el tanque de succi\'on y la brida de succi\'on (BS) tomando como referencia el plano de bombeo, la presi\'on en esta brida queda defina como:
+Considerando los sistemas de succi\'on de los esquemas mostrados en la figura~\ref{bom18} y aplicando la ecuaci\'on de Bernoulli entre la superficie libre en el tanque de succi\'on y la brida de succi\'on (BS) tomando como referencia el plano de bombeo, la cabeza presi\'on en esta brida queda defina como:
 
 % Duarte F8.8
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{./figs/bom18.jpeg}
+\includegraphics[width=12cm]{./figs/bom12.jpeg}
 \caption{Sistemas de succi\'on en bombas centrifugas (tomado de \cite{agudelo2011mecanica}).} 
 \label{bom18}
 \end{figure}
@@ -621,7 +621,7 @@ despejando $\frac{P_{BS}}{\gamma}$ y dejando el termino de perdidas como una fun
 
 donde $C_S$ se puede entender como un coeficiente de perdidas en la succi\'on. Analizando la ecuaci\'on~\ref{boma18}, la presi\'on en la brida de succi\'on ($P_{BS}$) disminuye si:
 \begin{itemize}
-\item las perdidas de energ\'ia aumentan debido a un aumento del caudal, a una gran longitud de la tuber\'ia de succi\'on, numero considerable de accesorios, tuber\'ias con material muy rugoso, tuber\'ia de succi\'on dise\~nada con diametro pequeno.
+\item las perdidas de energ\'ia aumentan debido a un aumento del caudal, a una gran longitud de la tuber\'ia de succi\'on, numero considerable de accesorios, tuber\'ias con material muy rugoso, tuber\'ia de succi\'on dise\~nada con di\'ametro peque\~no.
 \item de acuerdo con la posici\'on del tanque de succi\'on, si aumenta o disminuye la altura est\'atica de la succi\'on.
 \item si se disminuye la presi\'on atmosf\'erica  local, por ejemplo, cuando el proyecto se desarrolla en lugares elevados con respecto al nivel del mar. 
 \item si aumenta la presi\'on de vapor del fluido lo cual implica que la probabilidad de que ocurra cavitaci\'on aumente. 
@@ -631,7 +631,7 @@ donde $C_S$ se puede entender como un coeficiente de perdidas en la succi\'on. A
 Para evitar que se presente cavitaci\'on por las razones antes mencionadas, es necesario determinar una cabeza neta m\'inima.
 
 \subsubsection*{Cabeza neta de succi\'on positiva disponible ($NPSH_D$)}
-La cabeza neta de succi\'on positiva disponible ($NPSH_D$) se define como la energ\'ia absoluta en la brida de succi\'on con respecto al plano de bombeo menos la cabeza de presi\'o de vapor del fluido que circula por el sistema. De acuerdo con lo anterior y con base en la ecuaci\'on~\ref{boma17} se puede decir que la energ\'ia absoluta en la brida de succi\'on ($h_{sa}$), se puede expresar como:
+La cabeza neta de succi\'on positiva disponible ($NPSH_D$) se define como la energ\'ia absoluta en la brida de succi\'on con respecto al plano de bombeo menos la cabeza de presi\'on de vapor del fluido que circula por el sistema. De acuerdo con lo anterior y con base en la ecuaci\'on~\ref{boma17} se puede decir que la energ\'ia absoluta en la brida de succi\'on ($h_{sa}$), se puede expresar como:
 
 \begin{equation}
 h_{sa} = \frac{P_{atm}}{\gamma} \pm h_S - C_S Q^2 = \frac{P_{BS}}{\gamma} + \frac{V_{BS}^2}{2g} 
@@ -678,7 +678,7 @@ Al analizar la ecuaci\'on~\ref{boma19}, se observa que $NPSH_D$ disminuye con el
 \end{figure}
 
 \subsubsection*{Par\'ametro de cavitaci\'on}
-De acuerdo con el an\'alisis dimensional de sistemas de bombeo para un di\'ametro $D_i$ constante, tenemos que los parametros adimensionales son:
+De acuerdo con el an\'alisis dimensional de sistemas de bombeo para un di\'ametro $D_i$ constante, tenemos que los par\'ametros adimensionales son:
 
 \begin{equation}
 \Pi_1 = \frac{Q}{\omega D_i^3} = \frac{Q}{\omega} \quad Q \propto \omega  \quad \quad \Pi_2 = \frac{g h_m}{\omega^2 D_i^2} = \frac{h_m}{\omega^2} \quad h_m \propto \omega^2
@@ -725,7 +725,7 @@ en donde $\phi = 1210$ para sistema internacional ($Q$ en $m^3/s$ y $h_m$ $m$). 
 la cual es valida para sistema ingles de unidades ($Q$ in $gpm$ y $h_m$ en $pies$).
 
 \subsection{Sistemas con bombas en serie}
-Los sistemas de bombas en serie se utilizan en sistemas de tuber\'ias cuando la carga est\'atica a vencer es muy alta tal que se requiere mas de una bomba para suministrar esta energ\'ia. Para esto, se disponen bombas una detr\'as de otra, en donde para las bombas siguientes a la primera, la tuber\'ia de succi\'on de la bomba siguiente es la tuber\'ia de descarga de la bomba inmediatamente anterior (ver figura~\ref{bom22}). Por lo tanto, la carga total suministrada por las bombas para un caudal dado, es la suma de las cargas suministradas por las bombas.
+Los sistemas de bombas en serie se utilizan en sistemas de tuber\'ias cuando la carga est\'atica a vencer es muy alta tal que se requiere m\'as de una bomba para suministrar esta energ\'ia. Para esto, se disponen bombas una detr\'as de otra, en donde para las bombas siguientes a la primera, la tuber\'ia de succi\'on de la bomba siguiente es la tuber\'ia de descarga de la bomba inmediatamente anterior (ver figura~\ref{bom22}). Por lo tanto, la carga total suministrada por las bombas para un caudal dado, es la suma de las cargas suministradas por las bombas.
 
 % Duarte F8.17
 \begin{figure}[h]
@@ -749,6 +749,27 @@ Si se supone que se tiene un sistema de dos  bombas (a y b) centrifugas en serie
 Note que en la figura~\ref{bom23}, el punto de operaci\'on o de trabajo T corresponde a una mayor carga que las proporcionadas por cada una de las bombas, pero dicha carga es menor que la suma de las cargas (e.g. $h_{m_a}+ h_{m_b}$). La eficiencia de cada bomba queda definida por el caudal que suministra cada bomba. 
 
 
+\subsection{Sistemas con bombas en paralelo}
+Si se tiene un sistema de tuber\'ias en donde es necesario suministrar un caudal alto para una carga alta, es necesario la instalaci\'on de bombas en paralelo. Las bombas en paralelo suministran un caudal total, que constituye la suma de los caudales suministrados por cada bomba, para una carga determinada (ver figura~\ref{bom24}). Si se tienen dos bombas, a y b, como en la figura~\ref{bom24} cuyas curvas caracter\'isticas est\'an representadas en la figura~\ref{bom25}, la curva caracter\'istica del sistema en paralelo (curva c) se puede formar a partir de las curvas caracter\'isticas de a y b sumando los caudales ($Q_c = Q_a + Q_b$) para una misma carga $h_{m_i}= h_{m_a}=h_{m_b}$. El punto de operaci\'on o punto de trabajo del sistema es la intersecci\'on de la curva caracteristica para las dos bombas en paralelo y la curva E del sistema. La eficiencia de cada bomba depende del caudal que suministra cada una de ellas. 
+
+% Duarte F8.24
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom24.jpeg}
+\caption{Sistema de bombas en paralelo (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom24}
+\end{figure}
+
+% Duarte F8.25
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{./figs/bom25.jpeg}
+\caption{Curva caracter\'istica de dos bombas en paralelo (tomado de \cite{agudelo2011mecanica}).} 
+\label{bom25}
+\end{figure}
+
+
+\subsection{Sistemas especiales}
 
 
 
