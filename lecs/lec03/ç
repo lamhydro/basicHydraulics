@@ -782,9 +782,9 @@ Para que la bomba sea capaz de transportar el fluido hasta A, B y C, la energ\'i
 % Duarte F8.28
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{./figs/bom26.jpeg}
+\includegraphics[width=12cm]{./figs/bom25.jpeg}
 \caption{Sistema de bombeo en red abierta de tuber\'ias (tomado de \cite{agudelo2011mecanica}).} 
-\label{bom26}
+\label{bom25}
 \end{figure}
 
 
@@ -795,46 +795,7 @@ H_J = z_A + C_A Q_A^2 \quad H_J = z_B + C_B Q_B^2 \quad H_J = z_C + C_C Q_C^2
 \label{boma27}
 \end{equation}
 
-Usando la ecuaci\'on de Bernoulli entre el tanque D y la entrada S de la bomba, se obtiene que:
-
-\begin{equation}
-H_D = H_s + C_D Q_D^2 
-\label{boma28}
-\end{equation}
-
-La carga di\'namica de la bomba, $h_m$, se obtiene entre la succi\'on (punto s) y la descarga de la bomba (punto d), como:
-
-\begin{equation}
-h_m = H_d-H_s
-\label{boma29}
-\end{equation}
-
-donde $H_s$ es la energ\'ia del flujo en la brida de entrada a la bomba (succi\'on) y $H_d$ es la energ\'ia del flujo en la brida de salida de la bomba (descarga). $H_s$ se obtiene mediante la ecuaci\'on~\ref{bom28} y $H_d$ equivale al mayor valor de $H_J$ en las ecuaciones~\ref{boma27}.
-
-Para determinar el punto de operaci\'on del sistema, y adem\'as el caudal que circula por cada tuber\'ia as\'i como la energ\'ia en el nodo, de manera gr\'afica sabiendo las curvas caracter\'isticas de la bomba y las caracter\'isticas de la tuber\'ia y del fluido, se puede implementar el siguiente procedimiento:
-
-\begin{enumerate}
-\item Si se supone que tenemos un tanque de suministro $c$ y dos tanque de descarga $a$ y $b$, usando la ecuaci\'on de Bernoulli, se determinan las ecuaciones de p\'erdidas de energ\'ia a lo largo de cada ramal desde el tanque $c$ hasta cada tanque de descarga ($a$ y $b$) tomando como nivel de referencia el nivel en el tanque $c$.
-
-\begin{equation}
-h_{m_i} = z_{i} + C_i Q_i^2 
-\label{boma30}
-\end{equation}
-donde $i$ hace referencia al tanque de descarga $a$ o $b$. El factor de perdidas $C_i$ se calcula a lo largo de la tuber\'ia desde el nodo J hasta el tanque $i$.
-\item Usando la ecuaci\'on de Bernoulli, obtener la ecuaci\'on de p\'erdidas de energ\'ia a lo largo de la tuber\'ia que va desde el tanque $c$ hasta el nodo J. Se toma como referencia el nivel de la superficie libre del tanque $c$. 
-
-\begin{equation}
-h_{m_c} = z_{j} + C_c Q_c^2 
-\label{boma31}
-\end{equation}
-
-\item En los mismos ejes de coordenadas de la curva caracter\'istica de la bomba, dibujar, para diferentes caudales, las curvas de p\'erdidas para cada tanque $i$ (ecuaci\'on~\ref{boma30}) y la curva de p\'erdidas de la tuber\'ia que va desde el tanque $c$ al nodo J (ecuaci\'on~\ref{boma31}).
-\item Crear una nueva curva (a+b) a partir de las curvas de la ecuaci\'on~\ref{boma30}, en donde para un valor de $h_{m_i}$ se tienen caudales para cada tanque $i$. La curva se forma mediante la suma de los caudales.
-\item Crear una nueva curva (a+b+c) a partir de la curva a+b y la curva de p\'erdidas del tramo que va del tanque $c$ al nodo. Para un mismo caudal (caudal total) determinado por la curva a+b, sumar las cargas. Se suma, para un mismo caudal, la carga de la curva a+b y la carga correspondiente al tramo que va del tanque $c$ al nodo J. Esto forma entonce una nueva curva. 
-\item Esta nueva curva a+b+c, es la curva del sistema. El punto de intersecci\'on de esta curva y la curva caracter\'istica de la bomba determinan el punto de operaci\'on del sistema. El caudal de operaci\'on es entonces el caudal total en el sistema. 
-\item A partir de la carga  $h_m$ de operaci\'on se puede determinar la energ\'ia en el nodo J. Si se proyecta el punto de operaci\'on sobre la curva a+b (para el caudal de operaci\'on) se obtiene una nueva carga que representa la energ\'ia en el nodo J. 
-\item A partir de la energ\'ia en el nodo J, si se proyecta este punto sobre las curvas de $a$ y $b$, se obtienen los caudales que circular\'ian hacia los tanque $a$ y $b$.
-\end{enumerate}
+ 
 
 
 
